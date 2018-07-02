@@ -1,1 +1,3 @@
-export { default } from "./SearchCard";
+// export * from "./Quiz";
+export * from "./Input";
+export * from "./FormBtn";
