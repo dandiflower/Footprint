@@ -1,0 +1,9 @@
+form.Quiz {
+  overflow: auto;
+  margin-bottom: 10px;
+}
+
+form.Quiz button[type="submit"] {
+  float: right;
+  margin-top: 10px;
+}

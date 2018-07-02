@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const Search = props => (
+const Quiz = props => (
 
     <form>
         <div className="form-group">
