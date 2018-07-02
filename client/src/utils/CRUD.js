@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
   // Gets all articles
   getArticles: function () {
-    return axios.get("http://localhost:3002/api/article");
+    return axios.get("http://localhost:3002/CRUD/article");
   },
   
   // // Gets the article with the given id
@@ -12,14 +12,14 @@ export default {
   // },
   // Deletes the article with the given id
   deleteArticle: function(id) {
-    return axios.delete("http://localhost:3002/api/article/" + id);
+    return axios.delete("http://localhost:3002/CRUD/article/" + id);
   },
   // Saves a article to the database
   saveArticles: function(articleData) {
-    return axios.post("http://localhost:3002/api/article", articleData);
+    return axios.post("http://localhost:3002/CRUD/", articleData);
   },
 
   searchArticles: function (article) {
-    return axios.post("http://localhost:3002/api/search", article);
+    return axios.post("http://localhost:3002/CRUD/quiz", article);
   }
 };
