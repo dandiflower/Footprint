@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
-import SearchForm from "../../components/SearchForm";
-import SearchResults from "../../components/SearchResults";
+import CRUD from "../../utils/CRUD";
+import QuizForm from "../../components/QuizForm";
+import QuizResults from "../../components/QuizResults";
 
 class Home extends Component {
   state = {
@@ -11,17 +11,12 @@ class Home extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     const article = {
-      topic: document.getElementById('topic').value,
-      startDate: document.getElementById('startDate').value,
-      endDate: document.getElementById('endDate').value
+      question: document.getElementById('question').value,
     }
 
-
-    article.startDate = article.startDate.replace(/[^\w\s]/gi, '');
-    article.endDate = article.endDate.replace(/[^\w\s]/gi, '');
     console.log(article);
 
-    API.searchArticles(article)
+    CRUD.searchArticles(article)
       .then(res => {
         if (res.data.status === "error") {
           throw new Error(res.data.message);
@@ -53,7 +48,7 @@ class Home extends Component {
       saveArticle["image"] = article.multimedia[0].legacy.xlarge
     }
    // console.log(saveArticle);
-    API.saveArticles(saveArticle)
+    CRUD.saveArticles(saveArticle)
     .then(response=>{
       // remove the result at index from state
       let state = this.state.results;
@@ -73,11 +68,11 @@ class Home extends Component {
     return (
       <div>
         <div className="container">
-          <h1 className="text-center">Search For An Article!</h1>
-          <SearchForm
+          <h1 className="text-center">Do this Quiz!</h1>
+          <QuizForm
             handleFormSubmit={this.handleFormSubmit}
           />
-          <SearchResults 
+          <QuizResults 
             results={this.state.results} 
             handleSave={this.handleSave}
            />
