@@ -1,22 +1,26 @@
 {
-  "name": "Footprint",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {},
+  "name": "mern-secure",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.1",
+    "mongoose": "^5.0.6",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www",
+    "build": "cd client && npm run build",
+    "install": "cd client && npm run install",
+    "frontend": "cd client && yarn start"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dandiflower/Footprint.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dandiflower/Footprint/issues"
-  },
-  "homepage": "https://github.com/dandiflower/Footprint#readme"
+  "devDependencies": {
+    "bootstrap": "^4.0.0"
+  }
 }
