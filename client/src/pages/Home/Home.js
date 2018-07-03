@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import CRUD from "../../utils/CRUD";
-import QuizForm from "../../components/QuizForm";
-import QuizResults from "../../components/QuizResults";
+import CRUD from "../../utils/API";
+// import QuizForm from "../../components/QuizForm";
+// import QuizResults from "../../components/QuizResults";
 
 class Home extends Component {
   state = {
@@ -67,7 +67,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <div className="container">
+        {/* <div className="container">
           <h1 className="text-center">Do this Quiz!</h1>
           <QuizForm
             handleFormSubmit={this.handleFormSubmit}
@@ -76,7 +76,7 @@ class Home extends Component {
             results={this.state.results} 
             handleSave={this.handleSave}
            />
-        </div>
+        </div> */}
       </div>
     );
   }
