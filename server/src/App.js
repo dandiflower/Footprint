@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-
-// App component acts as home or root page. This component handles the list of books.
-
 class App extends Component {
 
   constructor(props) {
@@ -23,7 +20,7 @@ class App extends Component {
         console.log(this.state.books);
       })
       .catch((error) => {
-        if (error.response.status === 401) {
+        if(error.response.status === 401) {
           this.props.history.push("/login");
         }
       });
