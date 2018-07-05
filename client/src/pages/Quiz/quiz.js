@@ -85,7 +85,10 @@ class Form extends Component {
 
 
                             <FormBtn onClick={(e) => this.onSubmit(e)}> Submit</FormBtn>
+                            <br /> <br />
+
                         </form>
+
                     </div>
                 </div>
             </div>
