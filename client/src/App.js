@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch, } from "react-router-dom";
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Saved from "./pages/Saved";
 import Quiz from "./pages/Quiz";

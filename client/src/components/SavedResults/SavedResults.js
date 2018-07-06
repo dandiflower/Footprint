@@ -5,7 +5,7 @@ const SavedResults = props => (
     <div>
         {props.results.map((result, index) => (
             <div className="card" key={index}>
-                {result.image != undefined ? <img className="card-img-top" src={`https://www.nytimes.com/${result.image}`} alt="Card image cap" /> : ""}
+                {result.image !== undefined ? <img className="card-img-top" src={`https://www.nytimes.com/${result.image}`} alt="Card image cap" /> : ""}
                
                 <div className="card-body">
                     <h5 className="card-title">{result.headline}</h5>
