@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch, } from "react-router-dom";
-// import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Saved from "./pages/Saved";
-import Quiz from "./pages/Quiz";
-import Login from './components/Login/Login';
-import Register from './components/Login/Register';
+import { Link } from 'react-router-dom';
+// import Saved from "./pages/Saved";
+// import Quiz from "./pages/Quiz";
+// import Login from './components/Login/Login';
+// import Register from './components/Login/Register';
 
 class App extends Component {
 
@@ -41,7 +40,7 @@ class App extends Component {
       <Router>
         <div>
           <Switch>
-            <Route exact path="/" component={Quiz} />
+            <Route exact path="/" component={Login} />
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
             <Route exact path="/saved" component={Saved} />
