@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Switch, } from "react-router-dom";
-// import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Saved from "./pages/Saved";
-import Quiz from "./pages/Quiz";
-import Login from './components/Login/Login';
-import Register from './components/Login/Register';
+import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
+
 
 class App extends Component {
 
@@ -38,17 +34,38 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div>
-          <Switch>
-            <Route exact path="/" component={Quiz} />
-            <Route path='/login' component={Login} />
-            <Route path='/register' component={Register} />
-            <Route exact path="/saved" component={Saved} />
-            <Route exact path="/quiz" component={Quiz} />
-          </Switch>
+      <div class="container">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              BOOK CATALOG &nbsp;
+              {localStorage.getItem('jwtToken') &&
+                <button class="btn btn-primary" onClick={this.logout}>Logout</button>
+              }
+            </h3>
+          </div>
+          <div class="panel-body">
+            <table class="table table-stripe">
+              <thead>
+                <tr>
+                  <th>ISBN</th>
+                  <th>Title</th>
+                  <th>Author</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.books.map(book =>
+                  <tr>
+                    <td><Link to={`/show/${book._id}`}>{book.isbn}</Link></td>
+                    <td>{book.title}</td>
+                    <td>{book.author}</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </Router>
+      </div>
     );
   }
 }
