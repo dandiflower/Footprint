@@ -5,23 +5,23 @@ import axios from 'axios';
 import { Jumbotron } from "../../components/Results";
 
 
-// App component acts as home or root page. This component handles the list of books.
+// App component acts as home or root page. This component handles the list of persons.
 
 class Result extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            books: []
+            persons: []
         };
     }
 
     componentDidMount() {
         axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
-        axios.get('/api/book')
+        axios.get('/api/person')
             .then(res => {
-                this.setState({ books: res.data });
-                console.log(this.state.books);
+                this.setState({ persons: res.data });
+                console.log(this.state.persons);
             })
             .catch((error) => {
                 if (error.response.status === 401) {
@@ -48,7 +48,7 @@ class Result extends Component {
                                         <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h3 class="panel-title">
-                                            BOOK CATALOG &nbsp;
+                                            person CATALOG &nbsp;
                                             {localStorage.getItem('jwtToken') &&
                                                 <button class="btn btn-primary" onClick={this.logout}>Logout</button>
                                             }
@@ -64,11 +64,11 @@ class Result extends Component {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {this.state.books.map(book =>
+                                                {this.state.persons.map(person =>
                                                 <tr>
-                                                    <td><Link to={`/show/${book._id}`}>{book.isbn}</Link></td>
-                                                    <td>{book.title}</td>
-                                                    <td>{book.author}</td>
+                                                    <td><Link to={`/show/${person._id}`}>{person.isbn}</Link></td>
+                                                    <td>{person.title}</td>
+                                                    <td>{person.author}</td>
                                                 </tr>
                                                 )}
                                             </tbody>

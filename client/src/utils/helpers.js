@@ -7,10 +7,10 @@ export default {
 
 
 // axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
-// axios.get('/api/book')
+// axios.get('/api/person')
 //     .then(res => {
-//         this.setState({ books: res.data });
-//         console.log(this.state.books);
+//         this.setState({ persons: res.data });
+//         console.log(this.state.persons);
 
 //     })
 //     .catch((error) => {
