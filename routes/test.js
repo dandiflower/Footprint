@@ -1,53 +1,30 @@
-const router = require("express").Router();
-const bookController = require("../../controllers/bookController");
-const axios = require('axios');
+var mongoose = require('mongoose');
+var passport = require('passport');
+var settings = require('../config/settings');
+require('../config/passport')(passport);
+var express = require('express');
+var jwt = require('jsonwebtoken');
+var router = express.Router();
+var User = require("../models/user");
 
-
-/* book API ROUTES */
-// ALL ROUTES THAT INTERACT WITH CONTROLLER
-
-// Create function in bookcontroller
-router.post("/book", (req, res) => {
-  bookController.Create(req.body, (results) => {
-    console.log(results);
-    res.json(results);
-  })
+router.post('/test', function (req, res) {
+  if (!req.body.username || !req.body.password) {
+    res.json({ success: false, msg: 'Please pass username and password.' });
+  } else {
+    var newUser = new User({
+      username: req.body.username,
+      password: req.body.password
+    });
+    // save the user
+    newUser.save(function (err) {
+      if (err) {
+        return res.json({ success: false, msg: 'Username already exists.' });
+      }
+      res.json({ success: true, msg: 'Successful created new user.' });
+    });
+  }
 });
 
-// Find function in bookcontroller
-router.get("/", (req, res)=>{
-  bookController.FindAll((allbooks)=>{
-    // console.log(allbooks)
-    res.json(allbooks)
-  })
-});
 
-// Delete function in bookcontroller
-router.delete("/book/:id", (req, res) => {
-  bookController.DeleteOne(req.params.id, (results)=>{
-    console.log("results",results);
-    res.json(results);
-  })
-});
-
-/* END book API ROUTES */ 
-
-
-/* NYT API CALL*/
-router.post("/search", (req, res)=>{
-  const basesURL = "https://api.nytimes.com/svc/search/v2/booksearch.json"
-  const topic = `q=${req.body.topic}`;
-  const startDate = `begin_date=${req.body.startDate}`;
-  const endDate = `end_date=${req.body.endDate}`;
-  const apiKey = `9b3adf57854f4a19b7b5782cdd6e427a`;
-
-  const queryURL = `${basesURL}?${topic}&${startDate}&${endDate}&api-key=${apiKey}`;
-  axios.get(queryURL)
-  .then((results)=>{
-    console.log(results.data.response.docs);
-    res.json(results.data.response.docs);
-  });
-
-});
 
 module.exports = router;

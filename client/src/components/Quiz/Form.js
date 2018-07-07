@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "./";
+import axios from 'axios';
+
+
 
 class Form extends Component {
     state = {
@@ -42,12 +45,45 @@ class Form extends Component {
         })
     }
     
+// is the user logged in?????
+
+    componentDidMount() {
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
+        axios.get('/api/book')
+            .then(res => {
+                this.setState({ books: res.data });
+                console.log(this.state.books);
+
+            })
+            .catch((error) => {
+                if (error.response.status === 401) {
+                    this.props.history.push("/login");
+                }
+            });
+    }
+
+    logout() {
+        localStorage.removeItem('jwtToken');
+        window.location.reload();
+    }
+
+
+
+
     render() {
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
+                    
                         <form>
+                            <p>
+                                {localStorage.getItem('jwtToken') &&
+                                    <button className="btn btn-primary" onClick={this.logout}>Logout</button>
+                                }
+                            </p>
+
+
                             <p>First name: </p>
                             <Input name="firstName" placeholder="first name"
                                 value={this.state.firstName} onChange={e => this.change(e)} />

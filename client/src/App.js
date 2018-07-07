@@ -10,18 +10,7 @@ class MERN extends Component {
     super(props);
     this.state = {
       books: [
-      // firstName: "",
-      // lastName: "",
-      // zipCode: "",
-      // email: "",
-      // numPplInHome: "",
-      // numVehicle: "",
-      // heatSource: {
-      //   naturalGas: false,
-      //   electricity: false,
-      //   fuelOil: false,
-      //   propane: false
-      // }
+
     ]
     };
   }
@@ -32,7 +21,7 @@ class MERN extends Component {
       .then(res => {
         this.setState({ books: res.data });
         console.log(this.state.books);
-        console.log(this.state.auth);
+
       })
       .catch((error) => {
         if (error.response.status === 401) {
@@ -46,30 +35,6 @@ class MERN extends Component {
     window.location.reload();
   }
 
-  change = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-  onSubmit = (e) => {
-    e.preventDefault();
-    this.props.onSubmit(this.state);
-    console.log(this.state);
-    this.setState({
-      firstName: "",
-      lastName: "",
-      zipCode: "",
-      email: "",
-      numPplInHome: "",
-      numVehicle: "",
-      heatSource: {
-        naturalGas: false,
-        electricity: false,
-        fuelOil: false,
-        propane: false
-      }
-    })
-  }
 
   render() {
     return (
