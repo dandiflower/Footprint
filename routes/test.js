@@ -1,41 +1,41 @@
 const router = require("express").Router();
-const articleController = require("../../controllers/articleController");
+const bookController = require("../../controllers/bookController");
 const axios = require('axios');
 
 
-/* ARTICLE API ROUTES */
+/* book API ROUTES */
 // ALL ROUTES THAT INTERACT WITH CONTROLLER
 
-// Create function in articlecontroller
-router.post("/article", (req, res) => {
-  articleController.Create(req.body, (results) => {
+// Create function in bookcontroller
+router.post("/book", (req, res) => {
+  bookController.Create(req.body, (results) => {
     console.log(results);
     res.json(results);
   })
 });
 
-// Find function in articlecontroller
-router.get("/article", (req, res)=>{
-  articleController.FindAll((allArticles)=>{
-    // console.log(allArticles)
-    res.json(allArticles)
+// Find function in bookcontroller
+router.get("/", (req, res)=>{
+  bookController.FindAll((allbooks)=>{
+    // console.log(allbooks)
+    res.json(allbooks)
   })
 });
 
-// Delete function in articlecontroller
-router.delete("/article/:id", (req, res) => {
-  articleController.DeleteOne(req.params.id, (results)=>{
+// Delete function in bookcontroller
+router.delete("/book/:id", (req, res) => {
+  bookController.DeleteOne(req.params.id, (results)=>{
     console.log("results",results);
     res.json(results);
   })
 });
 
-/* END ARTICLE API ROUTES */ 
+/* END book API ROUTES */ 
 
 
 /* NYT API CALL*/
 router.post("/search", (req, res)=>{
-  const basesURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json"
+  const basesURL = "https://api.nytimes.com/svc/search/v2/booksearch.json"
   const topic = `q=${req.body.topic}`;
   const startDate = `begin_date=${req.body.startDate}`;
   const endDate = `end_date=${req.body.endDate}`;
