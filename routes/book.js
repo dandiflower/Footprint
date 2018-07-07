@@ -6,6 +6,12 @@ const passport = require('passport');
 require('../config/passport')(passport);
 
 /* GET ALL BOOKS */
+
+router.post('/test', (req, res)=>{
+  console.log("answers", req.body);
+  res.status(200).send({success: true, msg: 'received data'});
+})
+
 router.get('/', passport.authenticate('jwt', { session: false}), function(req, res) {
   const token = getToken(req.headers);
   if (token) {

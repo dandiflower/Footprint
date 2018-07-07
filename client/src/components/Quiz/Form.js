@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "./";
 import axios from 'axios';
-import helpers from "../../utils/helpers.js";
+import HELPERS from "../../utils/helpers.js";
 
 
 
@@ -28,23 +28,36 @@ class Form extends Component {
     }
     onSubmit = (e) => {
         e.preventDefault();
+        const answers = {
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value
+        }
+
         // this.props.onSubmit(this.state);
-        helpers.addingAnswers(this);
-        console.log(this.state);
-        this.setState({
-            firstName: "",
-            lastName: "",
-            zipCode: "",
-            email: "",
-            numPplInHome: "",
-            numVehicle: "",
-            heatSource: {
-                naturalGas: false,
-                electricity: false,
-                fuelOil: false,
-                propane: false
+        HELPERS.addingAnswers(answers)
+        .then(response=>{
+            console.log("response", response)
+            if(response.data === true){
+                 this.setState({
+                    firstName: "",
+                    lastName: "",
+                    zipCode: "",
+                    email: "",
+                    numPplInHome: "",
+                    numVehicle: "",
+                    heatSource: {
+                        naturalGas: false,
+                        electricity: false,
+                        fuelOil: false,
+                        propane: false
+                    }
+             })
+             window.location.pathname = "/results"
             }
+           
         })
+        console.log(this.state);
+       
     }
     
     // is the user authorized????
@@ -87,12 +100,21 @@ class Form extends Component {
 
 
                             <p>First name: </p>
-                            <Input name="firstName" placeholder="first name"
-                                value={this.state.firstName} onChange={e => this.change(e)} />
+                            <Input 
+                                id="firstName"
+                                name="firstName" 
+                                placeholder="first name"
+                                value={this.state.firstName}
+                                 onChange={e => this.change(e)} />
                             <br />
 
                             <p>Last name: </p>
-                            <Input name="lastName" placeholder="last name" value={this.state.lastName} onChange={e => this.change(e)} />
+                            <Input 
+                                id="lastName"
+                                name="lastName"
+                                placeholder="last name" 
+                                value={this.state.lastName} 
+                                onChange={e => this.change(e)} />
                             <br />
 
                             <p> Zip code:</p>

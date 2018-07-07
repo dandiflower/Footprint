@@ -23,6 +23,7 @@ export default {
 
     addingAnswers: function(answers) {
         console.log(answers);
+        return axios.post("/api/book/test", answers);
         // axios.post(`/game/join/${this.state.selectedGameId}`).then(joined => {
         //     t.setState({
         //         joinedGame: joined
