@@ -6,7 +6,7 @@ var passport = require('passport');
 require('../config/passport')(passport);
 
 /* GET ALL BOOKS */
-router.get('/', passport.authenticate('jwt', { session: false}), function(req, res) {
+router.get('/test', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);
   if (token) {
     Book.find(function (err, books) {
@@ -19,7 +19,7 @@ router.get('/', passport.authenticate('jwt', { session: false}), function(req, r
 });
 
 /* SAVE BOOK */
-router.post('/', passport.authenticate('jwt', { session: false}), function(req, res) {
+router.post('/test', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);
   if (token) {
     Book.create(req.body, function (err, post) {

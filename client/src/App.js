@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Switch, } from "react-router-dom";
-// import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Saved from "./pages/Saved";
-import Quiz from "./pages/Quiz";
-import Login from './components/Login/Login';
-import Register from './components/Login/Register';
+import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
 
-class App extends Component {
+
+class MERN extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      books: [
+      // firstName: "",
+      // lastName: "",
+      // zipCode: "",
+      // email: "",
+      // numPplInHome: "",
+      // numVehicle: "",
+      // heatSource: {
+      //   naturalGas: false,
+      //   electricity: false,
+      //   fuelOil: false,
+      //   propane: false
+      // }
+    ]
     };
   }
 
@@ -23,6 +32,7 @@ class App extends Component {
       .then(res => {
         this.setState({ books: res.data });
         console.log(this.state.books);
+        console.log(this.state.auth);
       })
       .catch((error) => {
         if (error.response.status === 401) {
@@ -36,21 +46,73 @@ class App extends Component {
     window.location.reload();
   }
 
+  change = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.props.onSubmit(this.state);
+    console.log(this.state);
+    this.setState({
+      firstName: "",
+      lastName: "",
+      zipCode: "",
+      email: "",
+      numPplInHome: "",
+      numVehicle: "",
+      heatSource: {
+        naturalGas: false,
+        electricity: false,
+        fuelOil: false,
+        propane: false
+      }
+    })
+  }
+
   render() {
     return (
-      <Router>
-        <div>
-          <Switch>
-            <Route exact path="/" component={Quiz} />
-            <Route path='/login' component={Login} />
-            <Route path='/register' component={Register} />
-            <Route exact path="/saved" component={Saved} />
-            <Route exact path="/quiz" component={Quiz} />
-          </Switch>
+      <div className="container">
+      {/* Book Panel Begins */}
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h3 className="panel-title">
+              BOOK CATALOG &nbsp;
+              {localStorage.getItem('jwtToken') &&
+                <button className="btn btn-primary" onClick={this.logout}>Logout</button>
+              }
+            </h3>
+          </div>
+          <div className="panel-body">
+            <table className="table table-stripe">
+              <thead>
+                <tr>
+                  <th>ISBN</th>
+                  <th>Title</th>
+                  <th>Author</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.books.map(book =>
+                  <tr>
+                    <td><Link to={`/show/${book._id}`}>{book.isbn}</Link></td>
+                    <td>{book.title}</td>
+                    <td>{book.author}</td>
+                  </tr>
+                )}
+
+              </tbody>
+            </table>
+          </div>
         </div>
-      </Router>
+        {/* Book Panel Ends */}
+      </div>
     );
   }
 }
 
-export default App;
+export default MERN;
+
+
+
