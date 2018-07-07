@@ -4,12 +4,25 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 
 
-class App extends Component {
+class MERN extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      books: [
+      // firstName: "",
+      // lastName: "",
+      // zipCode: "",
+      // email: "",
+      // numPplInHome: "",
+      // numVehicle: "",
+      // heatSource: {
+      //   naturalGas: false,
+      //   electricity: false,
+      //   fuelOil: false,
+      //   propane: false
+      // }
+    ]
     };
   }
 
@@ -19,6 +32,7 @@ class App extends Component {
       .then(res => {
         this.setState({ books: res.data });
         console.log(this.state.books);
+        console.log(this.state.auth);
       })
       .catch((error) => {
         if (error.response.status === 401) {
@@ -32,20 +46,46 @@ class App extends Component {
     window.location.reload();
   }
 
+  change = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.props.onSubmit(this.state);
+    console.log(this.state);
+    this.setState({
+      firstName: "",
+      lastName: "",
+      zipCode: "",
+      email: "",
+      numPplInHome: "",
+      numVehicle: "",
+      heatSource: {
+        naturalGas: false,
+        electricity: false,
+        fuelOil: false,
+        propane: false
+      }
+    })
+  }
+
   render() {
     return (
-      <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
+      <div className="container">
+      {/* Book Panel Begins */}
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h3 className="panel-title">
               BOOK CATALOG &nbsp;
               {localStorage.getItem('jwtToken') &&
-                <button class="btn btn-primary" onClick={this.logout}>Logout</button>
+                <button className="btn btn-primary" onClick={this.logout}>Logout</button>
               }
             </h3>
           </div>
-          <div class="panel-body">
-            <table class="table table-stripe">
+          <div className="panel-body">
+            <table className="table table-stripe">
               <thead>
                 <tr>
                   <th>ISBN</th>
@@ -61,13 +101,18 @@ class App extends Component {
                     <td>{book.author}</td>
                   </tr>
                 )}
+
               </tbody>
             </table>
           </div>
         </div>
+        {/* Book Panel Ends */}
       </div>
     );
   }
 }
 
-export default App;
+export default MERN;
+
+
+
