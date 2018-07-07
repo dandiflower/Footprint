@@ -17,7 +17,7 @@ import Register from './components/Login/Register';
 ReactDOM.render(
     <Router>
         <div>
-            <Route exact path='/book' component={MERN} />
+            <Route exact path='/person' component={MERN} />
             <Route exact path='/' component={Form} />
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />

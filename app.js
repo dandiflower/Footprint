@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
-var book = require('./routes/book');
+var person = require('./routes/person');
 var auth = require('./routes/auth');
 var test = require('./routes/test');
 var app = express();
@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.use('/api/book', book);
+app.use('/api/person', person);
 app.use('/api/auth', auth);
 app.use('./api/test', test);
 

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const Book = require('../models/Book.js');
+const person = require('../models/person.js');
 const passport = require('passport');
 require('../config/passport')(passport);
 
@@ -21,20 +21,20 @@ router.post('/test', (req, res)=>{
 router.get('/', passport.authenticate('jwt', { session: false}), function(req, res) {
   const token = getToken(req.headers);
   if (token) {
-    Book.find(function (err, books) {
+    person.find(function (err, persons) {
       if (err) return next(err);
-      res.json(books);
+      res.json(persons);
     });
   } else {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
 });
 
-/* SAVE BOOK */
+/* SAVE person */
 router.post('/', passport.authenticate('jwt', { session: false}), function(req, res) {
   const token = getToken(req.headers);
   if (token) {
-    Book.create(req.body, function (err, post) {
+    person.create(req.body, function (err, post) {
       if (err) return next(err);
       res.json(post);
     });
