@@ -3,6 +3,7 @@ import axios from 'axios';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 
+import HELPERS from "./utils/helpers.js";
 
 class MERN extends Component {
 
@@ -31,8 +32,14 @@ class MERN extends Component {
   }
 
   logout () {
-    localStorage.removeItem('jwtToken');
-    window.location.reload();
+    
+    HELPERS.logout()
+    .then(results => {
+      if(results.data === true){
+        window.location.pathname = "/";
+      }
+     
+    })
   }
 
 

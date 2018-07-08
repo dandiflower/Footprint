@@ -1,13 +1,52 @@
 var mongoose = require('mongoose');
 
 var BookSchema = new mongoose.Schema({
-  isbn: String,
-  title: String,
-  author: String,
-  description: String,
-  published_date: { type: Date },
-  publisher: String,
-  updated_date: { type: Date, default: Date.now },
+  firstName: {
+    type: String, 
+    required: true
+},
+lastName: {
+    type: String, 
+    required: true
+},
+email: {
+    type: String, 
+    lowercase: true, 
+    unique: true, 
+    required: [true, "can't be blank"], 
+    match: [/\S+@\S+\.\S+/, 'is invalid'], 
+    index: true},
+zipCode: {
+    type: Number
+},
+numPeopleInHome: {
+    type: Number
+},
+numVehicles: {
+    type: Number
+},
+heatSource: {
+    naturalGas: {
+        type: Boolean,
+        default: false
+    },
+    electricity: {
+        type: Boolean,
+        default: false  
+    },
+    fuelOil: {
+        type: Boolean,
+        default: false
+    },
+    propane: {
+        type: Boolean,
+        default: false
+    } 
+},
+userId: {
+  type: String,
+  require: true
+}
 
 
 
