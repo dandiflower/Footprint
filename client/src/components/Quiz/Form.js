@@ -38,16 +38,16 @@ class Form extends Component {
             numPplInHome: document.getElementById("numPplInHome").value,
             numVehicle: document.getElementById("numVehicle").value,
             heatSource: {
-                naturalGas: "",
-                electricity: "",
-                fuelOil: "",
-                propane: ""
+                naturalGas: false,
+                electricity: false,
+                fuelOil: false,
+                propane: false
             },
             userId: HELPERS.getCookies()
             
         }
         console.log(answers)
-        this.props.onSubmit(this.state);
+        // this.props.onSubmit(this.state);
         HELPERS.addingAnswers(answers)
         .then(response=>{
             console.log("response", response)
@@ -66,8 +66,7 @@ class Form extends Component {
                         propane: false
                     }
              })
-             window.location.pathname = "/results"
-           
+             window.location.pathname = "/result"
         }
     })
 }
@@ -106,7 +105,11 @@ class Form extends Component {
                         <form>
                             <p>
                                 {localStorage.getItem('jwtToken') &&
-                                    <button className="btn btn-primary" onClick={this.logout}>Logout</button>
+                                    <button 
+                                        className="btn btn-primary" 
+                                        onClick={this.logout}>
+                                        Logout
+                                    </button>
                                 }
                             </p>
 
@@ -117,7 +120,7 @@ class Form extends Component {
                                 name="firstName" 
                                 placeholder="first name"
                                 value={this.state.firstName}
-                                 onChange={e => this.change(e)} />
+                                onChange={e => this.change(e)} />
                             <br />
 
                             <p>Last name: </p>
@@ -182,13 +185,19 @@ class Form extends Component {
                             <br />
                             <Input 
                             name="fuelOil" 
-                            type="checkbox" placeholder="fuelOil" value={this.state.fuelOil} onChange={e => this.change(e)} /><span>Fuel Oil</span>
+                            type="checkbox" 
+                            placeholder="fuelOil" 
+                            value={this.state.fuelOil} 
+                            onChange={e => this.change(e)} /><span>Fuel Oil</span>
                             <br />
                             <Input name="propane" type="checkbox" placeholder="propane" value={this.state.propane} onChange={e => this.change(e)} /><span>Propane</span>
                             <br /> <br />
 
 
-                            <FormBtn onClick={(e) => this.onSubmit(e)}> Submit</FormBtn>
+                            <FormBtn 
+                            onClick={this.onSubmit}> 
+                            Submit
+                            </FormBtn>
                             <br /> <br />
 
                         </form>
