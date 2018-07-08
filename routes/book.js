@@ -11,11 +11,24 @@ router.post('/test', (req, res)=>{
   console.log("answers", req.body);
   Book.create(req.body, function (err, post) {
     if(err){
-      res.status(400).send({success: true, msg: 'issue with data'});
+      console.log("err",err)
+      res.json(false);
     }
-    res.status(200).send({success: true, msg: 'received data'});
+    res.json(true)
   })
- 
+});
+
+router.get('/results/:id', (req, res)=>{
+  console.log("test", req.params.id)
+  console.log("id", req.params.id);
+  Book.findOne({userId:req.params.id})
+  .then(dbResults =>{
+    console.log("dbResults", dbResults);
+    res.json(dbResults);
+  })
+  .catch(err=>{
+    console.log("err", err)
+  })
 })
 
 router.get('/', passport.authenticate('jwt', { session: false}), function(req, res) {
