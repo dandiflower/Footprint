@@ -26,14 +26,28 @@ class Form extends Component {
             [e.target.name]: e.target.value
         })
     }
+    
     onSubmit = (e) => {
         e.preventDefault();
+
         const answers = {
             firstName: document.getElementById("firstName").value,
-            lastName: document.getElementById("lastName").value
+            lastName: document.getElementById("lastName").value,
+            zipCode: document.getElementById("zipCode").value,
+            email: document.getElementById("email").value,
+            numPplInHome: document.getElementById("numPplInHome").value,
+            numVehicle: document.getElementById("numVehicle").value,
+            heatSource: {
+                naturalGas: "",
+                electricity: "",
+                fuelOil: "",
+                propane: ""
+            },
+            userId: HELPERS.getCookies()
+            
         }
-
-        // this.props.onSubmit(this.state);
+        console.log(answers)
+        this.props.onSubmit(this.state);
         HELPERS.addingAnswers(answers)
         .then(response=>{
             console.log("response", response)
@@ -53,12 +67,10 @@ class Form extends Component {
                     }
              })
              window.location.pathname = "/results"
-            }
            
-        })
-        console.log(this.state);
-       
-    }
+        }
+    })
+}
     
     // is the user authorized????
 
@@ -118,27 +130,59 @@ class Form extends Component {
                             <br />
 
                             <p> Zip code:</p>
-                            <Input name="zipCode" placeholder="zip code" value={this.state.zipCode} onChange={e => this.change(e)} />
+                            <Input 
+                            id="zipCode"
+                            name="zipCode" 
+                            placeholder="zip code" 
+                            value={this.state.zipCode} 
+                            onChange={e => this.change(e)} />
                             <br />
 
                             <p> Number of people in your household?</p>
-                            <Input name="numPplInHome" placeholder="number of people in your home" value={this.state.numPplInHome} onChange={e => this.change(e)} />
+                            <Input 
+                            id="numPplInHome"
+                            name="numPplInHome" 
+                            placeholder="number of people in your home" 
+                            value={this.state.numPplInHome} 
+                            onChange={e => this.change(e)} />
                             <br />
 
                             <p>Email: </p>
-                            <Input name="email" placeholder="email" value={this.state.email} onChange={e => this.change(e)} />
+                            <Input
+                            id="email"
+                            name="email" 
+                            placeholder="email" 
+                            value={this.state.email} 
+                            onChange={e => this.change(e)} />
                             <br />
 
                             <p>Number of Vehicles in your household? </p>
-                            <Input name="numVehicle" placeholder="number of vehicles" value={this.state.numVehicle} onChange={e => this.change(e)} />
+                            <Input 
+                            id="numVehicle"
+                            name="numVehicle" 
+                            placeholder="number of vehicles" 
+                            value={this.state.numVehicle} 
+                            onChange={e => this.change(e)} />
                             <br />
 
                             <p> Check energy sources your have in your home.</p>
-                            <Input name="naturalGas" type="checkbox" placeholder="naturalGas" value={this.state.heatSource} onChange={e => this.change(e)} /><span>Natural Gas</span>
+                            <Input 
+                            name="naturalGas" 
+                            type="checkbox" 
+                            placeholder="naturalGas" 
+                            value={this.state.heatSource} 
+                            onChange={e => this.change(e)} /><span>Natural Gas</span>
                             <br />
-                            <Input name="electricity" type="checkbox" placeholder="electricity" value={this.state.electricity} onChange={e => this.change(e)} /><span>Electricity</span>
+                            <Input 
+                            name="electricity" 
+                            type="checkbox" 
+                            placeholder="electricity" 
+                            value={this.state.electricity} 
+                            onChange={e => this.change(e)}  /><span>Electricity</span>
                             <br />
-                            <Input name="fuelOil" type="checkbox" placeholder="fuelOil" value={this.state.fuelOil} onChange={e => this.change(e)} /><span>Fuel Oil</span>
+                            <Input 
+                            name="fuelOil" 
+                            type="checkbox" placeholder="fuelOil" value={this.state.fuelOil} onChange={e => this.change(e)} /><span>Fuel Oil</span>
                             <br />
                             <Input name="propane" type="checkbox" placeholder="propane" value={this.state.propane} onChange={e => this.change(e)} /><span>Propane</span>
                             <br /> <br />

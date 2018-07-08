@@ -9,7 +9,13 @@ require('../config/passport')(passport);
 
 router.post('/test', (req, res)=>{
   console.log("answers", req.body);
-  res.status(200).send({success: true, msg: 'received data'});
+  Book.create(req.body, function (err, post) {
+    if(err){
+      res.status(400).send({success: true, msg: 'issue with data'});
+    }
+    res.status(200).send({success: true, msg: 'received data'});
+  })
+ 
 })
 
 router.get('/', passport.authenticate('jwt', { session: false}), function(req, res) {

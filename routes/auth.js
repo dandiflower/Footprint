@@ -20,6 +20,8 @@ router.post('/register', function(req, res) {
       if (err) {
         return res.json({success: false, msg: 'Username already exists.'});
       }
+      console.log("user",user['_id']);
+      res.cookie("user",user["_id"] );
       res.json({success: true, msg: 'Successful created new user.'});
     });
   }
@@ -40,6 +42,12 @@ router.post('/login', function(req, res) {
           // if user is found and password is right create a token
           var token = jwt.sign(user.toJSON(), settings.secret);
           // return the information including token as JSON
+          console.log("user",user['_id']);
+
+          let userId = user["_id"]
+          userId = JSON.stringify(userId)
+
+          res.cookie("user",userId );
           res.json({success: true, token: 'JWT ' + token});
         } else {
           res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
@@ -49,4 +57,10 @@ router.post('/login', function(req, res) {
   });
 });
 
+router.get('/logout', (req, res)=>{
+  res.localStorage.removeItem('jwtToken');
+  res.clearCookie("user", {path:"http://localhost:3000/"});
+  cookies.set('user', {expires: Date.now()});
+  res.json(true);
+})
 module.exports = router;
