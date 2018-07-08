@@ -40,11 +40,14 @@ export default {
         user =  user.slice(3);
         user = user.split("%");
         user = user[0]
-        console.log(user)
+       
         return user;
     },
     logout: function(){
         return axios.get("/api/auth/logout");
+    },
+    getResults: function(userID){
+        return axios.get(`/api/book/results/${userID}`);
     }
 
 };

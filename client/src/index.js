@@ -8,7 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 import Login from './components/Login/Login';
 import Form from './components/Quiz/Form';
 import Register from './components/Login/Register';
-
+import Results from './components/Quiz/Results';
 // ReactDOM.render(
 //     <App />, 
 //     document.getElementById("root")
@@ -21,6 +21,7 @@ ReactDOM.render(
             <Route exact path='/' component={Form} />
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
+            <Route path='/results' component={Results} />
         </div>
     </Router>,
     document.getElementById('root')
