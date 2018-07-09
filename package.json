@@ -13,6 +13,12 @@
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.1",
+    "prop-types": "^15.6.2",
+    "rc-slider": "^8.6.1",
+    "react": "^16.4.1",
+    "react-bootstrap-slider": "^2.1.5",
+    "react-dom": "^16.4.1",
+    "react-rangeslider": "^2.2.0",
     "serve-favicon": "^2.4.5"
   },
   "scripts": {
@@ -22,6 +28,6 @@
     "frontend": "cd client && yarn start"
   },
   "devDependencies": {
-    "bootstrap": "^4.0.0"
+    "bootstrap": "^3.3.7"
   }
 }
