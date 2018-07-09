@@ -1,5 +1,5 @@
-import React from "react";
-import "./Slidebar.css";
+// import React from "react";
+// import "./Slidebar.css";
 
 const slider = document.getElementById("myslider");
 const output = document.getElementById("valueSlidebar");
