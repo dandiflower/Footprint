@@ -47,10 +47,8 @@ export default {
         return axios.get("/api/auth/logout");
     },
     getResults: function(userID){
-  
-
         return axios.get(`/api/person/results/${userID}`);
-    }
+    },
 
 
 };
