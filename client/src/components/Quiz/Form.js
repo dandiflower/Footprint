@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "./";
+import Slidebar from "../Slidebar"
 import axios from 'axios';
 import HELPERS from "../../utils/helpers.js";
 
@@ -8,9 +9,7 @@ import HELPERS from "../../utils/helpers.js";
 class Form extends Component {
     state = {
         firstName: "",
-        lastName: "",
         zipCode: "",
-        email: "",
         numPplInHome: "",
         numVehicle: "",
         heatSource: {
@@ -32,9 +31,7 @@ class Form extends Component {
 
         const answers = {
             firstName: document.getElementById("firstName").value,
-            lastName: document.getElementById("lastName").value,
             zipCode: document.getElementById("zipCode").value,
-            email: document.getElementById("email").value,
             numPplInHome: document.getElementById("numPplInHome").value,
             numVehicle: document.getElementById("numVehicle").value,
             heatSource: {
@@ -54,9 +51,7 @@ class Form extends Component {
             if(response.data === true){
                  this.setState({
                     firstName: "",
-                    lastName: "",
                     zipCode: "",
-                    email: "",
                     numPplInHome: "",
                     numVehicle: "",
                     heatSource: {
@@ -93,6 +88,11 @@ class Form extends Component {
         window.location.reload();
     }
 
+    slidebarValue = event => {
+        let selectedValue = event.target.value;
+        console.log("selected value: ", selectedValue);
+
+    }
 
 
 
@@ -123,25 +123,20 @@ class Form extends Component {
                                 onChange={e => this.change(e)} />
                             <br />
 
-                            <p>Last name: </p>
-                            <Input 
-                                id="lastName"
-                                name="lastName"
-                                placeholder="last name" 
-                                value={this.state.lastName} 
-                                onChange={e => this.change(e)} />
-                            <br />
-
                             <p> Zip code:</p>
                             <Input 
                             id="zipCode"
-                            name="zipCode" 
-                            placeholder="zip code" 
-                            value={this.state.zipCode} 
-                            onChange={e => this.change(e)} />
+                                name="zipCode" 
+                                placeholder="zip code" 
+                                value={this.state.zipCode} 
+                                onChange={e => this.change(e)} />
                             <br />
 
-                            <p> Number of people in your household?</p>
+
+                            <h3>Food</h3>
+                            <p> How many times a week do you eat meat?</p>
+                            <Slidebar slidebarValue={(event)=>this.slidebarValue.event} />
+                            
                             <Input 
                             id="numPplInHome"
                             name="numPplInHome" 
@@ -150,16 +145,7 @@ class Form extends Component {
                             onChange={e => this.change(e)} />
                             <br />
 
-                            <p>Email: </p>
-                            <Input
-                            id="email"
-                            name="email" 
-                            placeholder="email" 
-                            value={this.state.email} 
-                            onChange={e => this.change(e)} />
-                            <br />
-
-                            <p>Number of Vehicles in your household? </p>
+                            <p>How much of the food that you eat is unprocessed, unpackaged or locally grown? </p>
                             <Input 
                             id="numVehicle"
                             name="numVehicle" 
@@ -168,7 +154,8 @@ class Form extends Component {
                             onChange={e => this.change(e)} />
                             <br />
 
-                            <p> Check energy sources your have in your home.</p>
+                            <h3>Housing</h3>
+                            <p>Which housing type best describes your home?</p>
                             <Input 
                             name="naturalGas" 
                             type="checkbox" 

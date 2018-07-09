@@ -6,17 +6,6 @@ const testSchema = new mongoose.Schema({
         type: String, 
         required: true
     },
-    lastName: {
-        type: String, 
-        required: true
-    },
-    email: {
-        type: String, 
-        lowercase: true, 
-        unique: true, 
-        required: [true, "can't be blank"], 
-        match: [/\S+@\S+\.\S+/, 'is invalid'], 
-        index: true},
     zipCode: {
         type: Number
     },
