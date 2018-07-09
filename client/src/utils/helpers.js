@@ -48,6 +48,7 @@ export default {
     },
     getResults: function(userID){
         return axios.get(`/api/person/results/${userID}`);
-    }
+    },
+
 
 };

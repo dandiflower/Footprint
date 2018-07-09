@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "./";
+<<<<<<< HEAD
 // import Slidebar from "../Slidebar"
+=======
+import CustomizedSlider from "../Slidebar"
+>>>>>>> a38202884704b0f50577991b8ba46ef75bf2549d
 import axios from 'axios';
 import HELPERS from "../../utils/helpers.js";
 
@@ -50,15 +54,12 @@ class Form extends Component {
             console.log("response", response)
             if(response.data === true){
                  this.setState({
-                    firstName: "",
-                    zipCode: "",
-                    numPplInHome: "",
-                    numVehicle: "",
-                    heatSource: {
-                        naturalGas: false,
-                        electricity: false,
-                        fuelOil: false,
-                        propane: false
+                    user:{
+                        firstName: "",
+                        zipCode: ""
+                    },
+                    questions:{
+                        q1: 0
                     }
              })
              window.location.pathname = "/result"
@@ -94,7 +95,18 @@ class Form extends Component {
 
     // }
 
+    sliderValues(sliderInput){
+        console.log("sliderInput",sliderInput)
+        this.setState({
+            q1:sliderInput
+        })
+    }
 
+    sendVal() {
+        const data = {
+            name: this.state.user.name
+        }
+    }
 
     render() {
         return (
@@ -135,8 +147,12 @@ class Form extends Component {
 
                             <h3>Food</h3>
                             <p> How many times a week do you eat meat?</p>
-                            <Slidebar slidebarValue={(event)=>this.slidebarValue.event} />
-                            
+
+                            <span>Never</span>
+                            <CustomizedSlider  
+                                sliderValues={this.sliderValues.bind(this)}/>
+                            <span>Everyday</span>
+
                             <Input 
                             id="numPplInHome"
                             name="numPplInHome" 

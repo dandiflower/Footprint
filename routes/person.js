@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const person = require('../models/person.js');
+const Person = require('../models/Person.js');
 const passport = require('passport');
 require('../config/passport')(passport);
 
@@ -34,20 +34,20 @@ router.get('/results/:id', (req, res)=>{
 router.get('/', passport.authenticate('jwt', { session: false}), function(req, res) {
   const token = getToken(req.headers);
   if (token) {
-    person.find(function (err, persons) {
+    Person.find(function (err, Persons) {
       if (err) return next(err);
-      res.json(persons);
+      res.json(Persons);
     });
   } else {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
 });
 
-/* SAVE person */
+/* SAVE Person */
 router.post('/', passport.authenticate('jwt', { session: false}), function(req, res) {
   const token = getToken(req.headers);
   if (token) {
-    person.create(req.body, function (err, post) {
+    Person.create(req.body, function (err, post) {
       if (err) return next(err);
       res.json(post);
     });
