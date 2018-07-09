@@ -23,7 +23,7 @@ export default {
 
     addingAnswers: function(answers) {
         console.log(answers);
-        return axios.post("/api/book/test", answers);
+        return axios.post("/api/person/test", answers);
         // axios.post(`/game/join/${this.state.selectedGameId}`).then(joined => {
         //     t.setState({
         //         joinedGame: joined
@@ -47,7 +47,7 @@ export default {
         return axios.get("/api/auth/logout");
     },
     getResults: function(userID){
-        return axios.get(`/api/book/results/${userID}`);
+        return axios.get(`/api/person/results/${userID}`);
     }
 
 };
