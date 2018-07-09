@@ -4,7 +4,7 @@ import "./Radiobutton.css";
 const Radiobutton = props => {
     return (
         <div>
-        </label>
+       
         <label>
             <input type="radio" class="option-input radio" name="example" />
 
@@ -14,7 +14,7 @@ const Radiobutton = props => {
 
         </label>
       </div >
-      </div >
+     
     )
 }
 
