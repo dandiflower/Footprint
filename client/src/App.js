@@ -10,7 +10,7 @@ class MERN extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: [
+      persons: [
 
     ]
     };
@@ -18,10 +18,10 @@ class MERN extends Component {
 
   componentDidMount() {
     axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
-    axios.get('/api/book')
+    axios.get('/api/person')
       .then(res => {
-        this.setState({ books: res.data });
-        console.log(this.state.books);
+        this.setState({ persons: res.data });
+        console.log(this.state.persons);
 
       })
       .catch((error) => {
@@ -46,11 +46,11 @@ class MERN extends Component {
   render() {
     return (
       <div className="container">
-      {/* Book Panel Begins */}
+      {/* person Panel Begins */}
         <div className="panel panel-default">
           <div className="panel-heading">
             <h3 className="panel-title">
-              BOOK CATALOG &nbsp;
+              person CATALOG &nbsp;
               {localStorage.getItem('jwtToken') &&
                 <button className="btn btn-primary" onClick={this.logout}>Logout</button>
               }
@@ -66,11 +66,11 @@ class MERN extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.books.map(book =>
+                {this.state.persons.map(person =>
                   <tr>
-                    <td><Link to={`/show/${book._id}`}>{book.isbn}</Link></td>
-                    <td>{book.title}</td>
-                    <td>{book.author}</td>
+                    <td><Link to={`/show/${person._id}`}>{person.isbn}</Link></td>
+                    <td>{person.title}</td>
+                    <td>{person.author}</td>
                   </tr>
                 )}
 
@@ -78,7 +78,7 @@ class MERN extends Component {
             </table>
           </div>
         </div>
-        {/* Book Panel Ends */}
+        {/* person Panel Ends */}
       </div>
     );
   }

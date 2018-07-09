@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var BookSchema = new mongoose.Schema({
+var PersonSchema = new mongoose.Schema({
   firstName: {
     type: String, 
     required: true
@@ -50,4 +50,4 @@ userId: {
 
 });
 
-module.exports = mongoose.model('Book', BookSchema);
+module.exports = mongoose.model('Person', PersonSchema);

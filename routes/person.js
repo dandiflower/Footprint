@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const Book = require('../models/Book.js');
+const person = require('../models/person.js');
 const passport = require('passport');
 require('../config/passport')(passport);
 
-/* GET ALL BOOKS */
+/* GET ALL PersonS */
 
 router.post('/test', (req, res)=>{
   console.log("answers", req.body);
-  Book.create(req.body, function (err, post) {
+  Person.create(req.body, function (err, post) {
     if(err){
       console.log("err",err)
       res.json(false);
@@ -21,7 +21,7 @@ router.post('/test', (req, res)=>{
 router.get('/results/:id', (req, res)=>{
   console.log("test", req.params.id)
   console.log("id", req.params.id);
-  Book.findOne({userId:req.params.id})
+  Person.findOne({userId:req.params.id})
   .then(dbResults =>{
     console.log("dbResults", dbResults);
     res.json(dbResults);
@@ -34,20 +34,20 @@ router.get('/results/:id', (req, res)=>{
 router.get('/', passport.authenticate('jwt', { session: false}), function(req, res) {
   const token = getToken(req.headers);
   if (token) {
-    Book.find(function (err, books) {
+    person.find(function (err, persons) {
       if (err) return next(err);
-      res.json(books);
+      res.json(persons);
     });
   } else {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
 });
 
-/* SAVE BOOK */
+/* SAVE person */
 router.post('/', passport.authenticate('jwt', { session: false}), function(req, res) {
   const token = getToken(req.headers);
   if (token) {
-    Book.create(req.body, function (err, post) {
+    person.create(req.body, function (err, post) {
       if (err) return next(err);
       res.json(post);
     });
