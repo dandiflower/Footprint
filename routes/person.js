@@ -5,11 +5,11 @@ const person = require('../models/person.js');
 const passport = require('passport');
 require('../config/passport')(passport);
 
-/* GET ALL BOOKS */
+/* GET ALL PersonS */
 
 router.post('/test', (req, res)=>{
   console.log("answers", req.body);
-  Book.create(req.body, function (err, post) {
+  Person.create(req.body, function (err, post) {
     if(err){
       console.log("err",err)
       res.json(false);
@@ -21,7 +21,7 @@ router.post('/test', (req, res)=>{
 router.get('/results/:id', (req, res)=>{
   console.log("test", req.params.id)
   console.log("id", req.params.id);
-  Book.findOne({userId:req.params.id})
+  Person.findOne({userId:req.params.id})
   .then(dbResults =>{
     console.log("dbResults", dbResults);
     res.json(dbResults);
