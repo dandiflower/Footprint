@@ -1,16 +1,16 @@
-/* form {
-  padding-top: 100px;
-  top: -900px;
-  position: relative;
-  z-index: 100;
-} */
+form {
+  position: absolute;
+  left: 0%;
+  transform: translate(0%, 100%);
+  z-index: 100%;
+}
 
-.login--center {
+/* .login--center {
   position: absolute;
   top: 20%;
   left: 50%;
   transform: translate(-50%, 20%);
-}
+} */
 
 .form-signin {
   max-width: 330px;
