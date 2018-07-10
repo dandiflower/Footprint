@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './Login.css';
-import Video from '../Video/Video';
+import Movie from '../Video/Movie';
 import Navbar from '../Navbar/Navbar';
 
 class Create extends Component {
@@ -36,7 +36,7 @@ class Create extends Component {
 
       <div> 
         <Navbar />
-        <Video />
+        <Movie />
         <div className="login--center">
 
         <form className="form-signin" onSubmit={this.onSubmit}>

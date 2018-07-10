@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import Navbar from "../Navbar/Navbar";
 import HELPERS from "../../utils/helpers.js";
 
 class Results extends React.Component {
@@ -27,10 +27,14 @@ componentWillMount(){
 render(){
     return(
         <div>
-        <h1>results page</h1>
-        <h2>welcome,{this.state.firstName}</h2>
+            <Navbar />
+            <div className="container">
+
+                <h1>results page</h1>
+                <h2>welcome,{this.state.firstName}</h2>
+                
+            </div>
         </div>
-        
     );
 }
 
