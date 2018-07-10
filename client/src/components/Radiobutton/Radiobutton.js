@@ -1,35 +1,37 @@
 import React from 'react'
 import './Radiobutton.css';
 
-class Radio extends Component {
-    constructor() {
-        super();
+class Radio extends React.Component {
+    constructor(props) {
+        super(props);
         this.state = {
-            size: ''
-        };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+            radioValue: ''
+        }
     }
 
     hanldeChange(event) {
         this.setState({
-            size: event.target.value
+            radioValue: event.target.value
         });
     }
 
     handleSubmit(event) {
-        console.log(this.state.size)
+        console.log(this.state.radioValue)
     }
 
     render() {
         return (
-            <RadioButton 
-                type="radio"
-                value="small"
-                checked={this.state.size}
-                onChange={this.handleChange}
-            />
+            <li>
+                <label>
+                    <input
+                        id={this.props.id}
+                        type="radio"
+                        value={this.props.value}
+                        checked={this.state.radioValue}
+                        onChange={this.handleChange}
+                    /> {[this.props.value]}
+                </label>
+            </li>
         )
     }
 

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "./";
-import CustomizedSlider from "../Slidebar"
+import Radio from "../Radiobutton";
+import CustomizedSlider from "../Slidebar";
 import axios from 'axios';
 import HELPERS from "../../utils/helpers";
 import Navbar from "../Navbar/Navbar";
@@ -57,7 +58,21 @@ class Form extends Component {
                         zipCode: ""
                     },
                     questions:{
-                        q1: 0
+                        q1: 0,
+                        q2: 0,
+                        q3: "",
+                        q4: "",
+                        q5: 0,
+                        q6: 0,
+                        q7: "",
+                        q8: 0,
+                        q9: 0,
+                        q10: 0,
+                        q11: 0,
+                        q12: 0,
+                        q13: 0,
+                        q14: 0,
+                        q15: 0
                     }
              })
              window.location.pathname = "/result"
@@ -96,7 +111,14 @@ class Form extends Component {
     sliderValues(sliderInput){
         console.log("sliderInput",sliderInput)
         this.setState({
-            q1:sliderInput
+            q1: sliderInput
+        })
+    }
+
+    radioValues(radioValues){
+        console.log("radioValues", radioValues)
+        this.setState({
+            
         })
     }
 
@@ -156,26 +178,123 @@ class Form extends Component {
 
                             <p> How much of the food that you eat is unprocessed, unpackaged or locally grown?</p>
 
-                            <span>Never</span>
+                            <span>None</span>
                             <CustomizedSlider  
                                 sliderValues={this.sliderValues.bind(this)}/>
-                            <span>Everyday</span>
+                            <span>All</span>
 
                             <h3>Housing</h3>
-                             <p> Which housing type best describes your home?</p>
+                            <p> Which housing type best describes your home?</p>
 
-                            {/* <RadioButton /> */}
+                            <ul>
+                                <Radio id="q" value="Freestanding, no running water"/>
+                                <Radio value="Freestanding, running water"/>
+                                <Radio value="Multi-story apartment"/>
+                                <Radio value="Duplex unit"/>
+                                <Radio value="Luxury condominium"/>
+                            </ul>
 
                              <p>What material is your house constructed with?</p>
 
-                            {/* <RadioButton /> */}
+                            <ul>
+                                <Radio value="Straw/bamboo"/>
+                                <Radio value="Wood"/>
+                                <Radio value="Adobe"/>
+                                <Radio value="Brick/concrete"/>
+                                <Radio value="Steel/other"/>
+                                
+                            </ul>
+
+                             <p>How many people live in your household?</p>
+
+                            <span>Just me</span>
+                                <CustomizedSlider  
+                                    sliderValues={this.sliderValues.bind(this)}/>
+                            <span>10+</span>
+
+                            <p>What is the size of your home?</p>
+
+                            <span>Tiny</span>
+                                <CustomizedSlider  
+                                    sliderValues={this.sliderValues.bind(this)}/>
+                            <span>A mansion</span>
+
+                            <h3>Energy</h3>
+                            <p>Do you have electricity in your home?</p>
+
+                            {/* <Toggle /> */}
                             
+                            <p>How energy efficient is your home?</p>
+
+                            <span>Not efficient at all</span>
+                                <CustomizedSlider  
+                                    sliderValues={this.sliderValues.bind(this)}/>
+                            <span>Very efficient</span>
+
+                             <p>What percentage of your home’s electricity comes from renewable sources (either directly or through purchased green power)?</p>
+
+                            <span>Low</span>
+                                <CustomizedSlider  
+                                    sliderValues={this.sliderValues.bind(this)}/>
+                            <span>High</span>
+
+                            <p>Compared to your neighbors, how much trash do you generate?</p>
+
+                            <span>Significantly less</span>
+                                <CustomizedSlider  
+                                    sliderValues={this.sliderValues.bind(this)}/>
+                            <span>A lot more</span>
+
+                            <h3>Transportation</h3>
+                            <p>How far do you travel by car or motorcycle each week? </p>
+
+                            <h4>Car</h4>
+                            <span>Zero</span>
+                            <CustomizedSlider  
+                                    sliderValues={this.sliderValues.bind(this)} />
+                            <span>Very far</span>
+
+                            <h4>Motorcycle</h4>
+                            <span>Zero</span>
+                                <CustomizedSlider  
+                                    sliderValues={this.sliderValues.bind(this)}/>
+                            <span>Very far</span>
+
+                            <p>What is the average fuel economy the vehicles you use most often? </p>
+
+                            <span>Inefficient</span>
+                                <CustomizedSlider  
+                                    sliderValues={this.sliderValues.bind(this)}/>
+                            <span>Efficient or Electric</span>
+
+                            <p>When you travel by car, how often do you carpool?</p>
+
+                            <span>Never</span>
+                                <CustomizedSlider  
+                                    sliderValues={this.sliderValues.bind(this)}/>
+                            <span>Always</span>
+
+                            <p>How far do you travel on public transportation each week?</p>
+
+                            <span>Not far</span>
+                                <CustomizedSlider  
+                                    sliderValues={this.sliderValues.bind(this)}/>
+                            <span>Very Far</span>
+
+                            <p>How many hours do you fly each year?</p>
+
+                            <span>None</span>
+                                <CustomizedSlider  
+                                    sliderValues={this.sliderValues.bind(this)}/>
+                            <span>Many</span>
+
+                        <br /> <br />
 
                             <FormBtn 
                             onClick={this.onSubmit}> 
                             Submit
                             </FormBtn>
-                            <br /> <br />
+                            
 
                         </form>
 
