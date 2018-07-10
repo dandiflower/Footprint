@@ -142,56 +142,29 @@ class Form extends Component {
 
 
                             <h3>Food</h3>
-                            <p> How many times a week do you eat meat?</p>
+                            <p>How many times a week do you eat meat?</p>
+
+                            <span>Never</span>
+                                <CustomizedSlider  
+                                    sliderValues={this.sliderValues.bind(this)}/>
+                            <span>Everyday</span>
+
+                            <p> How much of the food that you eat is unprocessed, unpackaged or locally grown?</p>
 
                             <span>Never</span>
                             <CustomizedSlider  
                                 sliderValues={this.sliderValues.bind(this)}/>
                             <span>Everyday</span>
 
-                            <Input 
-                            id="numPplInHome"
-                            name="numPplInHome" 
-                            placeholder="number of people in your home" 
-                            value={this.state.numPplInHome} 
-                            onChange={e => this.change(e)} />
-                            <br />
-
-                            <p>How much of the food that you eat is unprocessed, unpackaged or locally grown? </p>
-                            <Input 
-                            id="numVehicle"
-                            name="numVehicle" 
-                            placeholder="number of vehicles" 
-                            value={this.state.numVehicle} 
-                            onChange={e => this.change(e)} />
-                            <br />
-
                             <h3>Housing</h3>
-                            <p>Which housing type best describes your home?</p>
-                            <Input 
-                            name="naturalGas" 
-                            type="checkbox" 
-                            placeholder="naturalGas" 
-                            value={this.state.heatSource} 
-                            onChange={e => this.change(e)} /><span>Natural Gas</span>
-                            <br />
-                            <Input 
-                            name="electricity" 
-                            type="checkbox" 
-                            placeholder="electricity" 
-                            value={this.state.electricity} 
-                            onChange={e => this.change(e)}  /><span>Electricity</span>
-                            <br />
-                            <Input 
-                            name="fuelOil" 
-                            type="checkbox" 
-                            placeholder="fuelOil" 
-                            value={this.state.fuelOil} 
-                            onChange={e => this.change(e)} /><span>Fuel Oil</span>
-                            <br />
-                            <Input name="propane" type="checkbox" placeholder="propane" value={this.state.propane} onChange={e => this.change(e)} /><span>Propane</span>
-                            <br /> <br />
+                             <p> Which housing type best describes your home?</p>
 
+                            <RadioButton />
+
+                             <p>What material is your house constructed with?</p>
+
+                            <RadioButton />
+                            
 
                             <FormBtn 
                             onClick={this.onSubmit}> 

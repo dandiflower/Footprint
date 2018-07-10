@@ -1,21 +1,39 @@
-import React from "react";
-import "./Radiobutton.css";
+import React from 'react'
+import './Radiobutton.css';
 
-const Radiobutton = props => {
-    return (
-        <div>
-       
-        <label>
-            <input type="radio" class="option-input radio" name="example" />
+class Radio extends Component {
+    constructor() {
+        super();
+        this.state = {
+            size: ''
+        };
 
-        </label>
-        <label>
-            <input type="radio" class="option-input radio" name="example" />
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
-        </label>
-      </div >
-     
-    )
+    hanldeChange(event) {
+        this.setState({
+            size: event.target.value
+        });
+    }
+
+    handleSubmit(event) {
+        console.log(this.state.size)
+    }
+
+    render() {
+        return (
+            <RadioButton 
+                type="radio"
+                value="small"
+                checked={this.state.size}
+                onChange={this.handleChange}
+            />
+        )
+    }
+
+
 }
 
-export default Radiobutton;
+export default Radio;
