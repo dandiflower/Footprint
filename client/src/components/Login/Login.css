@@ -1,16 +1,16 @@
-form {
+/* .form {
   position: absolute;
-  left: 0%;
-  transform: translate(0%, 100%);
+  transform: translate(100%, 100%);
   z-index: 100%;
-}
-
-/* .login--center {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, 20%);
 } */
+
+.login--center {
+  position: absolute;
+  width: 100%;
+  top: 20%;
+  left: 38%;
+  margin: 0 auto;
+} 
 
 .form-signin {
   max-width: 330px;
