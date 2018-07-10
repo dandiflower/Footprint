@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "./";
+
 import CustomizedSlider from "../Slidebar"
 import axios from 'axios';
 import HELPERS from "../../utils/helpers.js";
@@ -85,11 +86,11 @@ class Form extends Component {
         window.location.reload();
     }
 
-    slidebarValue = event => {
-        let selectedValue = event.target.value;
-        console.log("selected value: ", selectedValue);
+    // slidebarValue = event => {
+    //     let selectedValue = event.target.value;
+    //     console.log("selected value: ", selectedValue);
 
-    }
+    // }
 
     sliderValues(sliderInput){
         console.log("sliderInput",sliderInput)

@@ -48,8 +48,8 @@ router.post('/login', function(req, res) {
           // return the information including token as JSON
           console.log("user",user['_id']);
 
-          let userId = user["_id"]
-          userId = JSON.stringify(userId)
+          let userId = user["_id"];
+          userId = JSON.stringify(userId);
 
           res.cookie("user",userId );
           res.json({success: true, token: 'JWT ' + token});
@@ -64,7 +64,7 @@ router.post('/login', function(req, res) {
 router.get('/logout', (req, res)=>{
   res.localStorage.removeItem('jwtToken');
   res.clearCookie("user", {path:"http://localhost:3000/"});
-  cookies.set('user', {expires: Date.now()});
+  res.set('user', {expires: Date.now()});
   res.json(true);
-})
+});
 module.exports = router;
