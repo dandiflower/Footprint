@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "./";
-
 import CustomizedSlider from "../Slidebar"
 import axios from 'axios';
-import HELPERS from "../../utils/helpers.js";
+import HELPERS from "../../utils/helpers";
+import Navbar from "../Navbar/Navbar";
+import "./Form.css";
 
 
 
@@ -107,10 +108,13 @@ class Form extends Component {
 
     render() {
         return (
+
+            <div>
+                <Navbar />
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
-                    
+                    ghjgjhghjgj
                         <form>
                             <p>
                                 {localStorage.getItem('jwtToken') &&
@@ -178,6 +182,7 @@ class Form extends Component {
                     </div>
                 </div>
             </div>
+        </div>
         )
     }
 }

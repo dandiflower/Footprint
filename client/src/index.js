@@ -16,7 +16,7 @@ import Results from './components/Quiz/Results';
 // registerServiceWorker();
 ReactDOM.render(
     <Router>
-        <div>
+        <div className="test">
             <Route exact path='/person' component={MERN} />
             <Route exact path='/' component={Form} />
             <Route path='/login' component={Login} />
