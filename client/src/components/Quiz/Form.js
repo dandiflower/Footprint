@@ -8,17 +8,35 @@ import HELPERS from "../../utils/helpers.js";
 
 
 class Form extends Component {
-    state = {
-        firstName: "",
-        zipCode: "",
-        numPplInHome: "",
-        numVehicle: "",
-        heatSource: {
-            naturalGas: false,
-            electricity: false,
-            fuelOil: false,
-            propane: false
+    constructor() {
+    super();
+    this.state = {
+        user:{
+            firstName: "",
+            zipCode: ""
+        },
+        questions:{
+            q1: 0,
+            q2: 0,
+            q3: "",
+            q4: "",
+            q5: 0,
+            q6: 0,
+            q7: "",
+            q8: 0,
+            q9: 0,
+            q10: 0,
+            q11: 0,
+            q12: 0,
+            q13: 0,
+            q14: 0,
+            q15: 0
         }
+    }
+
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     change = e => {
@@ -33,14 +51,8 @@ class Form extends Component {
         const answers = {
             firstName: document.getElementById("firstName").value,
             zipCode: document.getElementById("zipCode").value,
-            numPplInHome: document.getElementById("numPplInHome").value,
-            numVehicle: document.getElementById("numVehicle").value,
-            heatSource: {
-                naturalGas: false,
-                electricity: false,
-                fuelOil: false,
-                propane: false
-            },
+            q3: document.getElementById("q3ul"),
+           
             userId: HELPERS.getCookies()
             
         }
@@ -111,6 +123,8 @@ class Form extends Component {
         this.setState({
             q1: sliderInput
         })
+        console.log("after set state",this.state.q1);
+
     }
 
     radioValues(radioValues){
@@ -119,6 +133,19 @@ class Form extends Component {
             
         })
     }
+
+    handleChange(event) {
+        this.setState({
+            q3: event.target.value
+          });
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        
+        alert(`You chose the ${this.state.size} pizza.`);
+    }
+    
 
     sendVal() {
         const data = {
@@ -168,42 +195,92 @@ class Form extends Component {
 
                             <span>Never</span>
                                 <CustomizedSlider  
+                                    id="q1"
                                     sliderValues={this.sliderValues.bind(this)}/>
                             <span>Everyday</span>
 
                             <p> How much of the food that you eat is unprocessed, unpackaged or locally grown?</p>
 
                             <span>None</span>
-                            <CustomizedSlider  
+                            <CustomizedSlider 
+                                id="q2" 
                                 sliderValues={this.sliderValues.bind(this)}/>
                             <span>All</span>
 
                             <h3>Housing</h3>
                             <p> Which housing type best describes your home?</p>
 
-                            <ul>
-                                <Radio id="q" value="Freestanding, no running water"/>
-                                <Radio value="Freestanding, running water"/>
-                                <Radio value="Multi-story apartment"/>
-                                <Radio value="Duplex unit"/>
-                                <Radio value="Luxury condominium"/>
+                            <ul id="q3ul">
+
+                                <Radio 
+                                    id="q3o1" 
+                                    name="q3name" 
+                                    value="Freestanding, no running water"
+                                    // checked={this.state.q3 ==="Freestanding, no running water"}
+                                    onChange ={this.handleChange}
+                                    />
+                                <Radio 
+                                    id="q3o2" 
+                                    name="q3name"
+                                    value="Freestanding, running water"/>
+                                <Radio 
+                                    id="q3o3" 
+                                    name="q3name"
+                                    value="Multi-story apartment"/>
+                                <Radio 
+                                    id="q3o4" 
+                                    name="q3name"
+                                    value="Duplex unit"/>
+                                <Radio 
+                                    id="q3o5"   
+                                    name="q3name" 
+                                    value="Luxury condominium"/>
                             </ul>
 
                              <p>What material is your house constructed with?</p>
 
                             <ul>
-                                <Radio value="Straw/bamboo"/>
-                                <Radio value="Wood"/>
-                                <Radio value="Adobe"/>
-                                <Radio value="Brick/concrete"/>
-                                <Radio value="Steel/other"/>
+                            <form onSubmit={this.handleSubmit}>
+                            <li>
+                                <label>
+                                <input
+                                    type="radio"
+                                    value="small"
+                                    checked={this.state.size === "small"}
+                                    onChange={this.handleChange}
+                                />
+                                Small
+                                </label>
+                            </li>
+                            </form>
+                                <Radio 
+                                    id="q4o1"
+                                    name="q4name"
+                                    value="Straw/bamboo"/>
+                                <Radio 
+                                    value="Wood"
+                                    id="q4o2"
+                                    name="q4name"/>
+                                <Radio 
+                                    value="Adobe"
+                                    id="q4o3"
+                                    name="q4name"/>
+                                <Radio 
+                                    value="Brick/concrete"
+                                    id="q4o4"
+                                    name="q4name"/>
+                                <Radio 
+                                    value="Steel/other"
+                                    id="q4o5"
+                                    name="q4name"/>
                                 
                             </ul>
 
                              <p>How many people live in your household?</p>
 
                             <span>Just me</span>
-                                <CustomizedSlider  
+                                <CustomizedSlider
+                                    id="q5"  
                                     sliderValues={this.sliderValues.bind(this)}/>
                             <span>10+</span>
 
@@ -211,6 +288,7 @@ class Form extends Component {
 
                             <span>Tiny</span>
                                 <CustomizedSlider  
+                                id="q6" 
                                     sliderValues={this.sliderValues.bind(this)}/>
                             <span>A mansion</span>
 

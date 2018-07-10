@@ -9,15 +9,15 @@ class Radio extends React.Component {
         }
     }
 
-    hanldeChange(event) {
-        this.setState({
-            radioValue: event.target.value
-        });
-    }
+    // hanldeChange(event) {
+    //     this.setState({
+    //         radioValue: event.target.value
+    //     });
+    // }
 
-    handleSubmit(event) {
-        console.log(this.state.radioValue)
-    }
+    // handleSubmit(event) {
+    //     console.log(this.state.radioValue)
+    // }
 
     render() {
         return (
@@ -25,10 +25,11 @@ class Radio extends React.Component {
                 <label>
                     <input
                         id={this.props.id}
+                        name={this.props.name}
                         type="radio"
                         value={this.props.value}
-                        checked={this.state.radioValue}
-                        onChange={this.handleChange}
+                        // checked={this.state.radioValue}
+                        // onChange={this.handleChange}
                     /> {[this.props.value]}
                 </label>
             </li>

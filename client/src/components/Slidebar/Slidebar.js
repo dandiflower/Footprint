@@ -24,6 +24,7 @@ class CustomizedSlider extends React.Component {
         let { sliderValue } = this.state
         return (
           <Slider
+            id={this.props.id}
             value={sliderValue}
             orientation="horizontal"
             onChange={this.handleOnChange}
