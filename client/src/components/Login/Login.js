@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Login.css';
 import Video from '../Video/Video';
+import Navbar from '../Navbar/Navbar';
 
 class Login extends Component {
 
@@ -42,11 +43,12 @@ class Login extends Component {
     const { username, password, message } = this.state;
     return (
       <div>
+        <Navbar />
         <Video />
 
 
-          <div className="container">
-            <form className="form-signin" onSubmit={this.onSubmit}>
+          <div className="login--center">
+            <form className="form-signin " onSubmit={this.onSubmit}>
               {message !== '' &&
                 <div className="alert alert-warning alert-dismissible" role="alert">
                   {message}
@@ -63,8 +65,6 @@ class Login extends Component {
               </p>
             </form>
           </div>
-
-
       </div>
     );
   }

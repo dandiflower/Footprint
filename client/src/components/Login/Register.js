@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './Login.css';
+import Video from '../Video/Video';
+import Navbar from '../Navbar/Navbar';
 
 class Create extends Component {
 
@@ -31,7 +33,12 @@ class Create extends Component {
   render() {
     const { username, password } = this.state;
     return (
-      <div className="container">
+
+      <div> 
+        <Navbar />
+        <Video />
+        <div className="login--center">
+
         <form className="form-signin" onSubmit={this.onSubmit}>
           <h2 className="form-signin-heading">Register</h2>
           <label htmlFor="inputEmail" className="sr-only">Email address</label>
@@ -40,6 +47,8 @@ class Create extends Component {
           <input type="password" className="form-control" placeholder="Password" name="password" value={password} onChange={this.onChange} required/>
           <button className="btn btn-lg btn-primary btn-block" type="submit">Register</button>
         </form>
+      </div>
+
       </div>
     );
   }
