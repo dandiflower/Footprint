@@ -24,7 +24,7 @@ class Radio extends React.Component {
             <li>
                 <label>
                     <input
-                        id="radioOptions"
+                        id={this.props.id}
                         type="radio"
                         value={this.props.value}
                         checked={this.state.radioValue}
