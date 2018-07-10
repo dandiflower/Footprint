@@ -139,7 +139,10 @@ class Form extends Component {
     handleChange(event) {
         this.setState({
             q3: event.target.value
-          });
+        });
+        setTimeout(()=>{console.log("craps here",this.state.q3)},100)
+        // console.log(this.state.q3);
+
     }
 
     handleSubmit(event) {
@@ -163,7 +166,6 @@ class Form extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
-                    ghjgjhghjgj
                         <form>
                             <p>
                                 {localStorage.getItem('jwtToken') &&
@@ -216,48 +218,44 @@ class Form extends Component {
                             <p> Which housing type best describes your home?</p>
 
                             <ul id="q3ul">
-
                                 <Radio 
                                     id="q3o1" 
                                     name="q3name" 
                                     value="Freestanding, no running water"
                                     // checked={this.state.q3 ==="Freestanding, no running water"}
-                                    onChange ={this.handleChange}
+                                    onClick ={this.handleChange}
                                     />
                                 <Radio 
                                     id="q3o2" 
                                     name="q3name"
-                                    value="Freestanding, running water"/>
+                                    type="radio"
+                                    value="Freestanding, running water"
+                                    onClick ={this.handleChange}
+                                    />
                                 <Radio 
                                     id="q3o3" 
                                     name="q3name"
-                                    value="Multi-story apartment"/>
+                                    value="Multi-story apartment"
+                                    onClick ={this.handleChange}
+                                    />
                                 <Radio 
                                     id="q3o4" 
                                     name="q3name"
-                                    value="Duplex unit"/>
+                                    value="Duplex unit"
+                                    onClick ={this.handleChange}
+                                    />
                                 <Radio 
                                     id="q3o5"   
                                     name="q3name" 
-                                    value="Luxury condominium"/>
+                                    value="Luxury condominium"
+                                    onClick ={this.handleChange}
+                                    />
                             </ul>
 
                              <p>What material is your house constructed with?</p>
 
                             <ul>
-                            <form onSubmit={this.handleSubmit}>
-                            <li>
-                                <label>
-                                <input
-                                    type="radio"
-                                    value="small"
-                                    checked={this.state.size === "small"}
-                                    onChange={this.handleChange}
-                                />
-                                Small
-                                </label>
-                            </li>
-                            </form>
+                  
                                 <Radio 
                                     id="q4o1"
                                     name="q4name"

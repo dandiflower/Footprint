@@ -24,18 +24,18 @@ class CustomizedSlider extends React.Component {
     constructor(props, context) {
         super(props, context)
         this.state = {
-          volume: 0
+          sliderValue: 0
         }
       }
     handleOnChange = (value) => {
         this.setState({
-          volume: value
+          sliderValue: value
         })
-        return this.props.sliderValues(this.state.volume)
+        return this.props.sliderValues(this.state.sliderValue)
       }
      
       render() {
-        let { volume } = this.state
+        let { sliderValue } = this.state
         return (
           <Slider
             id={this.props.id}

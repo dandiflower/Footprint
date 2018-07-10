@@ -23,11 +23,11 @@ class Radio extends React.Component {
         return (
             <li>
                 <label>
-                    <input
-                        id={this.props.id}
-                        name={this.props.name}
+                    <input {...this.props}
+                        // id={this.props.id}
+                        // name={this.props.name}
                         type="radio"
-                        value={this.props.value}
+                        // value={this.props.value}
                         // checked={this.state.radioValue}
                         // onChange={this.handleChange}
                     /> {[this.props.value]}
