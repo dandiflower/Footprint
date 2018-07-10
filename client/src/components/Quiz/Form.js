@@ -75,7 +75,7 @@ class Form extends Component {
                         q15: 0
                     }
              })
-             window.location.pathname = "/result"
+             window.location.pathname = "/results"
         }
     })
 }
@@ -138,8 +138,6 @@ class Form extends Component {
                     <div className="col-md-12">
                     
                         <form>
-
-
 
                             <p>First name: </p>
                             <Input 
@@ -286,8 +284,8 @@ class Form extends Component {
 
 
                             <FormBtn 
-                            onClick={this.onSubmit}> 
-                            Submit
+                                onClick={this.onSubmit}> 
+                                Submit
                             </FormBtn>
 
                             <p>
