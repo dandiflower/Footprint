@@ -1,5 +1,6 @@
 import React from "react";
 import vid from "./assets/farmvid.mp4";
+import "./Video.css";
         
 class Video extends React.Component {
         //     constructor(props) {
@@ -10,8 +11,8 @@ class Video extends React.Component {
 
     render() {
         return (
-            <div>
-            <video className="video-container video-container-overlay" autoPlay="true" id="myVideo" loop muted={this.props.muted}>
+            <div className="video-box">
+                <video className="video-container video-container-overlay" id="myVideo" autoplay loop muted>
                     <source src={vid} type="video/mp4" />
             </video>
         </div>
