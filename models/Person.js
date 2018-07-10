@@ -1,47 +1,26 @@
 var mongoose = require('mongoose');
 
 var PersonSchema = new mongoose.Schema({
-  firstName: {
-    type: String, 
-    required: true
+user:{
+    firstName: "",
+    zipCode: ""
 },
-lastName: {
-    type: String, 
-    required: true
-},
-email: {
-    type: String, 
-    lowercase: true, 
-    unique: true, 
-   
-    match: [/\S+@\S+\.\S+/, 'is invalid'], 
-    index: true},
-zipCode: {
-    type: Number
-},
-numPeopleInHome: {
-    type: Number
-},
-numVehicles: {
-    type: Number
-},
-heatSource: {
-    naturalGas: {
-        type: Boolean,
-        default: false
-    },
-    electricity: {
-        type: Boolean,
-        default: false  
-    },
-    fuelOil: {
-        type: Boolean,
-        default: false
-    },
-    propane: {
-        type: Boolean,
-        default: false
-    } 
+questions:{
+    q1: 0,
+    q2: 0,
+    q3: "",
+    q4: "",
+    q5: 0,
+    q6: 0,
+    q7: "",
+    q8: 0,
+    q9: 0,
+    q10: 0,
+    q11: 0,
+    q12: 0,
+    q13: 0,
+    q14: 0,
+    q15: 0
 },
 userId: {
   type: String,
