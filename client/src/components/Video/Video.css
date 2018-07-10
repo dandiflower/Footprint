@@ -1,12 +1,12 @@
 /* Style the video: 100% width and height to cover the entire window */
 
-.video-box {
+/* .video-box {
     position: absolute;
     top: 40px; 
     left:0;
     height: 100%;
     width: 100%;
-}
+} */
 
 #myVideo {
     height: 100%;
@@ -17,6 +17,15 @@
     /* min-width: 100%; 
     min-height: 100%;
     overflow: hidden; */
+}
+
+#myMovie {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 5%;
+    /* background-image: url("../images/image.jpg"), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)); */
+    background-blend-mode: overlay;
 }
 
 /* Add some content at the bottom of the video/page */

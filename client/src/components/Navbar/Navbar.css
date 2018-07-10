@@ -1,8 +1,9 @@
 
 
 .nav--height {
-    height: 10vh;
+    height: 7vh;
     position: fixed;
     z-index: 50;
     width: 100%;
 }
+
