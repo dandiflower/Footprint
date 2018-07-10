@@ -13,7 +13,7 @@ class Video extends React.Component {
         return (
             <div className="video-box">
                 <video className="video-container video-container-overlay" id="myVideo" autoplay loop muted>
-                    <source src={vid} type="video/mp4" />
+                    <source src={vid} type="video/webm" />
             </video>
         </div>
         );
