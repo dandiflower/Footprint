@@ -159,11 +159,11 @@ class Form extends Component {
                             <h3>Housing</h3>
                              <p> Which housing type best describes your home?</p>
 
-                            <RadioButton />
+                            {/* <RadioButton /> */}
 
                              <p>What material is your house constructed with?</p>
 
-                            <RadioButton />
+                            {/* <RadioButton /> */}
                             
 
                             <FormBtn 
