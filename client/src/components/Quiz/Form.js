@@ -136,17 +136,9 @@ class Form extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
-                    ghjgjhghjgj
+                    
                         <form>
-                            <p>
-                                {localStorage.getItem('jwtToken') &&
-                                    <button 
-                                        className="btn btn-primary" 
-                                        onClick={this.logout}>
-                                        Logout
-                                    </button>
-                                }
-                            </p>
+
 
 
                             <p>First name: </p>
@@ -290,10 +282,24 @@ class Form extends Component {
 
                         <br /> <br />
 
+                        <span>
+
+
                             <FormBtn 
                             onClick={this.onSubmit}> 
                             Submit
                             </FormBtn>
+
+                            <p>
+                                {localStorage.getItem('jwtToken') &&
+                                    <button
+                                        className="btn btn-primary"
+                                        onClick={this.logout}>
+                                        Logout
+                                    </button>
+                                }
+                            </p>
+                        </span>
                             
 
                         </form>
