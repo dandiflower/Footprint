@@ -1,8 +1,15 @@
-form {
+/* form {
   padding-top: 100px;
   top: -900px;
   position: relative;
   z-index: 100;
+} */
+
+.login--center {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, 20%);
 }
 
 .form-signin {
