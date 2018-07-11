@@ -1,4 +1,6 @@
-
+body {
+    width: 100%;
+}
 
 .nav--height {
     height: 7vh;
