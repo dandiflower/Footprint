@@ -5,20 +5,20 @@ export default {
 
     // is the user logged in?????
 
+logcheck: function() {
+    axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
+    axios.get('/api/person')
+        .then(res => {
+            this.setState({ persons: res.data });
+            console.log(this.state.persons);
 
-// axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
-// axios.get('/api/person')
-//     .then(res => {
-//         this.setState({ persons: res.data });
-//         console.log(this.state.persons);
-
-//     })
-//     .catch((error) => {
-//         if (error.response.status === 401) {
-//             this.props.history.push("/login");
-//         }
-//     });
-
+        })
+        .catch((error) => {
+            if (error.response.status === 401) {
+                this.props.history.push("/login");
+            }
+        });
+    },
 // 
 
     addingAnswers: function(answers) {

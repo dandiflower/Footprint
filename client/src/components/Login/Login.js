@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './Login.css';
 import Video from '../Video/Video';
 import Navbar from '../Navbar/Navbar';
+import About from '../About/About';
 
 class Login extends Component {
 
@@ -42,13 +43,13 @@ class Login extends Component {
   render() {
     const { username, password, message } = this.state;
     return (
-      <div>
+      <div >
         <Navbar />
         <Video />
 
 
           <div className="login--center">
-            <form className="form-signin " onSubmit={this.onSubmit}>
+            <form className="form-signin " id="login_form" onSubmit={this.onSubmit}>
               {message !== '' &&
                 <div className="alert alert-warning alert-dismissible" role="alert">
                   {message}
@@ -65,6 +66,10 @@ class Login extends Component {
               </p>
             </form>
           </div>
+        <br></br><br></br><br></br>
+
+        <About />
+          <div id="login_page_height"></div>
       </div>
     );
   }

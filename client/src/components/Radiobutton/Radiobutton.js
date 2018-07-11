@@ -9,6 +9,7 @@ class Radio extends React.Component {
         }
     }
 
+
     // hanldeChange(event) {
     //     this.setState({
     //         radioValue: event.target.value
@@ -23,6 +24,7 @@ class Radio extends React.Component {
         return (
             <li>
                 <label>
+
                     <input {...this.props}
                         // id={this.props.id}
                         // name={this.props.name}
@@ -30,6 +32,7 @@ class Radio extends React.Component {
                         // value={this.props.value}
                         // checked={this.state.radioValue}
                         // onChange={this.handleChange}
+
                     /> {[this.props.value]}
                 </label>
             </li>
