@@ -10,17 +10,35 @@ import "./Form.css";
 
 
 class Form extends Component {
-    state = {
-        firstName: "",
-        zipCode: "",
-        numPplInHome: "",
-        numVehicle: "",
-        heatSource: {
-            naturalGas: false,
-            electricity: false,
-            fuelOil: false,
-            propane: false
+    constructor() {
+    super();
+    this.state = {
+        user:{
+            firstName: "",
+            zipCode: ""
+        },
+        questions:{
+            q1: 0,
+            q2: 0,
+            q3: "",
+            q4: "",
+            q5: 0,
+            q6: 0,
+            q7: "",
+            q8: 0,
+            q9: 0,
+            q10: 0,
+            q11: 0,
+            q12: 0,
+            q13: 0,
+            q14: 0,
+            q15: 0
         }
+    }
+
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     change = e => {
@@ -35,14 +53,8 @@ class Form extends Component {
         const answers = {
             firstName: document.getElementById("firstName").value,
             zipCode: document.getElementById("zipCode").value,
-            numPplInHome: document.getElementById("numPplInHome").value,
-            numVehicle: document.getElementById("numVehicle").value,
-            heatSource: {
-                naturalGas: false,
-                electricity: false,
-                fuelOil: false,
-                propane: false
-            },
+            q3: document.getElementById("q3ul"),
+           
             userId: HELPERS.getCookies()
             
         }
@@ -113,6 +125,8 @@ class Form extends Component {
         this.setState({
             q1: sliderInput
         })
+
+
     }
 
     radioValues(radioValues){
@@ -121,6 +135,22 @@ class Form extends Component {
             
         })
     }
+
+    handleChange(event) {
+        this.setState({
+            q3: event.target.value
+        });
+        setTimeout(()=>{console.log("craps here",this.state.q3)},100)
+        // console.log(this.state.q3);
+
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        
+        alert(`You chose the ${this.state.size} pizza.`);
+    }
+    
 
     sendVal() {
         const data = {
@@ -136,7 +166,7 @@ class Form extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
-                    
+
                         <form>
 
                             <p>First name: </p>
@@ -163,42 +193,95 @@ class Form extends Component {
 
                             <span>Never</span>
                                 <CustomizedSlider  
+                                    id="q1"
                                     sliderValues={this.sliderValues.bind(this)}/>
                             <span>Everyday</span>
 
                             <p> How much of the food that you eat is unprocessed, unpackaged or locally grown?</p>
 
                             <span>None</span>
-                            <CustomizedSlider  
+
+                            <CustomizedSlider 
+                                id="q2" 
+
                                 sliderValues={this.sliderValues.bind(this)}/>
                             <span>All</span>
 
                             <h3>Housing</h3>
                             <p> Which housing type best describes your home?</p>
 
-                            <ul>
-                                <Radio id="q" value="Freestanding, no running water"/>
-                                <Radio value="Freestanding, running water"/>
-                                <Radio value="Multi-story apartment"/>
-                                <Radio value="Duplex unit"/>
-                                <Radio value="Luxury condominium"/>
+
+                            <ul id="q3ul">
+                                <Radio 
+                                    id="q3o1" 
+                                    name="q3name" 
+                                    value="Freestanding, no running water"
+                                    // checked={this.state.q3 ==="Freestanding, no running water"}
+                                    onClick ={this.handleChange}
+                                    />
+                                <Radio 
+                                    id="q3o2" 
+                                    name="q3name"
+                                    type="radio"
+                                    value="Freestanding, running water"
+                                    onClick ={this.handleChange}
+                                    />
+                                <Radio 
+                                    id="q3o3" 
+                                    name="q3name"
+                                    value="Multi-story apartment"
+                                    onClick ={this.handleChange}
+                                    />
+                                <Radio 
+                                    id="q3o4" 
+                                    name="q3name"
+                                    value="Duplex unit"
+                                    onClick ={this.handleChange}
+                                    />
+                                <Radio 
+                                    id="q3o5"   
+                                    name="q3name" 
+                                    value="Luxury condominium"
+                                    onClick ={this.handleChange}
+                                    />
+
                             </ul>
 
                              <p>What material is your house constructed with?</p>
 
                             <ul>
-                                <Radio value="Straw/bamboo"/>
-                                <Radio value="Wood"/>
-                                <Radio value="Adobe"/>
-                                <Radio value="Brick/concrete"/>
-                                <Radio value="Steel/other"/>
+                  
+                                <Radio 
+                                    id="q4o1"
+                                    name="q4name"
+                                    value="Straw/bamboo"/>
+                                <Radio 
+                                    value="Wood"
+                                    id="q4o2"
+                                    name="q4name"/>
+                                <Radio 
+                                    value="Adobe"
+                                    id="q4o3"
+                                    name="q4name"/>
+                                <Radio 
+                                    value="Brick/concrete"
+                                    id="q4o4"
+                                    name="q4name"/>
+                                <Radio 
+                                    value="Steel/other"
+                                    id="q4o5"
+                                    name="q4name"/>
+
                                 
                             </ul>
 
                              <p>How many people live in your household?</p>
 
                             <span>Just me</span>
-                                <CustomizedSlider  
+
+                                <CustomizedSlider
+                                    id="q5"  
+
                                     sliderValues={this.sliderValues.bind(this)}/>
                             <span>10+</span>
 
@@ -206,6 +289,9 @@ class Form extends Component {
 
                             <span>Tiny</span>
                                 <CustomizedSlider  
+
+                                id="q6" 
+
                                     sliderValues={this.sliderValues.bind(this)}/>
                             <span>A mansion</span>
 
@@ -280,7 +366,7 @@ class Form extends Component {
 
                         <br /> <br />
 
-                        <span>
+
 
 
                             <FormBtn 
@@ -288,16 +374,6 @@ class Form extends Component {
                                 Submit
                             </FormBtn>
 
-                            <p>
-                                {localStorage.getItem('jwtToken') &&
-                                    <button
-                                        className="btn btn-primary"
-                                        onClick={this.logout}>
-                                        Logout
-                                    </button>
-                                }
-                            </p>
-                        </span>
                             
 
                         </form>
