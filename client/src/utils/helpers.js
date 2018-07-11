@@ -33,13 +33,13 @@ logcheck: function() {
     },
     getCookies: function(){
         let cookies = document.cookie;
-        cookies = cookies.split(",")
+        cookies = cookies.split(",");
         let user = cookies[0];
         user = user.split("=");
-        user = user[1]
+        user = user[1];
         user =  user.slice(3);
         user = user.split("%");
-        user = user[0]
+        user = user[0];
        
         return user;
     },
