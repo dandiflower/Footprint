@@ -54,22 +54,22 @@ class Form extends Component {
         const answers = {
             firstName: document.getElementById("firstName").value,
             zipCode: document.getElementById("zipCode").value,
-            q1: document.getElementById("q1").value,
-            q2: document.getElementById("q2").value,
-            q3: document.getElementById("q3ul").value,
-            q4: document.getElementById("q4ul").value,
-            q5: document.getElementById("q5").value,
-            q6: document.getElementById("q6").value,
-            q7: "add toggle here",
-            q8: document.getElementById("q8").value,
-            q9: document.getElementById("q9").value,
-            q10: document.getElementById("q10").value,
-            q11: document.getElementById("q11").value,
-            q12: document.getElementById("q12").value,
-            q13: document.getElementById("q13").value,
-            q14: document.getElementById("q14").value,
-            q15: document.getElementById("q15").value,
-            q16: document.getElementById("q16").value,
+            // q1: document.getElementById("q1").value,
+            // q2: document.getElementById("q2").value,
+            // q3: document.getElementById("q3ul").value,
+            // q4: document.getElementById("q4ul").value,
+            // q5: document.getElementById("q5").value,
+            // q6: document.getElementById("q6").value,
+            // q7: "add toggle here",
+            // q8: document.getElementById("q8").value,
+            // q9: document.getElementById("q9").value,
+            // q10: document.getElementById("q10").value,
+            // q11: document.getElementById("q11").value,
+            // q12: document.getElementById("q12").value,
+            // q13: document.getElementById("q13").value,
+            // q14: document.getElementById("q14").value,
+            // q15: document.getElementById("q15").value,
+            // q16: document.getElementById("q16").value,
 
             userId: HELPERS.getCookies()
 
@@ -104,7 +104,7 @@ class Form extends Component {
                             q16: 0
                         }
                     })
-                    // window.location.pathname = "/results"
+                    window.location.pathname = "/results"
 
                 }
             })

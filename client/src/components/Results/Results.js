@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Input, FormBtn } from "./";
+import { Input, FormBtn } from "../Quiz/";
 import Navbar from "../Navbar/Navbar";
 import HELPERS from "../../utils/helpers.js";
 import "./Results.css";
+import Chart from "../Chart/Chart"
 
 class Results extends React.Component {
 
@@ -57,7 +58,7 @@ render(){
                             <li className="list-group-item text-center"><h2>See in the graph below how your footprint compares to the rest of people!</h2></li>
                             <li className="text-center">  </li>
                         </ul>
-                        {/* <UserGraph1 />     */}
+                        <Chart />    
                         dslkafja;sdkfj;a
 
                         <p>

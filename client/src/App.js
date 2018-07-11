@@ -47,7 +47,7 @@ class MERN extends Component {
     return (
       <div className="container">
       {/* person Panel Begins */}
-        <div className="panel panel-default">
+        {/* <div className="panel panel-default">
           <div className="panel-heading">
             <h3 className="panel-title">
               person CATALOG &nbsp;
@@ -77,7 +77,7 @@ class MERN extends Component {
               </tbody>
             </table>
           </div>
-        </div>
+        </div> */}
         {/* person Panel Ends */}
       </div>
     );
