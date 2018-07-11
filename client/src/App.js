@@ -10,9 +10,7 @@ class MERN extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      persons: [
-
-    ]
+      persons: []
     };
   }
 
@@ -20,6 +18,7 @@ class MERN extends Component {
     axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
     axios.get('/api/person')
       .then(res => {
+        console.log(res)
         this.setState({ persons: res.data });
         console.log(this.state.persons);
 
