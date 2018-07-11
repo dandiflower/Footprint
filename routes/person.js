@@ -14,7 +14,8 @@ router.post('/test', (req, res)=>{
       console.log("err",err)
       res.json(false);
     }
-    res.json(true)
+    console.log("post", post)
+   // res.json(true)
   })
 });
 
