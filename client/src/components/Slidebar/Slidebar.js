@@ -29,6 +29,8 @@ class CustomizedSlider extends React.Component {
         <Slider
           id={this.props.id}
           value={sliderValue}
+          min={this.props.min}
+          max={this.props.max}
           orientation="horizontal"
           onChange={this.handleOnChange}
           onAfterChange={this.sliderInputHandler}

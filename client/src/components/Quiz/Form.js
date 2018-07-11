@@ -54,7 +54,7 @@ class Form extends Component {
         const answers = {
             firstName: document.getElementById("firstName").value,
             zipCode: document.getElementById("zipCode").value,
-            q1: document.getElementById("q1").value,
+            q1: document.querySelector("aria-valuenow").value,
             q2: document.getElementById("q2").value,
             q3: document.getElementById("q3ul").value,
             q4: document.getElementById("q4ul").value,
@@ -70,7 +70,6 @@ class Form extends Component {
             q14: document.getElementById("q14").value,
             q15: document.getElementById("q15").value,
             q16: document.getElementById("q16").value,
-
             userId: HELPERS.getCookies()
 
         }
@@ -105,6 +104,7 @@ class Form extends Component {
                         }
                     })
                     // window.location.pathname = "/results"
+                    this.props.history.push("/results")
 
                 }
             })
@@ -165,33 +165,33 @@ class Form extends Component {
     }
 
 
-    sendVal() {
-        const data = {
-            user: {
-                firstName: this.state.user.firstName,
-                zipCode: this.state.user.zipCode
-            },
-            questions: {
-                q1: this.state.questions.q1,
-                q2: this.state.questions.q2,
-                q3: "",
-                q4: "",
-                q5: 0,
-                q6: 0,
-                q7: "",
-                q8: 0,
-                q9: 0,
-                q10: 0,
-                q11: 0,
-                q12: 0,
-                q13: 0,
-                q14: 0,
-                q15: 0,
-                q16: 0
-            }
-        }
-        console.log("send val", data)
-    }
+    // sendVal() {
+    //     const data = {
+    //         user: {
+    //             firstName: this.state.user.firstName,
+    //             zipCode: this.state.user.zipCode
+    //         },
+    //         questions: {
+    //             q1: this.state.questions.q1,
+    //             q2: this.state.questions.q2,
+    //             q3: "",
+    //             q4: "",
+    //             q5: 0,
+    //             q6: 0,
+    //             q7: "",
+    //             q8: 0,
+    //             q9: 0,
+    //             q10: 0,
+    //             q11: 0,
+    //             q12: 0,
+    //             q13: 0,
+    //             q14: 0,
+    //             q15: 0,
+    //             q16: 0
+    //         }
+    //     }
+    //     console.log("send val", data)
+    // }
 
     render() {
         return (

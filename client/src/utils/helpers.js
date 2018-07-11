@@ -19,8 +19,6 @@ logcheck: function() {
             }
         });
     },
-// 
-
     addingAnswers: function(answers) {
         console.log(answers);
         return axios.post("/api/person/test", answers);
@@ -46,8 +44,8 @@ logcheck: function() {
     logout: function(){
         return axios.get("/api/auth/logout");
     },
-    getResults: function(userID){
-        return axios.get(`/api/person/results/${userID}`);
+    getResults: function(keys, userID){
+        return axios.get(`/api/person/results/${userID}`, keys);
     },
 
 
