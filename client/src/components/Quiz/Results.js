@@ -1,12 +1,31 @@
 import React, { Component } from "react";
+import { Input, FormBtn } from "./";
 import Navbar from "../Navbar/Navbar";
 import HELPERS from "../../utils/helpers.js";
+import "./Results.css";
 
 class Results extends React.Component {
 
 state = {
     userId: HELPERS.getCookies(),
     firstName:""
+}
+
+// change = e => {
+//     this.setState({
+//         [e.target.name]: e.target.value
+//     })
+// }
+
+// onSubmit = (e) => {
+//     e.preventDefault();
+//     e.logcheck();
+//     e.logout();
+// }
+
+logout() {
+    localStorage.removeItem('jwtToken');
+    window.location.reload();
 }
 
 componentWillMount(){
@@ -28,12 +47,33 @@ render(){
     return(
         <div>
             <Navbar />
-            <div className="container">
+            <div id="results--card--center">
+                <div className="container">
+                    <div className="card" >
+                        <div className="card-header">
+                            <h1>See your results {this.state.firstName}!</h1>
+                        </div>
+                        <ul className="list-group list-group-flush">
+                            <li className="list-group-item text-center"><h2>See in the graph below how your footprint compares to the rest of people!</h2></li>
+                            <li className="text-center">  </li>
+                        </ul>
+                        {/* <UserGraph1 />     */}
+                        dslkafja;sdkfj;a
 
-                <h1>results page</h1>
-                <h2>welcome,{this.state.firstName}</h2>
-                
+                        <p>
+                            {localStorage.getItem('jwtToken') &&
+                                <button
+                                    className="btn btn-primary"
+                                    onClick={this.logout}>
+                                    Logout
+                                </button>
+                            }
+                        </p>
+
+                    </div>
+                </div>
             </div>
+           
         </div>
     );
 }
