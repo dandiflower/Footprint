@@ -14,8 +14,11 @@ class CustomizedSlider extends React.Component {
       this.setState({
         sliderValue: value
       })
-      console.log("before change", value)
+      // console.log("value", value)
+      this.props.onChange(this.props.id, this.state.sliderValue);
       // return this.props.sliderValues(this.state.sliderValue)
+    
+      
     }
     // sliderInputHandler =(value) => {
     //   console.log("after change", value)
@@ -29,6 +32,8 @@ class CustomizedSlider extends React.Component {
         <Slider
           id={this.props.id}
           value={sliderValue}
+          min={this.props.min}
+          max={this.props.max}
           orientation="horizontal"
           onChange={this.handleOnChange}
           onAfterChange={this.sliderInputHandler}
