@@ -1,15 +1,22 @@
-/* .form {
-  position: absolute;
-  transform: translate(100%, 100%);
-  z-index: 100%;
-} */
+form {
+  background-color: hsl(208, 100%, 97%, 50%);
+  border-radius: 1rem;
+  width: 100%;
+  position: relative;
+}
+
+#login_form {
+  margin-left: 38%;
+}
+
+#reg_center {
+  margin-left: 38%;
+}
 
 .login--center {
   position: absolute;
   width: 100%;
   top: 20%;
-  left: 38%;
-  margin: 0 auto;
 } 
 
 .form-signin {
@@ -47,4 +54,8 @@
 }
 .form-signin p {
   margin-top: 10px;
+}
+
+#login_page_height {
+  height: 1000px;
 }

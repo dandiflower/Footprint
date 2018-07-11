@@ -87,7 +87,7 @@ class Form extends Component {
                         q15: 0
                     }
              })
-             window.location.pathname = "/result"
+             window.location.pathname = "/results"
         }
     })
 }
@@ -125,7 +125,7 @@ class Form extends Component {
         this.setState({
             q1: sliderInput
         })
-        console.log("after set state",this.state.q1);
+
 
     }
 
@@ -166,17 +166,8 @@ class Form extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
-                        <form>
-                            <p>
-                                {localStorage.getItem('jwtToken') &&
-                                    <button 
-                                        className="btn btn-primary" 
-                                        onClick={this.logout}>
-                                        Logout
-                                    </button>
-                                }
-                            </p>
 
+                        <form>
 
                             <p>First name: </p>
                             <Input 
@@ -209,13 +200,16 @@ class Form extends Component {
                             <p> How much of the food that you eat is unprocessed, unpackaged or locally grown?</p>
 
                             <span>None</span>
+
                             <CustomizedSlider 
                                 id="q2" 
+
                                 sliderValues={this.sliderValues.bind(this)}/>
                             <span>All</span>
 
                             <h3>Housing</h3>
                             <p> Which housing type best describes your home?</p>
+
 
                             <ul id="q3ul">
                                 <Radio 
@@ -250,6 +244,7 @@ class Form extends Component {
                                     value="Luxury condominium"
                                     onClick ={this.handleChange}
                                     />
+
                             </ul>
 
                              <p>What material is your house constructed with?</p>
@@ -276,14 +271,17 @@ class Form extends Component {
                                     value="Steel/other"
                                     id="q4o5"
                                     name="q4name"/>
+
                                 
                             </ul>
 
                              <p>How many people live in your household?</p>
 
                             <span>Just me</span>
+
                                 <CustomizedSlider
                                     id="q5"  
+
                                     sliderValues={this.sliderValues.bind(this)}/>
                             <span>10+</span>
 
@@ -291,7 +289,9 @@ class Form extends Component {
 
                             <span>Tiny</span>
                                 <CustomizedSlider  
+
                                 id="q6" 
+
                                     sliderValues={this.sliderValues.bind(this)}/>
                             <span>A mansion</span>
 
@@ -366,10 +366,14 @@ class Form extends Component {
 
                         <br /> <br />
 
+
+
+
                             <FormBtn 
-                            onClick={this.onSubmit}> 
-                            Submit
+                                onClick={this.onSubmit}> 
+                                Submit
                             </FormBtn>
+
                             
 
                         </form>
