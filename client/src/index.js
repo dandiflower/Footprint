@@ -8,7 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 import Login from './components/Login/Login';
 import Form from './components/Quiz/Form';
 import Register from './components/Login/Register';
-import Results from './components/Quiz/Results';
+import Results from './components/Results/Results';
 // import testRadio from './components/Radiobutton/testRadio';
 // ReactDOM.render(
 //     <App />, 
