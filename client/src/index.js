@@ -18,7 +18,7 @@ import Results from './components/Results/Results';
 ReactDOM.render(
 
     <Router>
-        <div className="test">
+        <div>
             <Route exact path='/person' component={MERN} />
             <Route exact path='/' component={Form} />
             <Route path='/login' component={Login} />

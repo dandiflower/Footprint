@@ -35,7 +35,7 @@ class Form extends Component {
     onSubmit = (e) => {
         e.preventDefault();
 
-        const answers = {
+        let answers = {
             firstName: document.getElementById("firstName").value,
             zipCode: document.getElementById("zipCode").value,
             q1: this.state.q1,
@@ -57,17 +57,25 @@ class Form extends Component {
             userId: HELPERS.getCookies()
 
         }
-        console.log("const answers", answers)
+        console.log("answers", answers)
         // this.props.onSubmit(this.state);
         HELPERS.addingAnswers(answers)
+     
             .then(response => {
                 console.log("response", response)
                 if (response.data === true) {
+                    this.setState({ persons: response.data });
+                    console.log("this.state.persons", this.state.persons);
                     // window.location.pathname = "/results"
-                    this.props.history.push("/results")
+                    // this.props.history.push("api/person/")
                 }
             })
     }
+
+
+
+
+
     // is the user authorized????
     componentDidMount() {
 
@@ -75,7 +83,7 @@ class Form extends Component {
         axios.get('/api/person')
             .then(res => {
                 this.setState({ persons: res.data });
-                console.log("this.state.persons", this.state.persons);
+                // console.log("this.state.persons", this.state.persons);
 
             })
             .catch((error) => {
@@ -110,7 +118,7 @@ class Form extends Component {
 
     getSlideVal(id, val) {
         this.setState({ [id]: val })
-        console.log("getSlideVal", this.state[id])
+        // console.log("getSlideVal", this.state[id])
     }
 
     render() {

@@ -5,23 +5,10 @@ export default {
 
     // is the user logged in?????
 
-logcheck: function() {
-    axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
-    axios.get('/api/person')
-        .then(res => {
-            this.setState({ persons: res.data });
-            console.log(this.state.persons);
 
-        })
-        .catch((error) => {
-            if (error.response.status === 401) {
-                this.props.history.push("/login");
-            }
-        });
-    },
     addingAnswers: function(answers) {
         console.log(answers);
-        return axios.post("/api/person/test", answers);
+        return axios.post("/results", answers);
         // axios.post(`/game/join/${this.state.selectedGameId}`).then(joined => {
         //     t.setState({
         //         joinedGame: joined
@@ -45,7 +32,7 @@ logcheck: function() {
         return axios.get("/api/auth/logout");
     },
     getResults: function(keys, userID){
-        return axios.get(`/api/person/results/${userID}`, keys);
+        return axios.get(`/results/${userID}`, keys);
     },
 
 

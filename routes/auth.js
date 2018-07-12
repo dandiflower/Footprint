@@ -7,7 +7,8 @@ var jwt = require('jsonwebtoken');
 var router = express.Router();
 var User = require("../models/user");
 
-router.post('/register', function(req, res) {
+
+router.post('api/auth/register', function(req, res) {
   
   if (!req.body.username || !req.body.password) {
     res.json({success: false, msg: 'Please pass username and password.'});
@@ -67,4 +68,9 @@ router.get('/logout', (req, res)=>{
   res.set('user', {expires: Date.now()});
   res.json(true);
 });
+
+// router.post('/answers', (req, res)=>{
+//   res.
+// })
+
 module.exports = router;
