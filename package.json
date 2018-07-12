@@ -5,7 +5,7 @@
     "scripts": {
       "start": "node app.js",
       "install": "cd client && yarn install",
-      "build": "cd client && npm run build",     
+      "build": "npm install yarn",     
       "frontend": "cd client && yarn start"
     },
   "dependencies": {
