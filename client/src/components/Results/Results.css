@@ -15,6 +15,10 @@
   margin-top: 100px;
 }
 
+#listResults{
+  list-style:none;
+}
+
 /* .card-header {
     margin-top: 10%;
 } */

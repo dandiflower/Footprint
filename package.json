@@ -2,6 +2,13 @@
   "name": "mern-secure",
   "version": "0.1.0",
   "private": true,
+    "scripts": {
+      "start": "node app.js",
+      "build": "cd client && yarn run build",
+      "install": "cd client && yarn install",    
+      "frontend": "cd client && yarn start",
+      "heroku-postbuild": "cd client && yarn && yarn run build"
+    },
   "dependencies": {
     "axios": "^0.18.0",
     "bcrypt-nodejs": "0.0.3",
@@ -19,18 +26,18 @@
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
     "react-bootstrap-slider": "^2.1.5",
+    "react-chartjs": "^1.2.0",
     "react-chartjs-2": "^2.7.2",
     "react-dom": "^16.4.1",
+    "react-easy-chart": "^1.0.0",
     "react-rangeslider": "^2.2.0",
     "serve-favicon": "^2.4.5"
   },
-  "scripts": {
-    "start": "node ./bin/www",
-    "build": "cd client && yarn build",
-    "install": "cd client && yarn install",
-    "frontend": "cd client && yarn start"
-  },
   "devDependencies": {
     "bootstrap": "^3.3.7"
-  }
+  },
+  "engines": {
+    "node": "10.1.0",
+    "yarn": "1.7.0"
+  } 
 }
