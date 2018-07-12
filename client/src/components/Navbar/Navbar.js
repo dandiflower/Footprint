@@ -3,7 +3,7 @@ import "./Navbar.css";
 
 const Navbar = () => (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary nav--height">
-       <a className="navbar-brand" href="/">
+       <a className="navbar-brand" id="foont" href="/">
             Footprint Calculator
        </a>
     </nav>

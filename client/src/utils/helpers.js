@@ -3,32 +3,11 @@ import axios from "axios";
 
 export default {
 
-    // is the user logged in?????
-
-logcheck: function() {
-    axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
-    axios.get('/api/person')
-        .then(res => {
-            this.setState({ persons: res.data });
-            console.log(this.state.persons);
-
-        })
-        .catch((error) => {
-            if (error.response.status === 401) {
-                this.props.history.push("/login");
-            }
-        });
-    },
     addingAnswers: function(answers) {
-        console.log(answers);
-        return axios.post("/api/person/test", answers);
-        // axios.post(`/game/join/${this.state.selectedGameId}`).then(joined => {
-        //     t.setState({
-        //         joinedGame: joined
-        //     });
-        //     alert("You have joined the game!");
-        // });
+        // console.log(answers);
+        return axios.post("/api/person/results", answers);
     },
+
     getCookies: function(){
         let cookies = document.cookie;
         cookies = cookies.split(",");
@@ -45,7 +24,7 @@ logcheck: function() {
         return axios.get("/api/auth/logout");
     },
     getResults: function(keys, userID){
-        return axios.get(`/api/person/results/${userID}`, keys);
+        return axios.get(`/api/results/${userID}`, keys);
     },
 
 

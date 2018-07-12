@@ -35,7 +35,7 @@ class Form extends Component {
     onSubmit = (e) => {
         e.preventDefault();
 
-        const answers = {
+        let answers = {
             firstName: document.getElementById("firstName").value,
             zipCode: document.getElementById("zipCode").value,
             q1: this.state.q1,
@@ -57,33 +57,41 @@ class Form extends Component {
             userId: HELPERS.getCookies()
 
         }
-        console.log("const answers", answers)
+
         // this.props.onSubmit(this.state);
         HELPERS.addingAnswers(answers)
+     
             .then(response => {
                 console.log("response", response)
                 if (response.data === true) {
+                    this.setState({ persons: response.data });
+                    console.log("this.state.persons", this.state.persons);
                     // window.location.pathname = "/results"
                     this.props.history.push("/results")
                 }
             })
     }
+
+
+
+
+
     // is the user authorized????
-    componentDidMount() {
+    // componentDidMount() {
 
-        axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
-        axios.get('/api/person')
-            .then(res => {
-                this.setState({ persons: res.data });
-                console.log("this.state.persons", this.state.persons);
+    //     axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
+    //     axios.get('/api/person')
+    //         .then(res => {
+    //             this.setState({ persons: res.data });
+    //             console.log("this.state.persons", this.state.persons);
 
-            })
-            .catch((error) => {
-                if (error.response.status === 401) {
-                    this.props.history.push("/login");
-                }
-            });
-    }
+    //         })
+    //         .catch((error) => {
+    //             if (error.response.status === 401) {
+    //                 this.props.history.push("/login");
+    //             }
+    //         });
+    // }
 
     logout() {
         localStorage.removeItem('jwtToken');
