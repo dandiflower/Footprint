@@ -4,7 +4,7 @@
   "private": true,
     "scripts": {
       "start": "node app.js",
-      "install": "cd client && npm install",
+      "install": "cd client && yarn install",
       "build": "cd client && npm run build",     
       "frontend": "cd client && yarn start"
     },
