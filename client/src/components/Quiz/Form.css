@@ -5,3 +5,9 @@ form {
   transform: translate(0%, 5%);
   z-index: 100%;
 }
+
+.sliderLabels {
+  position: absolute;
+right: 2px;
+}
+

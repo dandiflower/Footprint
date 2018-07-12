@@ -13,18 +13,18 @@ class Form extends Component {
     constructor() {
         super();
         this.state = {
-                user: {
-                    firstName: "",
-                    zipCode: ""
-                }
+            user: {
+                firstName: "",
+                zipCode: ""
             }
+        }
         this.getSlideVal = this.getSlideVal.bind(this);
         // this.handleChanger = this.handleChanger.bind(this);
         // this.handleChangerOne = this.handleChanger.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    
+
 
     change = e => {
         this.setState({
@@ -50,7 +50,7 @@ class Form extends Component {
             q10: this.state.q10,
             q11: this.state.q11,
             q12: this.state.q12,
-            q13:this.state.q13,
+            q13: this.state.q13,
             q14: this.state.q14,
             q15: this.state.q15,
             q16: this.state.q16,
@@ -100,7 +100,7 @@ class Form extends Component {
     radioValues(radioValues) {
         console.log("radioValues", radioValues)
         this.setState({
-           
+
         })
     }
 
@@ -110,7 +110,7 @@ class Form extends Component {
 
     getSlideVal(id, val) {
         this.setState({ [id]: val })
-        console.log("getSlideVal", this.state[id])
+        // console.log("getSlideVal", this.state[id])
     }
 
     render() {
@@ -118,278 +118,299 @@ class Form extends Component {
 
             <div>
                 <Navbar />
-        <div className="container">
-            <div className="row">
-                <div className="col-md-12">
-                     <form>
-                        <p>
-                            {localStorage.getItem('jwtToken') &&
-                                <button
-                                    className="btn btn-primary"
-                                    onClick={this.logout}>
-                                    Logout
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <form>
+                                <p>
+                                    {localStorage.getItem('jwtToken') &&
+                                        <button
+                                            className="btn btn-primary"
+                                            onClick={this.logout}>
+                                            Logout
                                     </button>
-                            }
-                        </p>
+                                    }
+                                </p>
 
 
-                        <p>First name: </p>
-                        <Input
-                            id="firstName"
-                            name="firstName"
-                            placeholder="first name"
-                            value={this.state.firstName}
-                            onChange={e => this.change(e)} />
-                        <br />
+                                <p>First name: </p>
+                                <Input
+                                    id="firstName"
+                                    name="firstName"
+                                    placeholder="first name"
+                                    value={this.state.firstName}
+                                    onChange={e => this.change(e)} />
+                                <br />
 
-                        <p> Zip code:</p>
-                        <Input
-                            id="zipCode"
-                            name="zipCode"
-                            placeholder="zip code"
-                            value={this.state.zipCode}
-                            onChange={e => this.change(e)} />
-                        <br />
+                                <p> Zip code:</p>
+                                <Input
+                                    id="zipCode"
+                                    name="zipCode"
+                                    placeholder="zip code"
+                                    value={this.state.zipCode}
+                                    onChange={e => this.change(e)} />
+                                <br />
 
-                        <hr />
+                                <hr />
 
-                        <h3>Food</h3>
-                        <p>How many times a week do you eat meat?</p>
+                                <h3>Food</h3>
+                                <p>How many times a week do you eat meat?</p>
 
-                        <span>Never</span>
-                        <CustomizedSlider
-                            id="q1"
-                            value={this.state.sliderValue}
-                            min={0}
-                            max={7} 
-                            onChange={this.getSlideVal}
-                            // sliderValue={this.sliderInputHandler.bind(this)}
-                            // sliderValue={this.sliderValues.bind(this)} 
-                        />
-                        <span>Everyday</span>
 
-                        <p> How much of the food that you eat is unprocessed, unpackaged or locally grown?</p>
+                                <CustomizedSlider
+                                    id="q1"
+                                    value={this.state.sliderValue}
+                                    min={0}
+                                    max={7}
+                                    onChange={this.getSlideVal}
+                                // sliderValue={this.sliderInputHandler.bind(this)}
+                                // sliderValue={this.sliderValues.bind(this)} 
+                                />
+                                <span>Never</span><span className="sliderLabels">Everyday</span>
+                                
+                                <br /> <br /> <br />
 
-                        <span>None</span>
-                        <CustomizedSlider
-                            id="q2"
-                            value={this.state.sliderValue1}
-                            min={0}
-                            max={100}
-                            onChange={this.getSlideVal}
-                            />
-                        <span>All</span>
+                                <p> How much of the food that you eat is unprocessed, unpackaged or locally grown?</p>
 
-                        <hr />
 
-                        <h3>Housing</h3>
-                        <p> Which housing type best describes your home?</p>
+                                <CustomizedSlider
+                                    id="q2"
+                                    value={this.state.sliderValue1}
+                                    min={0}
+                                    max={100}
+                                    onChange={this.getSlideVal}
+                                />
+                                <span>None</span> <span className="sliderLabels">All</span>
 
-                        <RadioGroup
-                            name="q3"
-                            onChange={this.handleChange}
-                            options={[
-                                ['Freestanding, no running water','Freestanding, no running water'],
-                                ['Freestanding, running water','Freestanding, running water'],
-                                ['Multi-story apartment','Multi-story apartment'],
-                                ['Duplex unit','Duplex unit'],
-                                ['Luxury condominium','Luxury condominium']
+                                <hr />
 
-                            ]} value={this.state.q3}
-                            />
+                                <h3>Housing</h3>
+                                <p> Which housing type best describes your home?</p>
 
-                        <p>What material is your house constructed with?</p>
-                        <RadioGroup
-                            name="q4"
-                            onChange={this.handleChange}
-                            options={[
-                                ['Straw/bamboo','Straw/bamboo'],
-                                ['Wood','Wood'],
-                                ['Adobe','Adobe'],
-                                ['Brick/concrete','Brick/concrete'],
-                                ['Steel/other','Steel/other']
+                                <RadioGroup
+                                    name="q3"
+                                    onChange={this.handleChange}
+                                    options={[
+                                        ['Freestanding, no running water', 'Freestanding, no running water'],
+                                        ['Freestanding, running water', 'Freestanding, running water'],
+                                        ['Multi-story apartment', 'Multi-story apartment'],
+                                        ['Duplex unit', 'Duplex unit'],
+                                        ['Luxury condominium', 'Luxury condominium']
 
-                            ]} value={this.state.q4}
-                            />
+                                    ]} value={this.state.q3}
+                                />
+                                
+                                <br /><br /> <br />
 
-                        <p>How many people live in your household?</p>
+                                <p>What material is your house constructed with?</p>
+                                <RadioGroup
+                                    name="q4"
+                                    onChange={this.handleChange}
+                                    options={[
+                                        ['Straw/bamboo', 'Straw/bamboo'],
+                                        ['Wood', 'Wood'],
+                                        ['Adobe', 'Adobe'],
+                                        ['Brick/concrete', 'Brick/concrete'],
+                                        ['Steel/other', 'Steel/other']
 
-                        <span>Just me</span>
-                        <CustomizedSlider
-                            id="q5"
-                            value={this.state.sliderValue}
-                            min={0}
-                            max={10}
-                            onChange={this.getSlideVal}
-                        // sliderValue={this.state.sliderValues.bind(this)} 
-                        />
-                        <span>10+</span>
+                                    ]} value={this.state.q4}
+                                />
 
-                        <p>What is the size of your home (square feet)?</p>
+                                 <br /><br /> <br />
 
-                        <span>Tiny</span>
-                        <CustomizedSlider
-                            id="q6"
-                            value={this.state.sliderValue}
-                            min={0}
-                            max={100}
-                            onChange={this.getSlideVal}
-                        // sliderValues={this.sliderValues.bind(this)} 
-                        />
-                        <span>A mansion</span>
+                                <p>How many people live in your household?</p>
 
-                        <hr />
+                                <CustomizedSlider
+                                    id="q5"
+                                    value={this.state.sliderValue}
+                                    min={0}
+                                    max={10}
+                                    onChange={this.getSlideVal}
+                                // sliderValue={this.state.sliderValues.bind(this)} 
+                                />
+                                <span>Just me</span><span className="sliderLabels">10+</span>
 
-                        <h3>Energy</h3>
-                        <p>Do you have electricity in your home?</p>
+                                 <br /><br /> <br />
 
-                         <RadioGroup
-                            name="q7"
-                            onChange={this.handleChange}
-                            options={[
-                                ['Yes','Yes'],
-                                ['No','No'],
+                                <p>What is the size of your home (square feet)?</p>
 
-                            ]} value={this.state.q7}
-                            />
+                                
+                                <CustomizedSlider
+                                    id="q6"
+                                    value={this.state.sliderValue}
+                                    min={0}
+                                    max={100}
+                                    onChange={this.getSlideVal}
+                                // sliderValues={this.sliderValues.bind(this)} 
+                                />
+                                <span>Tiny</span><span className="sliderLabels">A mansion</span>
 
-                        <p>How energy efficient is your home?</p>
+                                <hr />
 
-                        <span>Not efficient at all</span>
-                        <CustomizedSlider
-                            id="q8"
-                            value={this.state.sliderValue}
-                            rangeslider__handle-tooltip={false}
-                            labels={
-                                {
-                                0: "no efficiency",
-                                50: "mid efficiency",
-                                100: "Very efficient"
-                                }
-                            }
-                            onChange={this.getSlideVal}
-                        // sliderValues={this.sliderValues.bind(this)} 
-                        />
-                        <span>Very efficient</span>
+                                <h3>Energy</h3>
+                                <p>Do you have electricity in your home?</p>
 
-                        <p>What percentage of your home’s electricity comes from renewable sources (either directly or through purchased green power)?</p>
+                                <RadioGroup
+                                    name="q7"
+                                    onChange={this.handleChange}
+                                    options={[
+                                        ['Yes', 'Yes'],
+                                        ['No', 'No'],
 
-                        <span>Low</span>
-                        <CustomizedSlider
-                            id="q9"
-                            value={this.state.sliderValue}
-                            min={0}
-                            max={100}
-                            onChange={this.getSlideVal}
-                        // sliderValues={this.sliderValues.bind(this)} 
-                        />
-                        <span>High</span>
+                                    ]} value={this.state.q7}
+                                />
 
-                        <p>Compared to your neighbors, how much trash do you generate?</p>
+                                <p>How energy efficient is your home?</p>
 
-                        <span>Significantly less</span>
-                        <CustomizedSlider
-                            id="q10"
-                            value={this.state.sliderValue}
-                            min={0}
-                            max={100}
-                            onChange={this.getSlideVal}
-                        // sliderValues={this.sliderValues.bind(this)} 
-                        />
-                        <span>A lot more</span>
+                                <br /><br /> <br />
+                                
+                                <CustomizedSlider
+                                    id="q8"
+                                    value={this.state.sliderValue}
+                                    rangeslider__handle-tooltip={false}
+                                    labels={
+                                        {
+                                            0: "no efficiency",
+                                            50: "mid efficiency",
+                                            100: "Very efficient"
+                                        }
+                                    }
+                                    onChange={this.getSlideVal}
+                                // sliderValues={this.sliderValues.bind(this)} 
+                                />
+                                <span>Not efficient at all</span><span className="sliderLabels">Very efficient</span>
 
-                        <hr />
+                                 <br /><br /> <br />
 
-                        <h3>Transportation</h3>
-                        <p>How far do you travel by car or motorcycle each week? </p>
+                                <p>What percentage of your home’s electricity comes from renewable sources (either directly or through purchased green power)?</p>
 
-                        <h4>Car</h4>
-                        <span>Zero</span>
-                        <CustomizedSlider
-                            id="q11"
-                            value={this.state.sliderValue}
-                            min={0}
-                            max={100}
-                            onChange={this.getSlideVal}
-                        // sliderValues={this.sliderValues.bind(this)} 
-                        />
-                        <span>Very far</span>
+                                
+                                <CustomizedSlider
+                                    id="q9"
+                                    value={this.state.sliderValue}
+                                    min={0}
+                                    max={100}
+                                    onChange={this.getSlideVal}
+                                // sliderValues={this.sliderValues.bind(this)} 
+                                />
+                                <span>Low</span><span className="sliderLabels">High</span>
 
-                        <h4>Motorcycle</h4>
-                        <span>Zero</span>
-                        <CustomizedSlider
-                            id="q12"
-                            value={this.state.sliderValue}
-                            min={0}
-                            max={100}
-                            onChange={this.getSlideVal}
-                        // sliderValues={this.sliderValues.bind(this)} 
-                        />
-                        <span>Very far</span>
+                                 <br /><br /> <br />
 
-                        <p>What is the average fuel economy the vehicles you use most often? </p>
+                                <p>Compared to your neighbors, how much trash do you generate?</p>
 
-                        <span>Inefficient</span>
-                        <CustomizedSlider
-                            id="q13"
-                            value={this.state.sliderValue}
-                            min={0}
-                            max={100}
-                            onChange={this.getSlideVal}
-                        // sliderValues={this.sliderValues.bind(this)} 
-                        />
-                        <span>Efficient or Electric</span>
+                                
+                                <CustomizedSlider
+                                    id="q10"
+                                    value={this.state.sliderValue}
+                                    min={0}
+                                    max={100}
+                                    onChange={this.getSlideVal}
+                                // sliderValues={this.sliderValues.bind(this)} 
+                                />
+                                <span>Significantly less</span><span className="sliderLabels">A lot more</span>
 
-                        <p>When you travel by car, how often do you carpool?</p>
+                                <hr />
 
-                        <span>Never</span>
-                        <CustomizedSlider
-                            id="q14"
-                            value={this.state.sliderValue}
-                            min={0}
-                            max={100}
-                            onChange={this.getSlideVal}
-                        // sliderValues={this.sliderValues.bind(this)}
-                        />
-                        <span>Always</span>
+                                <h3>Transportation</h3>
+                                <p>How far do you travel by car or motorcycle each week? </p>
 
-                        <p>How far do you travel on public transportation each week?</p>
+                                <h4>Car</h4>
+                                
+                                <CustomizedSlider
+                                    id="q11"
+                                    value={this.state.sliderValue}
+                                    min={0}
+                                    max={100}
+                                    onChange={this.getSlideVal}
+                                // sliderValues={this.sliderValues.bind(this)} 
+                                />
+                                <span>Not far at all</span><span className="sliderLabels">Far far away</span>
 
-                        <span>Not far</span>
-                        <CustomizedSlider
-                            id="q15"
-                            value={this.state.sliderValue}
-                            min={0}
-                            max={100}
-                            onChange={this.getSlideVal}
-                        // sliderValues={this.sliderValues.bind(this)} 
-                        />
-                        <span>Very Far</span>
+                                <h4>Motorcycle</h4>
+                                
+                                <CustomizedSlider
+                                    id="q12"
+                                    value={this.state.sliderValue}
+                                    min={0}
+                                    max={100}
+                                    onChange={this.getSlideVal}
+                                // sliderValues={this.sliderValues.bind(this)} 
+                                />
+                                <span>Not far at all</span><span className="sliderLabels">Far far away</span>
 
-                        <p>How many hours do you fly each year?</p>
+                                 <br /><br /> <br />
 
-                        <span>None</span>
-                        <CustomizedSlider
-                            id="q16"
-                            value={this.state.sliderValue}
-                            min={0}
-                            max={100}
-                            onChange={this.getSlideVal}
-                        // sliderValues={this.sliderValues.bind(this)} 
-                        />
-                        <span>Many</span>
+                                <p>What is the average fuel economy the vehicles you use most often? </p>
 
-                        <br /> <br />
+                                
+                                <CustomizedSlider
+                                    id="q13"
+                                    value={this.state.sliderValue}
+                                    min={0}
+                                    max={100}
+                                    onChange={this.getSlideVal}
+                                // sliderValues={this.sliderValues.bind(this)} 
+                                />
+                                <span>Inefficient</span><span className="sliderLabels">Efficient or Electric</span>
 
-                        <FormBtn onClick={this.onSubmit}>
-                            Submit
-                        </FormBtn>
-                    </form>
-                   
+                                 <br /><br /> <br />
+
+                                <p>When you travel by car, how often do you carpool?</p>
+
+                                
+                                <CustomizedSlider
+                                    id="q14"
+                                    value={this.state.sliderValue}
+                                    min={0}
+                                    max={100}
+                                    onChange={this.getSlideVal}
+                                // sliderValues={this.sliderValues.bind(this)}
+                                />
+                                <span>Never</span><span className="sliderLabels">Always</span>
+
+                                 <br /><br /> <br />
+
+                                <p>How far do you travel on public transportation each week?</p>
+
+                                
+                                <CustomizedSlider
+                                    id="q15"
+                                    value={this.state.sliderValue}
+                                    min={0}
+                                    max={100}
+                                    onChange={this.getSlideVal}
+                                // sliderValues={this.sliderValues.bind(this)} 
+                                />
+                                <span>Not far</span><span className="sliderLabels">Very Far</span>
+
+                                 <br /><br /> <br />
+
+                                <p>How many hours do you fly each year?</p>
+
+                                
+                                <CustomizedSlider
+                                    id="q16"
+                                    value={this.state.sliderValue}
+                                    min={0}
+                                    max={100}
+                                    onChange={this.getSlideVal}
+                                // sliderValues={this.sliderValues.bind(this)} 
+                                />
+                                <span>None</span><span className="sliderLabels">Many</span>
+
+                                <br /> <br /><br /> <br />
+
+                                <FormBtn onClick={this.onSubmit}>
+                                    Submit
+                                </FormBtn>
+                                <br /> <br />
+                            </form>
+
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        </div >
+            </div >
         )
     }
 }
