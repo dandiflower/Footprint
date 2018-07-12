@@ -1,16 +1,23 @@
 {
   "name": "mern-secure",
   "version": "0.1.0",
-  "private": true,
-    "scripts": {
-      "start": "node app.js",
-      "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-      "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-      "install": "cd client && npm install",
-      "build": "cd client && npm run build",     
-      "frontend": "cd client && yarn start",
-      "heroku-postbuild": "npm run build"
-    },
+  "main":"app.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node app.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && yarn install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "bcrypt-nodejs": "0.0.3",
