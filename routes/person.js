@@ -1,14 +1,13 @@
 const express = require('express');
 const router = express.Router();
-var jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const Person = require('../models/Person.js');
 const passport = require('passport');
 require('../config/passport')(passport);
 
-/* GET ALL Answers */
 
-router.post('/results', (req, res)=>{
+
+router.post('api/person/results', (req, res)=>{
   Person.create(req.body, function (err, post) {
     if(err){
       console.log("err",err);
@@ -20,7 +19,7 @@ router.post('/results', (req, res)=>{
 });
 
 
-router.get('/results/${userID}', (req, res)=>{
+router.get('api/person/results/:id', (req, res)=>{
   Person.findOne({userId:req.params.id})
   .then(dbResults =>{
     console.log("dbResults", dbResults);
@@ -31,7 +30,9 @@ router.get('/results/${userID}', (req, res)=>{
   });
 });
 
-router.get('/results', passport.authenticate('jwt', { session: false}), function(req, res) {
+/* GET ALL Answers */
+
+router.get('/', passport.authenticate('jwt', { session: false}), function(req, res) {
   const token = getToken(req.headers);
   if (token) {
     Person.find(function (err, Persons) {
@@ -44,7 +45,7 @@ router.get('/results', passport.authenticate('jwt', { session: false}), function
 });
 
 /* SAVE Answers */
-router.post('/results', passport.authenticate('jwt', { session: false}), function(req, res) {
+router.post('/', passport.authenticate('jwt', { session: false}), function(req, res) {
   const token = getToken(req.headers);
   if (token) {
     Person.create(req.body, function (err, post) {

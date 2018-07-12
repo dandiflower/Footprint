@@ -3,19 +3,11 @@ import axios from "axios";
 
 export default {
 
-    // is the user logged in?????
-
-
     addingAnswers: function(answers) {
-        console.log(answers);
+        // console.log(answers);
         return axios.post("/results", answers);
-        // axios.post(`/game/join/${this.state.selectedGameId}`).then(joined => {
-        //     t.setState({
-        //         joinedGame: joined
-        //     });
-        //     alert("You have joined the game!");
-        // });
     },
+
     getCookies: function(){
         let cookies = document.cookie;
         cookies = cookies.split(",");

@@ -57,7 +57,7 @@ class Form extends Component {
             userId: HELPERS.getCookies()
 
         }
-        console.log("answers", answers)
+
         // this.props.onSubmit(this.state);
         HELPERS.addingAnswers(answers)
      
@@ -67,7 +67,7 @@ class Form extends Component {
                     this.setState({ persons: response.data });
                     console.log("this.state.persons", this.state.persons);
                     // window.location.pathname = "/results"
-                    // this.props.history.push("api/person/")
+                    this.props.history.push("/results")
                 }
             })
     }
@@ -77,21 +77,21 @@ class Form extends Component {
 
 
     // is the user authorized????
-    componentDidMount() {
+    // componentDidMount() {
 
-        axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
-        axios.get('/api/person')
-            .then(res => {
-                this.setState({ persons: res.data });
-                // console.log("this.state.persons", this.state.persons);
+    //     axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
+    //     axios.get('/api/person')
+    //         .then(res => {
+    //             this.setState({ persons: res.data });
+    //             console.log("this.state.persons", this.state.persons);
 
-            })
-            .catch((error) => {
-                if (error.response.status === 401) {
-                    this.props.history.push("/login");
-                }
-            });
-    }
+    //         })
+    //         .catch((error) => {
+    //             if (error.response.status === 401) {
+    //                 this.props.history.push("/login");
+    //             }
+    //         });
+    // }
 
     logout() {
         localStorage.removeItem('jwtToken');
