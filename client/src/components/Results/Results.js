@@ -6,23 +6,29 @@ import Chart from "../Chart/Chart"
 
 
 class Results extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            chartData: {}
+        }
+    }
 
-state = {
-    userId: HELPERS.getCookies(),
-    firstName:"hannah"
+getChartData() {
+    this.setState({
+        chartData: {
+            labels: ['You', 'USA Average'],
+            datasets: [{
+                label: 'Number of Days',
+                data:[
+                    3,
+                    5
+                ],
+                backgroundColor: ['rgba(255,99,132,0.2)', 'rgba(255,99,132,0.2)']
+            }]
+        }
+    });
 }
 
-// change = e => {
-//     this.setState({
-//         [e.target.name]: e.target.value
-//     })
-// }
-
-// onSubmit = (e) => {
-//     e.preventDefault();
-//     e.logcheck();
-//     e.logout();
-// }
 
 logout() {
     localStorage.removeItem('jwtToken');
@@ -30,6 +36,7 @@ logout() {
 }
 
 componentWillMount(){
+    this.getChartData()
     console.log(this.state.userId)
     const getUser = {
         userId: this.state.userId
@@ -38,7 +45,8 @@ componentWillMount(){
     .then(dbResults=>{
         console.log("dbResults", dbResults)
         this.setState({
-            firstName: dbResults.data.firstName
+            firstName: dbResults.data.firstName,
+            q1: dbResults.data.q1,
         })
     })
 }
@@ -60,11 +68,20 @@ render(){
                             <li id="listResults" className="list-group-item text-center"><h2>See in the graph below how your footprint compares to the rest of people!</h2></li>
                             <li className="text-center">  </li>
                         </ul>
-                        <h1> How many times a week do you eat meat?</h1>
+                    
+                        {/* first question */}
                         <Chart 
-                        width={100}
-                        height={50}
-                        />    
+                        chartData={this.state.chartData}
+                        location='How much meat you eat compared to the average US citizen'
+                        legendPosition="bottom"
+                        height={400}
+                        max={10}
+                        />   
+
+                        {/* second question  */}
+                        <Chart 
+                        
+                        />
                       
 
                         <p>
