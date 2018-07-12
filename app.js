@@ -9,9 +9,9 @@ var auth = require('./routes/auth');
 var test = require('./routes/test');
 var app = express();
 
-if (process.env.NODE_ENV === "production") {
+// if (process.env.NODE_ENV === "production") {
 app.use(express.static("client/build"));
-}
+// }
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
