@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { Input, FormBtn } from "../Quiz/";
+import React from "react";
 import Navbar from "../Navbar/Navbar";
 import HELPERS from "../../utils/helpers.js";
 import "./Results.css";
 import Chart from "../Chart/Chart"
 
+
 class Results extends React.Component {
 
 state = {
     userId: HELPERS.getCookies(),
-    firstName:""
+    firstName:"hannah"
 }
 
 // change = e => {
@@ -43,6 +43,10 @@ componentWillMount(){
     })
 }
 
+changeCharTitle() {
+    this.setState()
+}
+
 
 render(){
     return(
@@ -55,11 +59,15 @@ render(){
                             <h1>See your results {this.state.firstName}!</h1>
                         </div>
                         <ul className="list-group list-group-flush">
-                            <li className="list-group-item text-center"><h2>See in the graph below how your footprint compares to the rest of people!</h2></li>
+                            <li id="listResults" className="list-group-item text-center"><h2>See in the graph below how your footprint compares to the rest of people!</h2></li>
                             <li className="text-center">  </li>
                         </ul>
-                        <Chart />    
-                        dslkafja;sdkfj;a
+                        <h1> How many times a week do you eat meat?</h1>
+                        <Chart 
+                        width={100}
+                        height={50}
+                        />    
+                      
 
                         <p>
                             {localStorage.getItem('jwtToken') &&

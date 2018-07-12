@@ -19,8 +19,10 @@
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
     "react-bootstrap-slider": "^2.1.5",
+    "react-chartjs": "^1.2.0",
     "react-chartjs-2": "^2.7.2",
     "react-dom": "^16.4.1",
+    "react-easy-chart": "^1.0.0",
     "react-rangeslider": "^2.2.0",
     "serve-favicon": "^2.4.5"
   },
