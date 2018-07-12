@@ -6,7 +6,7 @@ import "./index.css";
 import MERN from "./App";
 import registerServiceWorker from './registerServiceWorker';
 import Login from './components/Login/Login';
-import Form from './components/Quiz/Form';
+import QuestionForm from './components/Quiz/QuestionForm';
 import Register from './components/Login/Register';
 import Results from './components/Results/Results';
 
@@ -21,7 +21,7 @@ ReactDOM.render(
     <Router>
         <div>
             <Route exact path='/person' component={MERN} />
-            <Route exact path='/' component={Form} />
+            <Route exact path='/' component={QuestionForm} />
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
             <Route path='/results' component={Results} />

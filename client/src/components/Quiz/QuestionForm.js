@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Input, FormBtn } from "./";
 // import Radio from "../Radiobutton";
 import RadioGroup from '../Radiobutton/RadioGroup'
@@ -9,24 +9,19 @@ import Navbar from "../Navbar/Navbar";
 import "./Form.css";
 
 
-class Form extends Component {
-    constructor() {
-        super();
-        this.state = {
-            user: {
-                firstName: "",
-                zipCode: ""
-            }
-        }
-        this.getSlideVal = this.getSlideVal.bind(this);
-        // this.handleChanger = this.handleChanger.bind(this);
-        // this.handleChangerOne = this.handleChanger.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
-    }
+class QuestionForm extends React.Component {
+    state = {
+        userId: ""
+    };
+    // this.getSlideVal = this.getSlideVal.bind(this);
+    // this.handleChanger = this.handleChanger.bind(this);
+    // this.handleChangerOne = this.handleChanger.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
 
 
 
-    change = e => {
+
+    change = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -60,16 +55,18 @@ class Form extends Component {
 
         // this.props.onSubmit(this.state);
         HELPERS.addingAnswers(answers)
-     
+
             .then(response => {
-                console.log("response", response)
+
                 if (response.data === true) {
                     this.setState({ persons: response.data });
-                    console.log("this.state.persons", this.state.persons);
-                    // window.location.pathname = "/results"
-                    this.props.history.push("/results")
+
+                    // // window.location.pathname = "/results"
+                    // this.props.history.push(`/person/results/${userId}` )
                 }
             })
+
+
     }
 
 
@@ -77,23 +74,39 @@ class Form extends Component {
 
 
     // is the user authorized????
-    // componentDidMount() {
+    componentDidMount() {
+        this.getUserID()
+        setTimeout(() => {
+            console.log(this.state.userId);
+        }, 100);
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
+        axios.get('/api/person')
+            .then(res => {
+                this.setState({ persons: res.data });
+                console.log("this.state.persons", this.state.persons);
+                this.props.history.push()
+            })
+            .catch((error) => {
+                if (error.response.status === 401) {
+                    this.props.history.push("/login");
+                }
+            });
+    }
 
-    //     axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
-    //     axios.get('/api/person')
-    //         .then(res => {
-    //             this.setState({ persons: res.data });
-    //             console.log("this.state.persons", this.state.persons);
 
-    //         })
-    //         .catch((error) => {
-    //             if (error.response.status === 401) {
-    //                 this.props.history.push("/login");
-    //             }
-    //         });
-    // }
+
+    getUserID = () => {
+        let cookies = document.cookie;
+        cookies = cookies.split(",");
+        let user = cookies[0].split("=")[1].slice(3).split("%")[0];
+        this.setState({
+            userId: user
+        })
+    }
 
     logout() {
+        // TODO: Delete cookie the right way!
+        //delete document.cookie[this.state.user];
         localStorage.removeItem('jwtToken');
         window.location.reload();
     }
@@ -175,7 +188,7 @@ class Form extends Component {
                                 // sliderValue={this.sliderValues.bind(this)} 
                                 />
                                 <span>Never</span><span className="sliderLabels">Everyday</span>
-                                
+
                                 <br /> <br /> <br />
 
                                 <p> How much of the food that you eat is unprocessed, unpackaged or locally grown?</p>
@@ -207,7 +220,7 @@ class Form extends Component {
 
                                     ]} value={this.state.q3}
                                 />
-                                
+
                                 <br /><br /> <br />
 
                                 <p>What material is your house constructed with?</p>
@@ -224,7 +237,7 @@ class Form extends Component {
                                     ]} value={this.state.q4}
                                 />
 
-                                 <br /><br /> <br />
+                                <br /><br /> <br />
 
                                 <p>How many people live in your household?</p>
 
@@ -238,11 +251,11 @@ class Form extends Component {
                                 />
                                 <span>Just me</span><span className="sliderLabels">10+</span>
 
-                                 <br /><br /> <br />
+                                <br /><br /> <br />
 
                                 <p>What is the size of your home (square feet)?</p>
 
-                                
+
                                 <CustomizedSlider
                                     id="q6"
                                     value={this.state.sliderValue}
@@ -271,7 +284,7 @@ class Form extends Component {
                                 <p>How energy efficient is your home?</p>
 
                                 <br /><br /> <br />
-                                
+
                                 <CustomizedSlider
                                     id="q8"
                                     value={this.state.sliderValue}
@@ -288,11 +301,11 @@ class Form extends Component {
                                 />
                                 <span>Not efficient at all</span><span className="sliderLabels">Very efficient</span>
 
-                                 <br /><br /> <br />
+                                <br /><br /> <br />
 
                                 <p>What percentage of your home’s electricity comes from renewable sources (either directly or through purchased green power)?</p>
 
-                                
+
                                 <CustomizedSlider
                                     id="q9"
                                     value={this.state.sliderValue}
@@ -303,11 +316,11 @@ class Form extends Component {
                                 />
                                 <span>Low</span><span className="sliderLabels">High</span>
 
-                                 <br /><br /> <br />
+                                <br /><br /> <br />
 
                                 <p>Compared to your neighbors, how much trash do you generate?</p>
 
-                                
+
                                 <CustomizedSlider
                                     id="q10"
                                     value={this.state.sliderValue}
@@ -324,7 +337,7 @@ class Form extends Component {
                                 <p>How far do you travel by car or motorcycle each week? </p>
 
                                 <h4>Car</h4>
-                                
+
                                 <CustomizedSlider
                                     id="q11"
                                     value={this.state.sliderValue}
@@ -336,7 +349,7 @@ class Form extends Component {
                                 <span>Not far at all</span><span className="sliderLabels">Far far away</span>
 
                                 <h4>Motorcycle</h4>
-                                
+
                                 <CustomizedSlider
                                     id="q12"
                                     value={this.state.sliderValue}
@@ -347,11 +360,11 @@ class Form extends Component {
                                 />
                                 <span>Not far at all</span><span className="sliderLabels">Far far away</span>
 
-                                 <br /><br /> <br />
+                                <br /><br /> <br />
 
                                 <p>What is the average fuel economy the vehicles you use most often? </p>
 
-                                
+
                                 <CustomizedSlider
                                     id="q13"
                                     value={this.state.sliderValue}
@@ -362,11 +375,11 @@ class Form extends Component {
                                 />
                                 <span>Inefficient</span><span className="sliderLabels">Efficient or Electric</span>
 
-                                 <br /><br /> <br />
+                                <br /><br /> <br />
 
                                 <p>When you travel by car, how often do you carpool?</p>
 
-                                
+
                                 <CustomizedSlider
                                     id="q14"
                                     value={this.state.sliderValue}
@@ -377,11 +390,11 @@ class Form extends Component {
                                 />
                                 <span>Never</span><span className="sliderLabels">Always</span>
 
-                                 <br /><br /> <br />
+                                <br /><br /> <br />
 
                                 <p>How far do you travel on public transportation each week?</p>
 
-                                
+
                                 <CustomizedSlider
                                     id="q15"
                                     value={this.state.sliderValue}
@@ -392,11 +405,11 @@ class Form extends Component {
                                 />
                                 <span>Not far</span><span className="sliderLabels">Very Far</span>
 
-                                 <br /><br /> <br />
+                                <br /><br /> <br />
 
                                 <p>How many hours do you fly each year?</p>
 
-                                
+
                                 <CustomizedSlider
                                     id="q16"
                                     value={this.state.sliderValue}
@@ -418,9 +431,9 @@ class Form extends Component {
                         </div>
                     </div>
                 </div>
-            </div >
+            </div>
         )
     }
 }
 
-export default Form;
+export default QuestionForm;
