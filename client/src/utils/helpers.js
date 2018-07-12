@@ -5,7 +5,7 @@ export default {
 
     addingAnswers: function(answers) {
         // console.log(answers);
-        return axios.post("/results", answers);
+        return axios.post("/api/person/results", answers);
     },
 
     getCookies: function(){
@@ -24,7 +24,7 @@ export default {
         return axios.get("/api/auth/logout");
     },
     getResults: function(keys, userID){
-        return axios.get(`/results/${userID}`, keys);
+        return axios.get(`/api/results/${userID}`, keys);
     },
 
 

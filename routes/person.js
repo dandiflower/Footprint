@@ -7,7 +7,7 @@ require('../config/passport')(passport);
 
 
 
-router.post('api/person/results', (req, res)=>{
+router.post('/results', (req, res)=>{
   Person.create(req.body, function (err, post) {
     if(err){
       console.log("err",err);
@@ -19,7 +19,7 @@ router.post('api/person/results', (req, res)=>{
 });
 
 
-router.get('api/person/results/:id', (req, res)=>{
+router.get('/results/:id', (req, res)=>{
   Person.findOne({userId:req.params.id})
   .then(dbResults =>{
     console.log("dbResults", dbResults);
