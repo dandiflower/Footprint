@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../Navbar/Navbar";
 import HELPERS from "../../utils/helpers.js";
 import "./Results.css";
-import Chart from "../Chart/Chart"
+import Chart from "../Chart/Chart";
 
 
 class Results extends React.Component {
@@ -36,19 +36,19 @@ logout() {
 }
 
 componentWillMount(){
-    this.getChartData()
-    console.log(this.state.userId)
+    this.getChartData();
+    console.log(this.state.userId);
     const getUser = {
         userId: this.state.userId
-    }
+    };
     HELPERS.getResults(this.state.userId)
     .then(dbResults=>{
-        console.log("dbResults", dbResults)
+        console.log("dbResults", dbResults);
         this.setState({
             firstName: dbResults.data.firstName,
             q1: dbResults.data.q1,
-        })
-    })
+        });
+    });
 }
 
 

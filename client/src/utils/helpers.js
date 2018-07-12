@@ -23,8 +23,8 @@ export default {
     logout: function(){
         return axios.get("/api/auth/logout");
     },
-    getResults: function(keys, userID){
-        return axios.get(`/api/results/${userID}`, keys);
+    getResults: function(userId){
+        return axios.get(`/api/results/${userId}`);
     },
 
 
