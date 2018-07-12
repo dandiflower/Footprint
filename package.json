@@ -35,5 +35,8 @@
   },
   "devDependencies": {
     "bootstrap": "^3.3.7"
-  }
+  },
+  "engines": {
+    "node": "10.1.0"
+  } 
 }
