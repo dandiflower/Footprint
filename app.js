@@ -3,14 +3,14 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-
+const PORT = process.env.PORT || 3002;
 var person = require('./routes/person');
 var auth = require('./routes/auth');
 var test = require('./routes/test');
 var app = express();
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+app.use(express.static("client/build"));
 }
 
 var mongoose = require('mongoose');
@@ -43,6 +43,11 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+//Start the API server
+app.listen(PORT, function () {
+  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
 
 module.exports = app;

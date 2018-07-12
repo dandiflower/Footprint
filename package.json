@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
     "scripts": {
-      "start": "node ./bin/www",
+      "start": "node app.js",
       "install": "cd client && npm install",
       "build": "cd client && npm run build",     
       "frontend": "cd client && yarn start"
