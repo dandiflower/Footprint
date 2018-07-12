@@ -43,9 +43,7 @@ componentWillMount(){
     })
 }
 
-changeCharTitle() {
-    this.setState()
-}
+
 
 
 render(){
