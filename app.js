@@ -9,6 +9,10 @@ var auth = require('./routes/auth');
 var test = require('./routes/test');
 var app = express();
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mern-secure', { promiseLibrary: require('bluebird') })
