@@ -14,12 +14,13 @@ class QuestionForm extends React.Component {
     state = {
         userId: ""
     };
-    // this.getSlideVal = this.getSlideVal.bind(this);
+    
+    getSlideVal() {
+    this.state.getSlideVal = this.getSlideVal.bind(this);
+    }
     // this.handleChanger = this.handleChanger.bind(this);
     // this.handleChangerOne = this.handleChanger.bind(this);
     // this.handleSubmit = this.handleSubmit.bind(this);
-
-
 
 
     change = (e) => {
@@ -77,7 +78,7 @@ class QuestionForm extends React.Component {
     // is the user authorized????
     componentDidMount() {
         this.getUserID()
-        this.getSlideVal = this.getSlideVal.bind(this);
+        this.getSlideVal()
         // setTimeout(() => {
         //     console.log(this.state.userId);
         // }, 100);
