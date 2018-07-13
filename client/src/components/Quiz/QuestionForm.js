@@ -76,9 +76,9 @@ class QuestionForm extends React.Component {
     // is the user authorized????
     componentDidMount() {
         this.getUserID()
-        setTimeout(() => {
+        // setTimeout(() => {
             console.log(this.state.userId);
-        }, 100);
+        // }, 100);
         axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
         axios.get('/api/person')
             .then(res => {
