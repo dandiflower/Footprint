@@ -82,7 +82,9 @@ In the future, we hope to incorporate the following features:
 
 * Allow social media sharing of user results
 
+## References
 
+* [Chartjs React](https://github.com/bradtraversy/reactcharts/blob/master/src/components/Chart.js)
 
 ## Authors 🖋
 

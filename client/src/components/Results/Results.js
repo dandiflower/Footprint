@@ -4,6 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import HELPERS from "../../utils/helpers.js";
 import "./Results.css";
 import Chart from "../Chart/Chart";
+import PieChart from "../Chart/PieChart";
 
 
 class Results extends React.Component {
@@ -11,49 +12,75 @@ class Results extends React.Component {
         super();
         this.state = {
             chartData: {},
-            firstName: "",
-            zipCode:"",
-            q1: "",
-            q2: "",
-            q3: "",
-            q4: "",
-            q5: "",
-            q6: "",
-            q7: "",
-            q8: "",
-            q9: "",
-            q10: "",
-            q11: "",
-            q12: "",
-            q13: "",
-            q14: "",
-            q15: "",
-            q16: "",
+            chartDataB: {}
+            // firstName: "",
+            // zipCode: "",
+            // q1: "",
+            // q2: "",
+            // q3: "",
+            // q4: "",
+            // q5: "",
+            // q6: "",
+            // q7: "",
+            // q8: "",
+            // q9: "",
+            // q10: "",
+            // q11: "",
+            // q12: "",
+            // q13: "",
+            // q14: "",
+            // q15: "",
+            // q16: "",
         }
     }
 
     allData = () => {
         HELPERS.getResults()
-            .then(res => 
-            console.log(res.data)
+            .then(res =>
+                console.log(res.data)
             )
     }
 
     getChartData = () => {
         // HELPERS.getResults()
         //     .then(res =>
-                this.setState({
-                    chartData: {
-                        labels: ['You', 'USA Average'],
-                        datasets: [{
-                            label: 'Number of Days per Week',
-                            //data: [res.data.q1, average]
-                            data: [3, 5],
-                            backgroundColor: ['rgba(255,99,132,0.2)', 'rgba(255,99,132,0.2)']
-                        }]
-                    }
-                })
-            // )
+        this.setState({
+            chartData: {
+                labels: ['You', 'USA Average'],
+                datasets: [{
+                    label: 'Number of Days per Week',
+                    //data: [res.data.q1, average]
+                    data: [3, 5],
+                    backgroundColor: ['rgba(255,99,132,0.2)', 'rgba(255,99,132,0.2)']
+                }]
+            },
+            chartDataB: {
+                labels: ['You', 'USA Average'],
+                datasets: [{
+                    label: 'Number of Days per Week',
+                    //data: [res.data.q1, average]
+                    data: [3, 5],
+                    backgroundColor: ['rgba(255,99,132,0.2)', 'rgba(255,99,132,0.2)']
+                }]
+            },
+            pieChartData: {
+                labels: ['Category1', 'Category2', 'Category3'],
+                datasets: [{
+                    data: [80, 10, 10],
+                    backgroundColor: [
+                        '#FF6384',
+                        '#36A2EB',
+                        '#FFCE56'
+                    ],
+                    hoverBackgroundColor: [
+                        '#FF6384',
+                        '#36A2EB',
+                        '#FFCE56'
+                    ]
+                }]
+            }
+        })
+        // )
 
     }
 
@@ -80,22 +107,22 @@ class Results extends React.Component {
             })
     }
 
-// is the user authorized????
-componentDidMount() {
+    // is the user authorized????
+    componentDidMount() {
 
-    axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
-    axios.get('/api/person')
-        .then(res => {
-            this.setState({ persons: res.data });
-            console.log("this.state.persons", this.state.persons);
-            this.props.history.push()
-        })
-        .catch((error) => {
-            if (error.response.status === 401) {
-                this.props.history.push("/login");
-            }
-        });
-}
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
+        axios.get('/api/person')
+            .then(res => {
+                this.setState({ persons: res.data });
+                console.log("this.state.persons", this.state.persons);
+                this.props.history.push()
+            })
+            .catch((error) => {
+                if (error.response.status === 401) {
+                    this.props.history.push("/login");
+                }
+            });
+    }
 
 
 
@@ -114,20 +141,141 @@ componentDidMount() {
 
                             </ul>
 
-                            {/* first question */}
+                            {/* 1st question */}
                             <Chart
                                 chartData={this.state.chartData}
-                                location='How much meat you eat compared to the average US citizen'
+                                location='How many times a week do you eat meat?'
                                 legendPosition="bottom"
                                 height={400}
                                 max={10}
                             />
 
-                            {/* second question  */}
+                            {/* 2nd question  */}
                             <Chart
+                                chartData={this.state.chartDataB}
+                                location='How much of the food that you eat is unprocessed, unpackaged or locally grown?'
+                                legendPosition="bottom"
+                                height={400}
+                                max={100}
+                            />
+
+                            {/* 3rd question  */}
+                            <PieChart
+                                chartData={this.state.pieChartData}
+                                location='Which housing type best describes your home?'
 
                             />
 
+                            {/* 4th question  */}
+                            <PieChart
+                                chartData={this.state.pieChartData}
+                                location='What material is your house constructed with?'
+
+                            />
+
+                            {/* fif5thth question  */}
+                            <Chart
+                                chartData={this.state.chartData}
+                                location='How many people live in your household?'
+                                legendPosition="bottom"
+                                height={400}
+                                max={100}
+                            />
+
+                            {/* 6th question  */}
+                            <Chart
+                                chartData={this.state.chartData}
+                                location='What is the size of your home?'
+                                max={100}
+                            />
+
+                            {/* 7th question  */}
+                            <PieChart
+                                chartData={this.state.pieChartData}
+                                location='Do you have electricity in your home?'
+
+                            />
+
+                            {/* 8th question  */}
+                            <Chart
+                                chartData={this.state.chartData}
+                                location='How energy efficient is your home?'
+                                legendPosition="bottom"
+                                height={400}
+                                max={100}
+                            />
+
+                            {/* 9th question  */}
+                            <Chart
+                                chartData={this.state.chartData}
+                                location='What percentage of your home’s electricity comes from renewable sources (either directly or through purchased green power)?'
+                                legendPosition="bottom"
+                                height={400}
+                                max={100}
+                            />
+
+                            {/* 10th question  */}
+                            <Chart
+                                chartData={this.state.chartData}
+                                location='Compared to your neighbors, how much trash do you generate?'
+                                legendPosition="bottom"
+                                height={400}
+                                max={100}
+                            />
+
+                            {/* 11th question  */}
+                            <Chart
+                                chartData={this.state.chartData}
+                                location='How far do you travel by car or motorcycle each week? '
+                                legendPosition="bottom"
+                                height={400}
+                                max={100}
+                            />
+
+                            {/* 12th question  */}
+                            <Chart
+                                chartData={this.state.chartData}
+                                location='How far do you travel by car or motorcycle each week?'
+                                legendPosition="bottom"
+                                height={400}
+                                max={100}
+                            />
+
+                            {/* 13th question  */}
+                            <Chart
+                                chartData={this.state.chartData}
+                                location='What is the average fuel economy the vehicles you use most often? '
+                                legendPosition="bottom"
+                                height={400}
+                                max={100}
+                            />
+
+                            {/* 14th question  */}
+                            <Chart
+                                chartData={this.state.chartData}
+                                location='When you travel by car, how often do you carpool? '
+                                legendPosition="bottom"
+                                height={400}
+                                max={100}
+                            />
+
+                            {/* 15th question  */}
+                            <Chart
+                                chartData={this.state.chartData}
+                                location='How far do you travel on public transportation each week?'
+                                legendPosition="bottom"
+                                height={400}
+                                max={100}
+                            />
+
+                            {/* 16th question  */}
+                            <Chart
+                                chartData={this.state.chartData}
+                                location='How many hours do you fly each year?'
+                                legendPosition="bottom"
+                                height={400}
+                                max={100}
+                            />
 
                             <p>
                                 {localStorage.getItem('jwtToken') &&

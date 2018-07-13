@@ -1,6 +1,10 @@
 import React from 'react';
+
+
 import { Button, ButtonGroup } from 'react-bootstrap';
+
 import { PropTypes as types } from 'prop-types';
+
 
 /**
  * A ButtonGroup whose buttons act like a radio button.
@@ -15,7 +19,6 @@ class RadioGroup extends React.Component {
         super(props);
     }
     render() {
-
         let { disabled, name, onChange, options, value, ...props } = this.props
 
         return (
