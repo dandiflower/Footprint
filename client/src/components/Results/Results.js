@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 import Navbar from "../Navbar/Navbar";
 import HELPERS from "../../utils/helpers.js";
 import "./Results.css";
@@ -29,6 +30,22 @@ getChartData() {
     });
 }
 
+// is the user authorized????
+componentDidMount() {
+
+    axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
+    axios.get('/api/person')
+        .then(res => {
+            this.setState({ persons: res.data });
+            console.log("this.state.persons", this.state.persons);
+            this.props.history.push()
+        })
+        .catch((error) => {
+            if (error.response.status === 401) {
+                this.props.history.push("/login");
+            }
+        });
+}
 
 logout() {
     localStorage.removeItem('jwtToken');
