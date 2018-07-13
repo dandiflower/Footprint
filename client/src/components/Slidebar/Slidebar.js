@@ -14,23 +14,8 @@ class CustomizedSlider extends React.Component {
       this.setState({
         sliderValue: value
       })
-      // console.log("value", value)
-
-
-      // THIS CODE IS THROWING ERROR ....
-      // this.props.onChange(this.props.id, this.state.sliderValue);
-
-
-      // return this.props.sliderValues(this.state.sliderValue)
-    
-      
     }
-    // sliderInputHandler =(value) => {
-    //   console.log("after change", value)
-    //   this.setState({
-    //     sliderValue: value
-    //   })
-    // }
+   
     render() {
       let { sliderValue } = this.state
       return (
