@@ -1,42 +1,31 @@
 # Footprint
 
-Footprint is a simple survey you can take to see your effect on the environment compared to other users.
+Footprint is a React application which easily calculates a user's eco-footprint based on the user's lifestyle. People can learn how to reduce their footprint by taking the quiz and seeing how they compare to the average.
+
+## Use the app:
+* [Launch app](https://infinite-badlands-27209.herokuapp.com)
 
 
+## Inspiration
 
-## Getting Started
+* [Footprint Calculator](http://www.footprintcalculator.org/)
 
-Open up the [project link](https://infinite-badlands-27209.herokuapp.com/login) and you should be able to registor or login.
-
-![Homepage](assets/LoginPage.PNG)
-
-
-After you are logged in, you must answer all the questions provided in the survey.
-
-![Quiz](assets/QuizPage.PNG)
+* [Berkley Carbon Footprint Calculator](http://coolclimate.berkeley.edu/carboncalculator)
 
 
-After submitting your survey, you will get your results compared to other users who have taken the same survey.
-
-![Results](assets/Results.PNG)
-
-
-
-## Running Footprint Locally
-
-To run this source code:
+## To run this source code:
 
 * Clone this repo
-* Run MongoDB server. We run `mongod` in the terminal and use Robo 3T to see our database.
-* Run `npm start` or `yarn start`
+* Make sure MongoDB server is running
+* Run 'yarn run build' & then 'yarn start'
 
-
-
-## Built With
+## Built With:
 
 * HTML5
 
 * CSS
+
+* [React.js](https://reactjs.org/) - Component based JavaScript library
 
 * [Javascript](https://www.javascript.com/)
 
@@ -46,8 +35,6 @@ To run this source code:
 
 * [Express js](https://expressjs.com/) - Node application library
 
-* [React.js](https://reactjs.org/) - Component based JavaScript library
-
 * [Node](https://nodejs.org/en/) - Run JavaScript's backend loacally 
 
 * [Mongoose](http://mongoosejs.com/) - Modeling for MongoDB 
@@ -56,8 +43,29 @@ To run this source code:
 
 * [Passport](http://www.passportjs.org/docs/authenticate/) - login and register authentication
 
-* [Chart.js](https://www.chartjs.org/) - creating graphs on the results page
+* [React Chartjs 2](https://www.npmjs.com/package/react-chartjs-2) - Creating graphs on the results page
 
+* [Concurrently](https://www.npmjs.com/package/concurrently) - Run server and front-end with yarn start
+
+* see package.json for additional packages
+
+## Code examples
+
+* **Passport** - User authentification:
+
+```
+![Code](client/src/components/Video/assets/passport_auth.jpg)
+```
+
+* **Session Storage** - Creating User Session (using jQuery click event):
+```
+router.get('/logout', (req, res)=>{
+  res.localStorage.removeItem('jwtToken');
+  res.clearCookie("user", {path:"http://localhost:3000/"});
+  res.set('user', {expires: Date.now()});
+  res.json(true);
+});
+```
 
 
 ## Future Features
@@ -76,22 +84,18 @@ In the future, we hope to incorporate the following features:
 
 
 
-## Inspiration
+## Authors 🖋
 
-* [Footprint Calculator](http://www.footprintcalculator.org/)
-
-* [Berkley Carbon Footprint Calculator](http://coolclimate.berkeley.edu/carboncalculator)
-
+* **Hannah Lim** [Hannah Lim](https://github.com/hannahlim213)
+* **Jessica Brush** [Jessica Brush](https://github.com/dandiflower)
 
 
-## Authors
+## Acknowledgments 🗣
 
-* **Jessica Brush**  - [dandiflower](https://github.com/dandiflower)
-
-* **Hannah Lim** - [hannahlim213](https://github.com/hannahlim213)
-
+* **A big thank you to our instructors and TA's at Berkeley's Coding bootcamp!! Thank you Jerome, Amber, Sasha, Ricky and Dani!
 
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+![Homepage](client/src/components/Video/assets/homepage.jpg)

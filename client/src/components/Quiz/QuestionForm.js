@@ -10,6 +10,7 @@ import "./Form.css";
 
 
 class QuestionForm extends React.Component {
+    
     state = {
         userId: ""
     };
@@ -61,7 +62,7 @@ class QuestionForm extends React.Component {
                 if (response.data === true) {
                     this.setState({ persons: response.data });
 
-                    // // window.location.pathname = "/results"
+                    window.location.pathname = "/results"
                     // this.props.history.push(`/person/results/${userId}` )
                 }
             })
@@ -76,9 +77,10 @@ class QuestionForm extends React.Component {
     // is the user authorized????
     componentDidMount() {
         this.getUserID()
-        setTimeout(() => {
-            console.log(this.state.userId);
-        }, 100);
+        this.getSlideVal = this.getSlideVal.bind(this);
+        // setTimeout(() => {
+        //     console.log(this.state.userId);
+        // }, 100);
         axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
         axios.get('/api/person')
             .then(res => {
@@ -143,16 +145,6 @@ class QuestionForm extends React.Component {
                     <div className="row">
                         <div className="col-md-12">
                             <form>
-                                <p>
-                                    {localStorage.getItem('jwtToken') &&
-                                        <button
-                                            className="btn btn-primary"
-                                            onClick={this.logout}>
-                                            Logout
-                                    </button>
-                                    }
-                                </p>
-
 
                                 <p>First name: </p>
                                 <Input
@@ -426,6 +418,17 @@ class QuestionForm extends React.Component {
                                     Submit
                                 </FormBtn>
                                 <br /> <br />
+
+                                <p>
+                                    {localStorage.getItem('jwtToken') &&
+                                        <button
+                                            className="btn btn-primary"
+                                            onClick={this.logout}>
+                                            Logout
+                                    </button>
+                                    }
+                                </p>
+
                             </form>
 
                         </div>

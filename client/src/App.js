@@ -15,7 +15,7 @@ class MERN extends Component {
   }
 
   componentDidMount() {
-    axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
+    //axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
     axios.get('/api/person')
       .then(res => {
         console.log(res)
