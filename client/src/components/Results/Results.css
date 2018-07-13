@@ -4,7 +4,8 @@
 } */
 
 #results--card--center {
-    position: fixed;
+    /* position: fixed; */
+    height: 4000px;
     margin-bottom: -200px;
     margin-left: 5%;
     width: 90%;
