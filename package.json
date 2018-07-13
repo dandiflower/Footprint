@@ -37,7 +37,9 @@
     "serve-favicon": "^2.4.5"
   },
   "devDependencies": {
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "if-env": "^1.0.4",
+    "nodemon": "^1.18.1"
   },
   "engines": {
     "node": "10.1.0",

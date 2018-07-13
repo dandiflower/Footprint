@@ -4,21 +4,7 @@ import './Radiobutton.css';
 class Radio extends React.Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     radioValue: ''
-        // }
     }
-
-
-    // hanldeChange(event) {
-    //     this.setState({
-    //         radioValue: event.target.value
-    //     });
-    // }
-
-    // handleSubmit(event) {
-    //     console.log(this.state.radioValue)
-    // }
 
     render() {
         return (
@@ -26,13 +12,7 @@ class Radio extends React.Component {
                 <label>
 
                     <input {...this.props}
-                        // id={this.props.id}
-                        // name={this.props.name}
                         type="radio"
-                        // value={this.props.value}
-                        // checked={this.state.radioValue}
-                        // onChange={this.handleChange}
-
                     /> {[this.props.name]}
                 </label>
             </li>

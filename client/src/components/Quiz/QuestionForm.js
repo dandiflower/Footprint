@@ -101,10 +101,17 @@ class QuestionForm extends React.Component {
     getUserID = () => {
         let cookies = document.cookie;
         cookies = cookies.split(",");
-        let user = cookies[0].split("=")[1].slice(3).split("%")[0];
-        this.setState({
-            userId: user
-        })
+        let user = cookies[0].split("=");
+        if (user.length >= 1) {
+            console.log("QuestionForm.getUserID: cookie found");
+            user = user[1].slice(3).split("%")[0];
+            this.setState({
+                userId: user
+            })
+        }
+        else {
+            console.log("QuestionForm.getUserID: no cookie found");
+        }
     }
 
     logout() {
