@@ -10,40 +10,110 @@ import "./Form.css";
 
 
 class QuestionForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            firstName: "",
+            zipCode: "",
+            q1: 0,
+            q2: 0,
+            q3: 0,
+            q4: 0,
+            q5: 0,
+            q6: 0,
+            q7: 0,
+            q8: 0,
+            q9: 0,
+            q10: 0,
+            q11: 0,
+            q12: 0,
+            q13: 0,
+            q14: 0,
+            q15: 0,
+            q16: 0,
+            userId: ""
+        };
 
-    state = {
-        userId: "",
-        q1: "",
-        q2: "",
-        q3: "",
-        q4: "",
-        q5: "",
-        q6: "",
-        q7: "",
-        q8: "",
-        q9: "",
-        q10: "",
-        q11: "",
-        q12: "",
-        q13: "",
-        q14: "",
-        q15: "",
-        q16: ""
-    };
-
-    getSlideVal() {
-        this.state.getSlideVal = this.getSlideVal.bind(this);
-        console.log("getSlideVal", this.state)
+        this.handleSliderChange = this.handleSliderChange.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(sthis);
     }
+
+    // handleOnChange = value => {
+    //     this.setState({
+    //         q1: this.value,
+    //         q2: value
+    //     })
+    //     console.log ("values of slider", q1)
+    // }
+    // state = {
+    //     userId: "",
+    //     q1: "",
+    //     q2: "",
+    //     q3: "",
+    //     q4: "",
+    //     q5: "",
+    //     q6: "",
+    //     q7: "",
+    //     q8: "",
+    //     q9: "",
+    //     q10: "",
+    //     q11: "",
+    //     q12: "",
+    //     q13: "",
+    //     q14: "",
+    //     q15: "",
+    //     q16: ""
+    // };
+
+    // for radio button values
+    handleChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
+    // for slider values
+    // handleOnChange = (value) => {
+    //     this.setState({
+    //         sliderValue: this.value,
+    //         q2: this.value
+    //     })
+        // console.log("sliderValue", this.state.sliderValue)
+    //   }
+    // getSlideVal(id, val) {
+    //     this.setState({ [id]: val })
+    //     console.log("getSlideVal", this.state[id])
+    // }
+
+    // getSlideVal() {
+    //     this.state.getSlideVal = this.getSlideVal.bind(this);
+    //     console.log("getSlideVal", this.state)
+    // }
     // this.handleChanger = this.handleChanger.bind(this);
     // this.handleChangerOne = this.handleChanger.bind(this);
     // this.handleSubmit = this.handleSubmit.bind(this);
 
+    // sliderInputHandler(value) {
+    //     console.log("after change", value)
+    //     this.setState({
+    //         q1: value
+    //     })
+    // }
+
+    handleSliderChange(event) {
+        
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
 
     change = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
+    }
+
+    handleSubmit(event) {
+        console.log("handleSubmit", this.state.q1);
+        event.preventDefault();
     }
 
     onSubmit = (e) => {
@@ -89,13 +159,11 @@ class QuestionForm extends React.Component {
     }
 
 
-
-
-
     // is the user authorized????
     componentDidMount() {
         this.getUserID()
-        this.getSlideVal()
+        // this.getSlideVal()
+        // let { sliderValue } = this.state
         // setTimeout(() => {
         //     console.log(this.state.userId);
         // }, 100);
@@ -138,13 +206,6 @@ class QuestionForm extends React.Component {
         window.location.reload();
     }
 
-    sliderInputHandler(value) {
-        console.log("after change", value)
-        this.setState({
-            q1: value
-        })
-    }
-
     radioValues(radioValues) {
         console.log("radioValues", radioValues)
         this.setState({
@@ -152,14 +213,7 @@ class QuestionForm extends React.Component {
         })
     }
 
-    handleChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value })
-    }
-
-    getSlideVal(id, val) {
-        this.setState({ [id]: val })
-        console.log("getSlideVal", this.state[id])
-    }
+   
 
     render() {
         return (
@@ -173,7 +227,7 @@ class QuestionForm extends React.Component {
 
                            
 
-                            <form>
+                            <form onSubmit={this.handleSubmit}>
                             <p>
                                 {localStorage.getItem('jwtToken') &&
                                     <button
@@ -209,15 +263,17 @@ class QuestionForm extends React.Component {
                                 <p>How many times a week do you eat meat?</p>
 
 
-                                <CustomizedSlider
+                                <input
                                     id="q1"
-                                    value={this.state.sliderValue}
-                                    min={0}
-                                    max={7}
-                                    onChange={this.getSlideVal}
-                                // sliderValue={this.sliderInputHandler.bind(this)}
-                                // sliderValue={this.sliderValues.bind(this)} 
+                                    name="q1"
+                                    type= "range"
+                                    value={this.state.q1}
+                                    min="0"
+                                    max="7"
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
+
                                 <span>Never</span><span className="sliderLabels">Everyday</span>
 
                                 <br /> <br /> <br />
@@ -225,12 +281,15 @@ class QuestionForm extends React.Component {
                                 <p> How much of the food that you eat is unprocessed, unpackaged or locally grown?</p>
 
 
-                                <CustomizedSlider
+                                <input
                                     id="q2"
-                                    value={this.state.sliderValue1}
-                                    min={0}
-                                    max={100}
-                                    onChange={this.getSlideVal}
+                                    name="q2"
+                                    type="range"
+                                    value={this.state.q2}
+                                    min="0"
+                                    max="100"
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
                                 <span>None</span> <span className="sliderLabels">All</span>
 
