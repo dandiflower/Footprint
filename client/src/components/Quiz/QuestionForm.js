@@ -104,6 +104,10 @@ class QuestionForm extends React.Component {
         let user = cookies[0].split("=");
         if (user.length >= 1) {
             console.log("QuestionForm.getUserID: cookie found");
+            // TODO: There's a bug here! We have to fix it before we 
+            // push to heroku. user[1] is undefined --- which means
+            // we cannot call the .slice function from a variable
+            // who's value is undefined! You should check it first.
             user = user[1].slice(3).split("%")[0];
             this.setState({
                 userId: user
