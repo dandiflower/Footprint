@@ -21,7 +21,8 @@ ReactDOM.render(
     <Router>
         <div>
             <Route exact path='/person' component={MERN} />
-            <Route exact path='/' component={QuestionForm} />
+            <Route exact path='/' component={Login} />
+            <Route exact path='/QuestionForm' component={QuestionForm} />
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
             <Route path='/results' component={Results} />
