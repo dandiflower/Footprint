@@ -10,13 +10,30 @@ import "./Form.css";
 
 
 class QuestionForm extends React.Component {
-    
+
     state = {
-        userId: ""
+        userId: "",
+        q1: "",
+        q2: "",
+        q3: "",
+        q4: "",
+        q5: "",
+        q6: "",
+        q7: "",
+        q8: "",
+        q9: "",
+        q10: "",
+        q11: "",
+        q12: "",
+        q13: "",
+        q14: "",
+        q15: "",
+        q16: ""
     };
-    
+
     getSlideVal() {
-    this.state.getSlideVal = this.getSlideVal.bind(this);
+        this.state.getSlideVal = this.getSlideVal.bind(this);
+        console.log("getSlideVal", this.state)
     }
     // this.handleChanger = this.handleChanger.bind(this);
     // this.handleChangerOne = this.handleChanger.bind(this);
@@ -68,7 +85,7 @@ class QuestionForm extends React.Component {
                 }
             })
 
-
+        console.log(answers)
     }
 
 
@@ -86,7 +103,7 @@ class QuestionForm extends React.Component {
         axios.get('/api/person')
             .then(res => {
                 this.setState({ persons: res.data });
-                console.log("this.state.persons", this.state.persons);
+                // console.log("this.state.persons", this.state.persons);
                 this.props.history.push()
             })
             .catch((error) => {
@@ -103,7 +120,7 @@ class QuestionForm extends React.Component {
         cookies = cookies.split(",");
         let user = cookies[0].split("=");
         if (user.length >= 1) {
-            console.log("QuestionForm.getUserID: cookie found");
+            // console.log("QuestionForm.getUserID: cookie found");
             user = user[1].slice(3).split("%")[0];
             this.setState({
                 userId: user
@@ -141,7 +158,7 @@ class QuestionForm extends React.Component {
 
     getSlideVal(id, val) {
         this.setState({ [id]: val })
-        // console.log("getSlideVal", this.state[id])
+        console.log("getSlideVal", this.state[id])
     }
 
     render() {
@@ -149,11 +166,25 @@ class QuestionForm extends React.Component {
 
             <div>
                 <Navbar />
+
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <form>
 
+                           
+
+                            <form>
+                            <p>
+                                {localStorage.getItem('jwtToken') &&
+                                    <button
+                                        className="btn btn-primary"
+                                        onClick={this.logout}>
+                                        Logout
+                                    </button>
+                                }
+                            </p>
+
+                            <br/><br/><br/><br/>
                                 <p>First name: </p>
                                 <Input
                                     id="firstName"
@@ -427,15 +458,7 @@ class QuestionForm extends React.Component {
                                 </FormBtn>
                                 <br /> <br />
 
-                                <p>
-                                    {localStorage.getItem('jwtToken') &&
-                                        <button
-                                            className="btn btn-primary"
-                                            onClick={this.logout}>
-                                            Logout
-                                    </button>
-                                    }
-                                </p>
+
 
                             </form>
 
