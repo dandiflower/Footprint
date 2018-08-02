@@ -4,29 +4,32 @@ import 'react-rangeslider/lib/index.css'
 
 
 class CustomizedSlider extends React.Component {
-  constructor(props, context) {
-      super(props, context)
-      this.state = {
-        sliderValue: 0
-      }
-    }
-  handleOnChange = (value) => {
-      this.setState({
-        sliderValue: value
-      })
-    }
+  // constructor(props) {
+      // super(props)
+      // this.state = {
+      //   sliderValue: 0
+      // }
+    // }
+  // handleOnChange = (value) => {
+  //     this.setState({
+  //       sliderValue: value
+  //     })
+  //     console.log("sliderValue", this.state.sliderValue)
+  //   }
    
     render() {
-      let { sliderValue } = this.state
+      // let { sliderValue } = this.state
       return (
         <Slider
           id={this.props.id}
-          value={sliderValue}
+          type={this.props.type}
+          value={this.props.value}
           min={this.props.min}
           max={this.props.max}
           orientation="horizontal"
-          onChange={this.handleOnChange}
-          onAfterChange={this.sliderInputHandler}
+          onChange={this.props.onChange}
+          // onChange={this.handleOnChange}
+          // onAfterChange={this.sliderInputHandler}
         />
       )
     }
