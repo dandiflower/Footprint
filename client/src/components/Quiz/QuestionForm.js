@@ -331,13 +331,15 @@ class QuestionForm extends React.Component {
 
                                 <p>How many people live in your household?</p>
 
-                                <CustomizedSlider
+                                <input
                                     id="q5"
-                                    value={this.state.sliderValue}
-                                    min={0}
-                                    max={10}
-                                    onChange={this.getSlideVal}
-                                // sliderValue={this.state.sliderValues.bind(this)} 
+                                    name="q5"
+                                    type="range"
+                                    value={this.state.q5}
+                                    min="0"
+                                    max="10"
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
                                 <span>Just me</span><span className="sliderLabels">10+</span>
 
@@ -346,13 +348,15 @@ class QuestionForm extends React.Component {
                                 <p>What is the size of your home (square feet)?</p>
 
 
-                                <CustomizedSlider
+                                <input
                                     id="q6"
-                                    value={this.state.sliderValue}
-                                    min={0}
-                                    max={100}
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)} 
+                                    name="q6"
+                                    type="range"
+                                    value={this.state.q6}
+                                    min="0"
+                                    max="100000"
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
                                 <span>Tiny</span><span className="sliderLabels">A mansion</span>
 
@@ -367,27 +371,24 @@ class QuestionForm extends React.Component {
                                     options={[
                                         ['Yes', 'Yes'],
                                         ['No', 'No'],
-
                                     ]} value={this.state.q7}
                                 />
 
-                                <p>How energy efficient is your home?</p>
-
                                 <br /><br /> <br />
 
-                                <CustomizedSlider
+                                <p>How energy efficient is your home?</p>
+
+                                <br />
+
+                                <input
                                     id="q8"
-                                    value={this.state.sliderValue}
-                                    rangeslider__handle-tooltip={false}
-                                    labels={
-                                        {
-                                            0: "no efficiency",
-                                            50: "mid efficiency",
-                                            100: "Very efficient"
-                                        }
-                                    }
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)} 
+                                    name="q8"
+                                    type="range"
+                                    value={this.state.q8}
+                                    min="0"
+                                    max="100"
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
                                 <span>Not efficient at all</span><span className="sliderLabels">Very efficient</span>
 
@@ -396,13 +397,15 @@ class QuestionForm extends React.Component {
                                 <p>What percentage of your home’s electricity comes from renewable sources (either directly or through purchased green power)?</p>
 
 
-                                <CustomizedSlider
+                                <input
                                     id="q9"
-                                    value={this.state.sliderValue}
-                                    min={0}
-                                    max={100}
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)} 
+                                    name="q9"
+                                    type="range"
+                                    value={this.state.q9}
+                                    min="0"
+                                    max="10"
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
                                 <span>Low</span><span className="sliderLabels">High</span>
 
@@ -411,13 +414,16 @@ class QuestionForm extends React.Component {
                                 <p>Compared to your neighbors, how much trash do you generate?</p>
 
 
-                                <CustomizedSlider
+                                <input
                                     id="q10"
-                                    value={this.state.sliderValue}
+                                    name="q10"
+                                    type="range"
+                                    value={this.state.q10}
                                     min={0}
                                     max={100}
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)} 
+                                    step="1"
+                                    onChange={this.handleSliderChange}
+                               
                                 />
                                 <span>Significantly less</span><span className="sliderLabels">A lot more</span>
 
@@ -428,86 +434,98 @@ class QuestionForm extends React.Component {
 
                                 <h4>Car</h4>
 
-                                <CustomizedSlider
+                                <input
                                     id="q11"
-                                    value={this.state.sliderValue}
+                                    name="q11"
+                                    type="range"
+                                    value={this.state.q11}
                                     min={0}
                                     max={100}
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)} 
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
-                                <span>Not far at all</span><span className="sliderLabels">Far far away</span>
+                                <span>Not far at all (less than 5 miles)</span><span className="sliderLabels">Far far away (more than 100 miles)</span>
 
                                 <h4>Motorcycle</h4>
 
-                                <CustomizedSlider
+                                <input
                                     id="q12"
-                                    value={this.state.sliderValue}
+                                    name="q12"
+                                    type="range"
+                                    value={this.state.q12}
                                     min={0}
                                     max={100}
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)} 
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
-                                <span>Not far at all</span><span className="sliderLabels">Far far away</span>
+                                <span>Not far at all (less than 5 miles)</span><span className="sliderLabels">Far far away (more than 100 miles)</span>
 
                                 <br /><br /> <br />
 
-                                <p>What is the average fuel economy the vehicles you use most often? </p>
+                                <p>What is the average fuel economy of the vehicle you use most often? </p>
 
-
-                                <CustomizedSlider
+                                <input
                                     id="q13"
-                                    value={this.state.sliderValue}
+                                    name="q13"
+                                    type="range"
+                                    value={this.state.q13}
                                     min={0}
                                     max={100}
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)} 
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
                                 <span>Inefficient</span><span className="sliderLabels">Efficient or Electric</span>
 
                                 <br /><br /> <br />
 
-                                <p>When you travel by car, how often do you carpool?</p>
+                                <p>When you travel by car, how often do you carpool every week?</p>
 
 
-                                <CustomizedSlider
+                                <input
                                     id="q14"
-                                    value={this.state.sliderValue}
+                                    name="q14"
+                                    type="range"
+                                    value={this.state.q14}
                                     min={0}
-                                    max={100}
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)}
+                                    max={7}
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
-                                <span>Never</span><span className="sliderLabels">Always</span>
+
+                                <span>Never</span><span className="sliderLabels">Everyday</span>
 
                                 <br /><br /> <br />
 
                                 <p>How far do you travel on public transportation each week?</p>
 
-
-                                <CustomizedSlider
+                                <input
                                     id="q15"
-                                    value={this.state.sliderValue}
+                                    name="q15"
+                                    type="range"
+                                    value={this.state.q15}
                                     min={0}
                                     max={100}
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)} 
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
-                                <span>Not far</span><span className="sliderLabels">Very Far</span>
+
+                                <span>Not far (less than 5 miles)</span><span className="sliderLabels">Very Far (over 100 miles)</span>
 
                                 <br /><br /> <br />
 
                                 <p>How many hours do you fly each year?</p>
 
-
-                                <CustomizedSlider
+                                <input
                                     id="q16"
-                                    value={this.state.sliderValue}
+                                    name="q16"
+                                    type="range"
+                                    value={this.state.q16}
                                     min={0}
                                     max={100}
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)} 
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
+
                                 <span>None</span><span className="sliderLabels">Many</span>
 
                                 <br /> <br /><br /> <br />
@@ -515,6 +533,7 @@ class QuestionForm extends React.Component {
                                 <FormBtn onClick={this.onSubmit}>
                                     Submit
                                 </FormBtn>
+
                                 <br /> <br />
 
 
