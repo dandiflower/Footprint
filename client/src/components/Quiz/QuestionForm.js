@@ -148,7 +148,7 @@ class QuestionForm extends React.Component {
             .then(response => {
 
                 if (response.data === true) {
-                    this.setState({ persons: response.data });
+                    this.setState({ UserData: answers });
 
                     window.location.pathname = "/results"
                     // this.props.history.push(`/person/results/${userId}` )
