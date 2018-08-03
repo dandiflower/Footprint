@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var PersonSchema = new mongoose.Schema({
+var UserDataSchema = new mongoose.Schema({
     firstName:  {
         type: String,
         require: true
@@ -10,11 +10,11 @@ var PersonSchema = new mongoose.Schema({
         require: true
     },
     q1: {
-        type: String,
+        type: Number,
         require: true
     },
     q2: {
-        type: String,
+        type: Number,
         require: true
     },
     q3: {
@@ -26,11 +26,11 @@ var PersonSchema = new mongoose.Schema({
         require: true
     },
     q5: {
-        type: String,
+        type: Number,
         require: true
     },
     q6: {
-        type: String,
+        type: Number,
         require: true
     },
     q7: {
@@ -38,39 +38,39 @@ var PersonSchema = new mongoose.Schema({
         require: true
     },
     q8: {
-        type: String,
+        type: Number,
         require: true
     },
     q9: {
-        type: String,
+        type: Number,
         require: true
     },
     q10: {
-        type: String,
+        type: Number,
         require: true
     },
     q11: {
-        type: String,
+        type: Number,
         require: true
     },
     q12: {
-        type: String,
+        type: Number,
         require: true
     },
     q13: {
-        type: String,
+        type: Number,
         require: true
     },
     q14: {
-        type: String,
+        type: Number,
         require: true
     },
     q15: {
-        type: String,
+        type: Number,
         require: true
     },
     q16: {
-        type: String,
+        type: Number,
         require: true
     },
     userId: {
@@ -79,4 +79,4 @@ var PersonSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Person', PersonSchema);
+module.exports = mongoose.model('UserData', UserDataSchema);
