@@ -7,15 +7,15 @@ class Chart extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            chartData:props.chartData
+            chartData: props.chartData
         }
     }
 
     static defaultProps = {
-        displayTitle:true,
-        displayLegend:true,
-        legendPosition:'right',
-        location:'Question Title'
+        displayTitle: true,
+        displayLegend: true,
+        legendPosition: 'right',
+        location: 'Question Title'
     }
 
     render() {
@@ -25,21 +25,21 @@ class Chart extends Component {
                     data={this.state.chartData}
                     height={this.props.height}
                     options={{
-                        maintainAspectRatio:false,
+                        maintainAspectRatio: false,
                         title: {
-                            display:this.props.displayTitle,
-                            text:this.props.location,
-                            fontSize:25
+                            display: this.props.displayTitle,
+                            text: this.props.location,
+                            fontSize: 25
                         },
-                        legend:{
-                            display:this.props.displayLegend,
-                            position:this.props.legendPosition
+                        legend: {
+                            display: this.props.displayLegend,
+                            position: this.props.legendPosition
                         },
                         scales: {
-                            yAxes:[{
+                            yAxes: [{
                                 ticks: {
                                     beginAtZero: true,
-                                    max:this.props.max
+                                    max: this.props.max
                                 }
                             }]
                         }

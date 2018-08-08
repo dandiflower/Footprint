@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
-import Chart from '../src/components/Chart'
+// import ReactDOM from 'react-dom';
+// import { Link } from 'react-router-dom';
+// import Chart from '../src/components/Chart'
 import HELPERS from "./utils/helpers.js";
 
 class MERN extends Component {
