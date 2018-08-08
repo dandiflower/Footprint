@@ -10,23 +10,110 @@ import "./Form.css";
 
 
 class QuestionForm extends React.Component {
-    
-    state = {
-        userId: ""
-    };
-    
-    getSlideVal() {
-    this.state.getSlideVal = this.getSlideVal.bind(this);
+    constructor(props) {
+        super(props);
+        this.state = {
+            firstName: "",
+            zipCode: "",
+            q1: 0,
+            q2: 0,
+            q3: 0,
+            q4: 0,
+            q5: 0,
+            q6: 0,
+            q7: 0,
+            q8: 0,
+            q9: 0,
+            q10: 0,
+            q11: 0,
+            q12: 0,
+            q13: 0,
+            q14: 0,
+            q15: 0,
+            q16: 0,
+            userId: ""
+        };
+
+        this.handleSliderChange = this.handleSliderChange.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(sthis);
     }
+
+    // handleOnChange = value => {
+    //     this.setState({
+    //         q1: this.value,
+    //         q2: value
+    //     })
+    //     console.log ("values of slider", q1)
+    // }
+    // state = {
+    //     userId: "",
+    //     q1: "",
+    //     q2: "",
+    //     q3: "",
+    //     q4: "",
+    //     q5: "",
+    //     q6: "",
+    //     q7: "",
+    //     q8: "",
+    //     q9: "",
+    //     q10: "",
+    //     q11: "",
+    //     q12: "",
+    //     q13: "",
+    //     q14: "",
+    //     q15: "",
+    //     q16: ""
+    // };
+
+    // for radio button values
+    handleChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
+    // for slider values
+    // handleOnChange = (value) => {
+    //     this.setState({
+    //         sliderValue: this.value,
+    //         q2: this.value
+    //     })
+        // console.log("sliderValue", this.state.sliderValue)
+    //   }
+    // getSlideVal(id, val) {
+    //     this.setState({ [id]: val })
+    //     console.log("getSlideVal", this.state[id])
+    // }
+
+    // getSlideVal() {
+    //     this.state.getSlideVal = this.getSlideVal.bind(this);
+    //     console.log("getSlideVal", this.state)
+    // }
     // this.handleChanger = this.handleChanger.bind(this);
     // this.handleChangerOne = this.handleChanger.bind(this);
     // this.handleSubmit = this.handleSubmit.bind(this);
 
+    // sliderInputHandler(value) {
+    //     console.log("after change", value)
+    //     this.setState({
+    //         q1: value
+    //     })
+    // }
+
+    handleSliderChange(event) {
+        
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
 
     change = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
+    }
+
+    handleSubmit(event) {
+        console.log("handleSubmit", this.state.q1);
+        event.preventDefault();
     }
 
     onSubmit = (e) => {
@@ -61,24 +148,22 @@ class QuestionForm extends React.Component {
             .then(response => {
 
                 if (response.data === true) {
-                    this.setState({ persons: response.data });
+                    this.setState({ UserData: answers });
 
                     window.location.pathname = "/results"
                     // this.props.history.push(`/person/results/${userId}` )
                 }
             })
 
-
+        console.log(answers)
     }
-
-
-
 
 
     // is the user authorized????
     componentDidMount() {
         this.getUserID()
-        this.getSlideVal()
+        // this.getSlideVal()
+        // let { sliderValue } = this.state
         // setTimeout(() => {
         //     console.log(this.state.userId);
         // }, 100);
@@ -86,7 +171,7 @@ class QuestionForm extends React.Component {
         axios.get('/api/person')
             .then(res => {
                 this.setState({ persons: res.data });
-                console.log("this.state.persons", this.state.persons);
+                // console.log("this.state.persons", this.state.persons);
                 this.props.history.push()
             })
             .catch((error) => {
@@ -103,11 +188,7 @@ class QuestionForm extends React.Component {
         cookies = cookies.split(",");
         let user = cookies[0].split("=");
         if (user.length >= 1) {
-            console.log("QuestionForm.getUserID: cookie found");
-            // TODO: There's a bug here! We have to fix it before we 
-            // push to heroku. user[1] is undefined --- which means
-            // we cannot call the .slice function from a variable
-            // who's value is undefined! You should check it first.
+            // console.log("QuestionForm.getUserID: cookie found");
             user = user[1].slice(3).split("%")[0];
             this.setState({
                 userId: user
@@ -125,13 +206,6 @@ class QuestionForm extends React.Component {
         window.location.reload();
     }
 
-    sliderInputHandler(value) {
-        console.log("after change", value)
-        this.setState({
-            q1: value
-        })
-    }
-
     radioValues(radioValues) {
         console.log("radioValues", radioValues)
         this.setState({
@@ -139,25 +213,32 @@ class QuestionForm extends React.Component {
         })
     }
 
-    handleChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value })
-    }
-
-    getSlideVal(id, val) {
-        this.setState({ [id]: val })
-        // console.log("getSlideVal", this.state[id])
-    }
+   
 
     render() {
         return (
 
             <div>
                 <Navbar />
+
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <form>
 
+                           
+
+                            <form onSubmit={this.handleSubmit}>
+                            <p>
+                                {localStorage.getItem('jwtToken') &&
+                                    <button
+                                        className="btn btn-primary"
+                                        onClick={this.logout}>
+                                        Logout
+                                    </button>
+                                }
+                            </p>
+
+                            <br/><br/><br/><br/>
                                 <p>First name: </p>
                                 <Input
                                     id="firstName"
@@ -182,15 +263,17 @@ class QuestionForm extends React.Component {
                                 <p>How many times a week do you eat meat?</p>
 
 
-                                <CustomizedSlider
+                                <input
                                     id="q1"
-                                    value={this.state.sliderValue}
-                                    min={0}
-                                    max={7}
-                                    onChange={this.getSlideVal}
-                                // sliderValue={this.sliderInputHandler.bind(this)}
-                                // sliderValue={this.sliderValues.bind(this)} 
+                                    name="q1"
+                                    type= "range"
+                                    value={this.state.q1}
+                                    min="0"
+                                    max="7"
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
+
                                 <span>Never</span><span className="sliderLabels">Everyday</span>
 
                                 <br /> <br /> <br />
@@ -198,12 +281,15 @@ class QuestionForm extends React.Component {
                                 <p> How much of the food that you eat is unprocessed, unpackaged or locally grown?</p>
 
 
-                                <CustomizedSlider
+                                <input
                                     id="q2"
-                                    value={this.state.sliderValue1}
-                                    min={0}
-                                    max={100}
-                                    onChange={this.getSlideVal}
+                                    name="q2"
+                                    type="range"
+                                    value={this.state.q2}
+                                    min="0"
+                                    max="100"
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
                                 <span>None</span> <span className="sliderLabels">All</span>
 
@@ -245,13 +331,15 @@ class QuestionForm extends React.Component {
 
                                 <p>How many people live in your household?</p>
 
-                                <CustomizedSlider
+                                <input
                                     id="q5"
-                                    value={this.state.sliderValue}
-                                    min={0}
-                                    max={10}
-                                    onChange={this.getSlideVal}
-                                // sliderValue={this.state.sliderValues.bind(this)} 
+                                    name="q5"
+                                    type="range"
+                                    value={this.state.q5}
+                                    min="0"
+                                    max="10"
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
                                 <span>Just me</span><span className="sliderLabels">10+</span>
 
@@ -260,13 +348,15 @@ class QuestionForm extends React.Component {
                                 <p>What is the size of your home (square feet)?</p>
 
 
-                                <CustomizedSlider
+                                <input
                                     id="q6"
-                                    value={this.state.sliderValue}
-                                    min={0}
-                                    max={100}
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)} 
+                                    name="q6"
+                                    type="range"
+                                    value={this.state.q6}
+                                    min="0"
+                                    max="100000"
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
                                 <span>Tiny</span><span className="sliderLabels">A mansion</span>
 
@@ -281,27 +371,24 @@ class QuestionForm extends React.Component {
                                     options={[
                                         ['Yes', 'Yes'],
                                         ['No', 'No'],
-
                                     ]} value={this.state.q7}
                                 />
 
-                                <p>How energy efficient is your home?</p>
-
                                 <br /><br /> <br />
 
-                                <CustomizedSlider
+                                <p>How energy efficient is your home?</p>
+
+                                <br />
+
+                                <input
                                     id="q8"
-                                    value={this.state.sliderValue}
-                                    rangeslider__handle-tooltip={false}
-                                    labels={
-                                        {
-                                            0: "no efficiency",
-                                            50: "mid efficiency",
-                                            100: "Very efficient"
-                                        }
-                                    }
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)} 
+                                    name="q8"
+                                    type="range"
+                                    value={this.state.q8}
+                                    min="0"
+                                    max="100"
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
                                 <span>Not efficient at all</span><span className="sliderLabels">Very efficient</span>
 
@@ -310,13 +397,15 @@ class QuestionForm extends React.Component {
                                 <p>What percentage of your home’s electricity comes from renewable sources (either directly or through purchased green power)?</p>
 
 
-                                <CustomizedSlider
+                                <input
                                     id="q9"
-                                    value={this.state.sliderValue}
-                                    min={0}
-                                    max={100}
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)} 
+                                    name="q9"
+                                    type="range"
+                                    value={this.state.q9}
+                                    min="0"
+                                    max="10"
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
                                 <span>Low</span><span className="sliderLabels">High</span>
 
@@ -325,13 +414,16 @@ class QuestionForm extends React.Component {
                                 <p>Compared to your neighbors, how much trash do you generate?</p>
 
 
-                                <CustomizedSlider
+                                <input
                                     id="q10"
-                                    value={this.state.sliderValue}
+                                    name="q10"
+                                    type="range"
+                                    value={this.state.q10}
                                     min={0}
                                     max={100}
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)} 
+                                    step="1"
+                                    onChange={this.handleSliderChange}
+                               
                                 />
                                 <span>Significantly less</span><span className="sliderLabels">A lot more</span>
 
@@ -342,86 +434,98 @@ class QuestionForm extends React.Component {
 
                                 <h4>Car</h4>
 
-                                <CustomizedSlider
+                                <input
                                     id="q11"
-                                    value={this.state.sliderValue}
+                                    name="q11"
+                                    type="range"
+                                    value={this.state.q11}
                                     min={0}
                                     max={100}
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)} 
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
-                                <span>Not far at all</span><span className="sliderLabels">Far far away</span>
+                                <span>Not far at all (less than 5 miles)</span><span className="sliderLabels">Far far away (more than 100 miles)</span>
 
                                 <h4>Motorcycle</h4>
 
-                                <CustomizedSlider
+                                <input
                                     id="q12"
-                                    value={this.state.sliderValue}
+                                    name="q12"
+                                    type="range"
+                                    value={this.state.q12}
                                     min={0}
                                     max={100}
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)} 
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
-                                <span>Not far at all</span><span className="sliderLabels">Far far away</span>
+                                <span>Not far at all (less than 5 miles)</span><span className="sliderLabels">Far far away (more than 100 miles)</span>
 
                                 <br /><br /> <br />
 
-                                <p>What is the average fuel economy the vehicles you use most often? </p>
+                                <p>What is the average fuel economy of the vehicle you use most often? </p>
 
-
-                                <CustomizedSlider
+                                <input
                                     id="q13"
-                                    value={this.state.sliderValue}
+                                    name="q13"
+                                    type="range"
+                                    value={this.state.q13}
                                     min={0}
                                     max={100}
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)} 
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
                                 <span>Inefficient</span><span className="sliderLabels">Efficient or Electric</span>
 
                                 <br /><br /> <br />
 
-                                <p>When you travel by car, how often do you carpool?</p>
+                                <p>When you travel by car, how often do you carpool every week?</p>
 
 
-                                <CustomizedSlider
+                                <input
                                     id="q14"
-                                    value={this.state.sliderValue}
+                                    name="q14"
+                                    type="range"
+                                    value={this.state.q14}
                                     min={0}
-                                    max={100}
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)}
+                                    max={7}
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
-                                <span>Never</span><span className="sliderLabels">Always</span>
+
+                                <span>Never</span><span className="sliderLabels">Everyday</span>
 
                                 <br /><br /> <br />
 
                                 <p>How far do you travel on public transportation each week?</p>
 
-
-                                <CustomizedSlider
+                                <input
                                     id="q15"
-                                    value={this.state.sliderValue}
+                                    name="q15"
+                                    type="range"
+                                    value={this.state.q15}
                                     min={0}
                                     max={100}
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)} 
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
-                                <span>Not far</span><span className="sliderLabels">Very Far</span>
+
+                                <span>Not far (less than 5 miles)</span><span className="sliderLabels">Very Far (over 100 miles)</span>
 
                                 <br /><br /> <br />
 
                                 <p>How many hours do you fly each year?</p>
 
-
-                                <CustomizedSlider
+                                <input
                                     id="q16"
-                                    value={this.state.sliderValue}
+                                    name="q16"
+                                    type="range"
+                                    value={this.state.q16}
                                     min={0}
                                     max={100}
-                                    onChange={this.getSlideVal}
-                                // sliderValues={this.sliderValues.bind(this)} 
+                                    step="1"
+                                    onChange={this.handleSliderChange}
                                 />
+
                                 <span>None</span><span className="sliderLabels">Many</span>
 
                                 <br /> <br /><br /> <br />
@@ -429,17 +533,10 @@ class QuestionForm extends React.Component {
                                 <FormBtn onClick={this.onSubmit}>
                                     Submit
                                 </FormBtn>
+
                                 <br /> <br />
 
-                                <p>
-                                    {localStorage.getItem('jwtToken') &&
-                                        <button
-                                            className="btn btn-primary"
-                                            onClick={this.logout}>
-                                            Logout
-                                    </button>
-                                    }
-                                </p>
+
 
                             </form>
 

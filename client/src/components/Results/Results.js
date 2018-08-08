@@ -12,16 +12,16 @@ class Results extends React.Component {
         super();
         this.state = {
             chartData: {},
-            chartDataB: {}
-            // firstName: "",
-            // zipCode: "",
+            chartDataB: {},
+            firstName: "",
+            zipCode: "",
             // q1: "",
             // q2: "",
-            // q3: "",
-            // q4: "",
+            q3: "",
+            q4: "",
             // q5: "",
             // q6: "",
-            // q7: "",
+            q7: "",
             // q8: "",
             // q9: "",
             // q10: "",
