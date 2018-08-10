@@ -245,6 +245,9 @@ class QuestionForm extends React.Component {
                             </p>
 
                             <br/><br/><br/><br/>
+
+                            <h3>Basic Information</h3>
+
                                 <p>First name: </p>
                                 <Input
                                     id="firstName"
@@ -252,7 +255,7 @@ class QuestionForm extends React.Component {
                                     placeholder="first name"
                                     value={this.state.firstName}
                                     onChange={e => this.change(e)} />
-                                <br />
+                               
 
                                 <p> Zip code:</p>
                                 <Input
@@ -263,7 +266,7 @@ class QuestionForm extends React.Component {
                                     onChange={e => this.change(e)} />
                                 <br />
 
-                                <hr />
+                                <hr /><br/>
 
                                 <h3>Food</h3>
                                 <p>How many times a week do you eat meat?</p>
@@ -279,6 +282,8 @@ class QuestionForm extends React.Component {
                                     step="1"
                                     onChange={this.handleSliderChange}
                                 />
+
+                                <br/>
 
                                 <span>Never</span><span className="sliderLabels">Everyday</span>
 
@@ -297,10 +302,14 @@ class QuestionForm extends React.Component {
                                     step="1"
                                     onChange={this.handleSliderChange}
                                 />
+
+                                <br/>
+
                                 <span>None</span> <span className="sliderLabels">All</span>
 
-                                <hr />
+                                <br/><br/><br/><br/><br/><hr />
 
+                                <br/>
                                 <h3>Housing</h3>
                                 <p> Which housing type best describes your home?</p>
 
@@ -347,6 +356,9 @@ class QuestionForm extends React.Component {
                                     step="1"
                                     onChange={this.handleSliderChange}
                                 />
+                                
+                                <br/>
+
                                 <span>Just me</span><span className="sliderLabels">10+</span>
 
                                 <br /><br /> <br />
@@ -364,10 +376,14 @@ class QuestionForm extends React.Component {
                                     step="1"
                                     onChange={this.handleSliderChange}
                                 />
+
+                                <br/>
+
                                 <span>Tiny</span><span className="sliderLabels">A mansion</span>
 
-                                <hr />
+                                <br/><br/><br/><br/><br/><hr />
 
+                                <br/>
                                 <h3>Energy</h3>
                                 <p>Do you have electricity in your home?</p>
 
@@ -396,6 +412,9 @@ class QuestionForm extends React.Component {
                                     step="1"
                                     onChange={this.handleSliderChange}
                                 />
+
+                                <br/>
+
                                 <span>Not efficient at all</span><span className="sliderLabels">Very efficient</span>
 
                                 <br /><br /> <br />
@@ -413,6 +432,9 @@ class QuestionForm extends React.Component {
                                     step="1"
                                     onChange={this.handleSliderChange}
                                 />
+
+                                <br/>
+
                                 <span>Low</span><span className="sliderLabels">High</span>
 
                                 <br /><br /> <br />
@@ -431,13 +453,18 @@ class QuestionForm extends React.Component {
                                     onChange={this.handleSliderChange}
                                
                                 />
+
+                                <br/>
+
                                 <span>Significantly less</span><span className="sliderLabels">A lot more</span>
 
-                                <hr />
+                                <br/><br/><br/><br/><br/><hr />
 
+                                <br/>
                                 <h3>Transportation</h3>
                                 <p>How far do you travel by car or motorcycle each week? </p>
 
+                                
                                 <h4>Car</h4>
 
                                 <input
@@ -450,6 +477,9 @@ class QuestionForm extends React.Component {
                                     step="1"
                                     onChange={this.handleSliderChange}
                                 />
+
+                                <br/>
+
                                 <span>Not far at all (less than 5 miles)</span><span className="sliderLabels">Far far away (more than 100 miles)</span>
 
                                 <h4>Motorcycle</h4>
@@ -464,6 +494,9 @@ class QuestionForm extends React.Component {
                                     step="1"
                                     onChange={this.handleSliderChange}
                                 />
+
+                                <br/>
+
                                 <span>Not far at all (less than 5 miles)</span><span className="sliderLabels">Far far away (more than 100 miles)</span>
 
                                 <br /><br /> <br />
@@ -480,6 +513,9 @@ class QuestionForm extends React.Component {
                                     step="1"
                                     onChange={this.handleSliderChange}
                                 />
+
+                                <br/>
+
                                 <span>Inefficient</span><span className="sliderLabels">Efficient or Electric</span>
 
                                 <br /><br /> <br />
@@ -498,6 +534,8 @@ class QuestionForm extends React.Component {
                                     onChange={this.handleSliderChange}
                                 />
 
+                                <br/>
+
                                 <span>Never</span><span className="sliderLabels">Everyday</span>
 
                                 <br /><br /> <br />
@@ -515,6 +553,8 @@ class QuestionForm extends React.Component {
                                     onChange={this.handleSliderChange}
                                 />
 
+                                <br/>
+
                                 <span>Not far (less than 5 miles)</span><span className="sliderLabels">Very Far (over 100 miles)</span>
 
                                 <br /><br /> <br />
@@ -531,6 +571,8 @@ class QuestionForm extends React.Component {
                                     step="1"
                                     onChange={this.handleSliderChange}
                                 />
+
+                                <br/>
 
                                 <span>None</span><span className="sliderLabels">Many</span>
 
