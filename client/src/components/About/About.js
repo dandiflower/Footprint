@@ -12,7 +12,7 @@ const About = () => (
             <h2 className="card-title ml-5">Welcome to the home of carbon footprinting</h2>
             <h3 className="card-text ml-5">Learn how you are personally effecting global warming</h3>
             <div className="worldData ml-5"><br></br>
-                <iframe width="95%" height="600px" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=l&amp;strail=false&amp;bcs=d&amp;nselm=h&amp;met_y=en_atm_co2e_pc&amp;scale_y=log&amp;ind_y=false&amp;rdim=region&amp;idim=region:NAC:SSF:SAS:MEA:LCN:ECS:EAS&amp;ifdim=region&amp;hl=en_US&amp;dl=en&amp;ind=false&amp;icfg"></iframe>
+                <iframe width="95%" height="600px" frameBorder="0" scrolling="no" marginWidth="0" marginHeight="0" src="https://www.google.com/publicdata/embed?ds=d5bncppjof8f9_&amp;ctype=l&amp;strail=false&amp;bcs=d&amp;nselm=h&amp;met_y=en_atm_co2e_pc&amp;scale_y=log&amp;ind_y=false&amp;rdim=region&amp;idim=region:NAC:SSF:SAS:MEA:LCN:ECS:EAS&amp;ifdim=region&amp;hl=en_US&amp;dl=en&amp;ind=false&amp;icfg"></iframe>
             </div>
             <ul className="p-5">
 
