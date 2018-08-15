@@ -41,15 +41,28 @@ class Results extends React.Component {
                 console.log(res.data)
             )
     }
-    // componentWillMount() {
-    //     this.getChartData();
-    // }
+    componentWillMount() {
+        // this.allData()
+        this.getChartData()
+        console.log(this.state.userId)
+        const getUser = {
+            userId: this.state.userId
+        }
+        HELPERS.getResults(this.state.userId)
+            .then(dbResults => {
+                console.log("dbResults", dbResults)
+                this.setState({
+                    firstName: dbResults.data.firstName,
+                    q1: dbResults.data.q1,
+                })
+            })
+    }
 
-    async componentDidMount() {
+    componentDidMount() {
         axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
         axios.get('/api/person')
             .then(res => {
-                // this.setState({ persons: res.data });
+                this.setState({ persons: res.data });
                 this.setState({
                     firstName: res.data.firstName,
                     q1: res.data[0].q1,    
@@ -68,13 +81,18 @@ class Results extends React.Component {
                     q14: res.data[0].q14,
                     q15: res.data[0].q15,
                     q16: res.data[0].q16,
+                    userId: res.data[0].userId
                 })
-                this.getChartData()
-                console.log("this.state", this.state);
+                console.log("this.state before", this.state);
+                
+                console.log("this.state mid", this.state);
+                // this.getChartData()
+                console.log("this.state after1", this.state);
                 this.props.history.push()
                 
+                
             })
-            
+            // console.log("this.state after2", this.state);
             .catch((error) => {
                 if (error.response.status === 401) {
                     this.props.history.push("/login");
@@ -82,6 +100,11 @@ class Results extends React.Component {
             });
             
     }
+
+    // shouldComponentUpdate(nextProps,nextState) {
+    //     this.getChartData()
+    //     console.log("this.state shouldComponentUpdate", this.state)
+    // }
 
     getChartData = () => {
         // HELPERS.getResults()
@@ -92,7 +115,8 @@ class Results extends React.Component {
                 datasets: [{
                     label: 'Number of Days per Week',
                     //data: [res.data.q1, average]
-                    data: [this.state.q1, 5],
+                    // data: [this.state.q1, 5],
+                    data: [2,5],
                     backgroundColor: ['rgba(255,99,132,0.2)', 'rgba(255,99,132,0.2)']
                 }]
             },
@@ -101,18 +125,58 @@ class Results extends React.Component {
                 datasets: [{
                     label: 'Number of Days per Week',
                     //data: [res.data.q1, average]
-                    data: [this.state.q2, 5],
+                    // data: [this.state.q2, 5],
+                    data: [20,10],
                     backgroundColor: ['rgba(255,99,132,0.2)', 'rgba(255,99,132,0.2)']
                 }]
             },
             pieChartData: {
-                labels: ['Category1', 'Category2', 'Category3'],
+                // labels: [this.state.q3, 'Category2', 'Category3'],
+                labels: ['Freestanding, no running water', 'Freestanding, running water', 'Multi-story apartment', 'Duplex unit'],
                 datasets: [{
-                    data: [80, 10, 10],
+                    data: [50,10,30,5,5],
                     backgroundColor: [
                         '#FF6384',
                         '#36A2EB',
+                        '#FFCE56',
+                        '#447AB2',
+                        '#800000',
+                    ],
+                    hoverBackgroundColor: [
+                        '#FF6384',
+                        '#36A2EB',
                         '#FFCE56'
+                    ]
+                }]
+            },
+            pieChartDataB: {
+                // labels: [this.state.q3, 'Category2', 'Category3'],
+                labels: ['Straw/bamboo', 'Wood', 'Adobe', 'Brick/concrete', 'Steel/other'],
+                datasets: [{
+                    data: [10,25,35,10,20],
+                    backgroundColor: [
+                        '#FF6384',
+                        '#36A2EB',
+                        '#FFCE56',
+                        '#447AB2',
+                        '#800000',
+                    ],
+                    hoverBackgroundColor: [
+                        '#FF6384',
+                        '#36A2EB',
+                        '#FFCE56'
+                    ]
+                }]
+            },
+            pieChartDataC: {
+                // labels: [this.state.q3, 'Category2', 'Category3'],
+                labels: ['Yes', 'No'],
+                datasets: [{
+                    data: [90,10],
+                    backgroundColor: [
+                        '#FF6384',
+                        '#36A2EB',
+                        
                     ],
                     hoverBackgroundColor: [
                         '#FF6384',
@@ -189,12 +253,11 @@ class Results extends React.Component {
 
                             </ul>
 
-                            <div>  </div>
 
                             {/* 1st question */}
                             <Chart
                                 chartData={this.state.chartData}
-                                location='How many times a week do you eat meat?'
+                                location='1) How many times a week do you eat meat?'
                                 legendPosition="bottom"
                                 height={400}
                                 max={10}
@@ -203,7 +266,7 @@ class Results extends React.Component {
                             {/* 2nd question  */}
                             <Chart
                                 chartData={this.state.chartDataB}
-                                location='How much of the food that you eat is unprocessed, unpackaged or locally grown?'
+                                location='2) How much of the food that you eat is unprocessed, unpackaged or locally grown?'
                                 legendPosition="bottom"
                                 height={400}
                                 max={100}
@@ -212,21 +275,21 @@ class Results extends React.Component {
                             {/* 3rd question  */}
                             <PieChart
                                 chartData={this.state.pieChartData}
-                                location='Which housing type best describes your home?'
+                                location='3) Which housing type best describes your home?'
 
                             />
 
                             {/* 4th question  */}
                             <PieChart
-                                chartData={this.state.pieChartData}
-                                location='What material is your house constructed with?'
+                                chartData={this.state.pieChartDataB}
+                                location='4) What material is your house constructed with?'
 
                             />
 
                             {/* fif5thth question  */}
                             <Chart
                                 chartData={this.state.chartData}
-                                location='How many people live in your household?'
+                                location='5) How many people live in your household?'
                                 legendPosition="bottom"
                                 height={400}
                                 max={100}
@@ -235,21 +298,20 @@ class Results extends React.Component {
                             {/* 6th question  */}
                             <Chart
                                 chartData={this.state.chartData}
-                                location='What is the size of your home?'
+                                location='6) What is the size of your home?'
                                 max={100}
                             />
 
                             {/* 7th question  */}
                             <PieChart
-                                chartData={this.state.pieChartData}
-                                location='Do you have electricity in your home?'
-
+                                chartData={this.state.pieChartDataC}
+                                location='7) Do you have electricity in your home?'
                             />
 
                             {/* 8th question  */}
                             <Chart
                                 chartData={this.state.chartData}
-                                location='How energy efficient is your home?'
+                                location='8) How energy efficient is your home?'
                                 legendPosition="bottom"
                                 height={400}
                                 max={100}
@@ -258,7 +320,7 @@ class Results extends React.Component {
                             {/* 9th question  */}
                             <Chart
                                 chartData={this.state.chartData}
-                                location='What percentage of your home’s electricity comes from renewable sources (either directly or through purchased green power)?'
+                                location='9) What percentage of your home’s electricity comes from renewable sources (either directly or through purchased green power)?'
                                 legendPosition="bottom"
                                 height={400}
                                 max={100}
@@ -267,7 +329,7 @@ class Results extends React.Component {
                             {/* 10th question  */}
                             <Chart
                                 chartData={this.state.chartData}
-                                location='Compared to your neighbors, how much trash do you generate?'
+                                location='10) Compared to your neighbors, how much trash do you generate?'
                                 legendPosition="bottom"
                                 height={400}
                                 max={100}
@@ -276,7 +338,7 @@ class Results extends React.Component {
                             {/* 11th question  */}
                             <Chart
                                 chartData={this.state.chartData}
-                                location='How far do you travel by car or motorcycle each week? '
+                                location='11a) How far do you travel by car each week? '
                                 legendPosition="bottom"
                                 height={400}
                                 max={100}
@@ -285,7 +347,7 @@ class Results extends React.Component {
                             {/* 12th question  */}
                             <Chart
                                 chartData={this.state.chartData}
-                                location='How far do you travel by car or motorcycle each week?'
+                                location='11b) How far do you travel by motorcycle each week?'
                                 legendPosition="bottom"
                                 height={400}
                                 max={100}
@@ -294,7 +356,7 @@ class Results extends React.Component {
                             {/* 13th question  */}
                             <Chart
                                 chartData={this.state.chartData}
-                                location='What is the average fuel economy the vehicles you use most often? '
+                                location='13) What is the average fuel economy the vehicles you use most often? '
                                 legendPosition="bottom"
                                 height={400}
                                 max={100}
@@ -303,7 +365,7 @@ class Results extends React.Component {
                             {/* 14th question  */}
                             <Chart
                                 chartData={this.state.chartData}
-                                location='When you travel by car, how often do you carpool? '
+                                location='14) When you travel by car, how often do you carpool? '
                                 legendPosition="bottom"
                                 height={400}
                                 max={100}
@@ -312,7 +374,7 @@ class Results extends React.Component {
                             {/* 15th question  */}
                             <Chart
                                 chartData={this.state.chartData}
-                                location='How far do you travel on public transportation each week?'
+                                location='15) How far do you travel on public transportation each week?'
                                 legendPosition="bottom"
                                 height={400}
                                 max={100}
@@ -321,7 +383,7 @@ class Results extends React.Component {
                             {/* 16th question  */}
                             <Chart
                                 chartData={this.state.chartData}
-                                location='How many hours do you fly each year?'
+                                location='16) How many hours do you fly each year?'
                                 legendPosition="bottom"
                                 height={400}
                                 max={100}

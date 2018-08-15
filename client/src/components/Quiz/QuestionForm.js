@@ -269,7 +269,7 @@ class QuestionForm extends React.Component {
                                 <hr /><br/>
 
                                 <h3>Food</h3>
-                                <p>How many times a week do you eat meat?</p>
+                                <p>1) How many times a week do you eat meat?</p>
 
 
                                 <input
@@ -289,7 +289,7 @@ class QuestionForm extends React.Component {
 
                                 <br /> <br /> <br />
 
-                                <p> How much of the food that you eat is unprocessed, unpackaged or locally grown?</p>
+                                <p>2) How much of the food that you eat is unprocessed, unpackaged or locally grown?</p>
 
 
                                 <input
@@ -311,7 +311,7 @@ class QuestionForm extends React.Component {
 
                                 <br/>
                                 <h3>Housing</h3>
-                                <p> Which housing type best describes your home?</p>
+                                <p>3) Which housing type best describes your home?</p>
 
                                 <RadioGroup
                                     name="q3"
@@ -328,7 +328,7 @@ class QuestionForm extends React.Component {
 
                                 <br /><br /> <br />
 
-                                <p>What material is your house constructed with?</p>
+                                <p>4) What material is your house constructed with?</p>
                                 <RadioGroup
                                     name="q4"
                                     onChange={this.handleChange}
@@ -344,7 +344,7 @@ class QuestionForm extends React.Component {
 
                                 <br /><br /> <br />
 
-                                <p>How many people live in your household?</p>
+                                <p>5) How many people live in your household?</p>
 
                                 <input
                                     id="q5"
@@ -363,7 +363,7 @@ class QuestionForm extends React.Component {
 
                                 <br /><br /> <br />
 
-                                <p>What is the size of your home (square feet)?</p>
+                                <p>6) What is the size of your home (square feet)?</p>
 
 
                                 <input
@@ -385,7 +385,7 @@ class QuestionForm extends React.Component {
 
                                 <br/>
                                 <h3>Energy</h3>
-                                <p>Do you have electricity in your home?</p>
+                                <p>7) Do you have electricity in your home?</p>
 
                                 <RadioGroup
                                     name="q7"
@@ -398,7 +398,7 @@ class QuestionForm extends React.Component {
 
                                 <br /><br /> <br />
 
-                                <p>How energy efficient is your home?</p>
+                                <p>8) How energy efficient is your home?</p>
 
                                 <br />
 
@@ -419,7 +419,7 @@ class QuestionForm extends React.Component {
 
                                 <br /><br /> <br />
 
-                                <p>What percentage of your home’s electricity comes from renewable sources (either directly or through purchased green power)?</p>
+                                <p>9) What percentage of your home’s electricity comes from renewable sources (either directly or through purchased green power)?</p>
 
 
                                 <input
@@ -439,7 +439,7 @@ class QuestionForm extends React.Component {
 
                                 <br /><br /> <br />
 
-                                <p>Compared to your neighbors, how much trash do you generate?</p>
+                                <p>10) Compared to your neighbors, how much trash do you generate?</p>
 
 
                                 <input
@@ -462,7 +462,7 @@ class QuestionForm extends React.Component {
 
                                 <br/>
                                 <h3>Transportation</h3>
-                                <p>How far do you travel by car or motorcycle each week? </p>
+                                <p>11) How far do you travel by car or motorcycle each week? </p>
 
                                 
                                 <h4>Car</h4>
@@ -501,7 +501,7 @@ class QuestionForm extends React.Component {
 
                                 <br /><br /> <br />
 
-                                <p>What is the average fuel economy of the vehicle you use most often? </p>
+                                <p>12) What is the average fuel economy of the vehicle you use most often? </p>
 
                                 <input
                                     id="q13"
@@ -520,7 +520,7 @@ class QuestionForm extends React.Component {
 
                                 <br /><br /> <br />
 
-                                <p>When you travel by car, how often do you carpool every week?</p>
+                                <p>13) When you travel by car, how often do you carpool every week?</p>
 
 
                                 <input
@@ -540,7 +540,7 @@ class QuestionForm extends React.Component {
 
                                 <br /><br /> <br />
 
-                                <p>How far do you travel on public transportation each week?</p>
+                                <p>14) How far do you travel on public transportation each week?</p>
 
                                 <input
                                     id="q15"
@@ -559,7 +559,7 @@ class QuestionForm extends React.Component {
 
                                 <br /><br /> <br />
 
-                                <p>How many hours do you fly each year?</p>
+                                <p>15) How many hours do you fly each year?</p>
 
                                 <input
                                     id="q16"
