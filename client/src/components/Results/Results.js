@@ -105,6 +105,39 @@ class Results extends React.Component {
     //     this.getChartData()
     //     console.log("this.state shouldComponentUpdate", this.state)
     // }
+    // componentWillMount() {
+    //     this.allData()
+
+    //     console.log("this.sbfggfdluniebllcrlgkceljbierkcrugtate in componentDidUpdate", this.state)
+    //     console.log(this.state.userId)
+    //     this.getChartData()
+    //     const getUserId = {
+    //         userId: this.state.userId
+    //     }
+    //     HELPERS.getResults(getUserId)
+    //         .then(dbResults => {
+    //             console.log("dbResults", dbResults)
+    //             this.setState({
+    //                 firstName: dbResults.data.firstName,
+    //                 q1: dbResults.data.q1,
+    //                 q2: dbResults.data.q2,
+    //                 q3: dbResults.data.q3,
+    //                 q4: dbResults.data.q4,
+    //                 q5: 0,
+    //                 q6: 0,
+    //                 q7: "",
+    //                 q8: 0,
+    //                 q9: 0,
+    //                 q10: 0,
+    //                 q11: 0,
+    //                 q12: 0,
+    //                 q13: 0,
+    //                 q14: 0,
+    //                 q15: 0,
+    //                 q16: 0,
+    //             })
+    //         })
+    // }
 
     getChartData = () => {
         // HELPERS.getResults()
@@ -190,49 +223,20 @@ class Results extends React.Component {
 
     }
 
+// don't uncomment below.. causes problems jb
+
     // componentDidUpdate() {
        
     //     console.log("componentDidUpdate this.state", this.state)
     //     this.getChartData();
     // }
 
+// I uncommented this 8.15.18 -jb ...below 
 
 
-    // componentWillMount() {
-        // this.allData()
-        
-        // console.log("this.sbfggfdluniebllcrlgkceljbierkcrugtate in componentDidUpdate", this.state)
-        // console.log(this.state.userId)
-        // this.getChartData()
-        // const getUserId = {
-        //     userId: this.state.userId
-        // }
-        // HELPERS.getResults(getUserId)
-        //     .then(dbResults => {
-        //         console.log("dbResults", dbResults)
-        //         this.setState({
-        //             firstName: dbResults.data.firstName,
-        //             q1: dbResults.data.q1,    
-        //             q2: dbResults.data.q2,
-        //             q3: dbResults.data.q3
-                    // q4: "",
-                    // q5: 0,
-                    // q6: 0,
-                    // q7: "",
-                    // q8: 0,
-                    // q9: 0,
-                    // q10: 0,
-                    // q11: 0,
-                    // q12: 0,
-                    // q13: 0,
-                    // q14: 0,
-                    // q15: 0,
-                    // q16: 0,
-                // })
-            // })
-    // }
 
     logout() {
+        delete document.cookie[this.state.user];
         localStorage.removeItem('jwtToken');
         window.location.reload();
     }  

@@ -207,7 +207,7 @@ class QuestionForm extends React.Component {
 
     logout() {
         // TODO: Delete cookie the right way!
-        //delete document.cookie[this.state.user];
+        delete document.cookie[this.state.user];
         localStorage.removeItem('jwtToken');
         window.location.reload();
     }
@@ -244,7 +244,7 @@ class QuestionForm extends React.Component {
                                 }
                             </p>
 
-                            <br/><br/><br/><br/>
+                            <br/><br/>
 
                             <h3>Basic Information</h3>
 
@@ -264,9 +264,9 @@ class QuestionForm extends React.Component {
                                     placeholder="zip code"
                                     value={this.state.zipCode}
                                     onChange={e => this.change(e)} />
-                                <br />
+                              
 
-                                <hr /><br/>
+                                <hr />
 
                                 <h3>Food</h3>
                                 <p>1) How many times a week do you eat meat?</p>
@@ -478,7 +478,7 @@ class QuestionForm extends React.Component {
                                     onChange={this.handleSliderChange}
                                 />
 
-                                <br/>
+                                <br /><br/>
 
                                 <span>Not far at all (less than 5 miles)</span><span className="sliderLabels">Far far away (more than 100 miles)</span>
 
@@ -495,7 +495,7 @@ class QuestionForm extends React.Component {
                                     onChange={this.handleSliderChange}
                                 />
 
-                                <br/>
+                                <br/><br/>
 
                                 <span>Not far at all (less than 5 miles)</span><span className="sliderLabels">Far far away (more than 100 miles)</span>
 
