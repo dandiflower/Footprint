@@ -207,7 +207,7 @@ class QuestionForm extends React.Component {
 
     logout() {
         // TODO: Delete cookie the right way!
-        //delete document.cookie[this.state.user];
+        delete document.cookie[this.state.user];
         localStorage.removeItem('jwtToken');
         window.location.reload();
     }
