@@ -11,26 +11,27 @@ class Results extends React.Component {
     constructor() {
         super();
         this.state = {
-            chartData: {},
-            chartDataB: {},
             firstName: "",
             zipCode: "",
-            // q1: "",
-            // q2: "",
+            q1: 0,
+            q2: 0,
             q3: "",
             q4: "",
-            // q5: "",
-            // q6: "",
+            q5: 0,
+            q6: 0,
             q7: "",
-            // q8: "",
-            // q9: "",
-            // q10: "",
-            // q11: "",
-            // q12: "",
-            // q13: "",
-            // q14: "",
-            // q15: "",
-            // q16: "",
+            q8: 0,
+            q9: 0,
+            q10: 0,
+            q11: 0,
+            q12: 0,
+            q13: 0,
+            q14: 0,
+            q15: 0,
+            q16: 0,
+            userId: "",
+            chartData: {},
+            chartDataB: {},
         }
     }
 
@@ -39,6 +40,47 @@ class Results extends React.Component {
             .then(res =>
                 console.log(res.data)
             )
+    }
+    // componentWillMount() {
+    //     this.getChartData();
+    // }
+
+    async componentDidMount() {
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
+        axios.get('/api/person')
+            .then(res => {
+                // this.setState({ persons: res.data });
+                this.setState({
+                    firstName: res.data.firstName,
+                    q1: res.data[0].q1,    
+                    q2: res.data[0].q2,
+                    q3: res.data[0].q3,
+                    q4: res.data[0].q4,
+                    q5: res.data[0].q5,
+                    q6: res.data[0].q6,
+                    q7: res.data[0].q7,
+                    q8: res.data[0].q8,
+                    q9: res.data[0].q9,
+                    q10: res.data[0].q10,
+                    q11: res.data[0].q11,
+                    q12: res.data[0].q12,
+                    q13: res.data[0].q13,
+                    q14: res.data[0].q14,
+                    q15: res.data[0].q15,
+                    q16: res.data[0].q16,
+                })
+                this.getChartData()
+                console.log("this.state", this.state);
+                this.props.history.push()
+                
+            })
+            
+            .catch((error) => {
+                if (error.response.status === 401) {
+                    this.props.history.push("/login");
+                }
+            });
+            
     }
 
     getChartData = () => {
@@ -50,7 +92,7 @@ class Results extends React.Component {
                 datasets: [{
                     label: 'Number of Days per Week',
                     //data: [res.data.q1, average]
-                    data: [3, 5],
+                    data: [this.state.q1, 5],
                     backgroundColor: ['rgba(255,99,132,0.2)', 'rgba(255,99,132,0.2)']
                 }]
             },
@@ -59,7 +101,7 @@ class Results extends React.Component {
                 datasets: [{
                     label: 'Number of Days per Week',
                     //data: [res.data.q1, average]
-                    data: [3, 5],
+                    data: [this.state.q2, 5],
                     backgroundColor: ['rgba(255,99,132,0.2)', 'rgba(255,99,132,0.2)']
                 }]
             },
@@ -84,46 +126,52 @@ class Results extends React.Component {
 
     }
 
+    // componentDidUpdate() {
+       
+    //     console.log("componentDidUpdate this.state", this.state)
+    //     this.getChartData();
+    // }
+
+
+
+    // componentWillMount() {
+        // this.allData()
+        
+        // console.log("this.sbfggfdluniebllcrlgkceljbierkcrugtate in componentDidUpdate", this.state)
+        // console.log(this.state.userId)
+        // this.getChartData()
+        // const getUserId = {
+        //     userId: this.state.userId
+        // }
+        // HELPERS.getResults(getUserId)
+        //     .then(dbResults => {
+        //         console.log("dbResults", dbResults)
+        //         this.setState({
+        //             firstName: dbResults.data.firstName,
+        //             q1: dbResults.data.q1,    
+        //             q2: dbResults.data.q2,
+        //             q3: dbResults.data.q3
+                    // q4: "",
+                    // q5: 0,
+                    // q6: 0,
+                    // q7: "",
+                    // q8: 0,
+                    // q9: 0,
+                    // q10: 0,
+                    // q11: 0,
+                    // q12: 0,
+                    // q13: 0,
+                    // q14: 0,
+                    // q15: 0,
+                    // q16: 0,
+                // })
+            // })
+    // }
 
     logout() {
         localStorage.removeItem('jwtToken');
         window.location.reload();
-    }
-
-    componentWillMount() {
-        // this.allData()
-        this.getChartData()
-        console.log(this.state.userId)
-        const getUser = {
-            userId: this.state.userId
-        }
-        HELPERS.getResults(this.state.userId)
-            .then(dbResults => {
-                console.log("dbResults", dbResults)
-                this.setState({
-                    firstName: dbResults.data.firstName,
-                    q1: dbResults.data.q1,
-                })
-            })
-    }
-
-    // is the user authorized????
-    componentDidMount() {
-
-        axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
-        axios.get('/api/person')
-            .then(res => {
-                this.setState({ persons: res.data });
-                console.log("this.state.persons", this.state.persons);
-                this.props.history.push()
-            })
-            .catch((error) => {
-                if (error.response.status === 401) {
-                    this.props.history.push("/login");
-                }
-            });
-    }
-
+    }  
 
 
     render() {
@@ -140,6 +188,8 @@ class Results extends React.Component {
                                 <li id="listResults" className="list-group-item text-center"><h2>See in the graph below how your footprint compares to the rest of people!</h2></li>
 
                             </ul>
+
+                            <div>  </div>
 
                             {/* 1st question */}
                             <Chart
