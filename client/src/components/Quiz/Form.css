@@ -1,3 +1,14 @@
+@font-face {
+    font-family: Apercu-Bold;
+    src: url("fonts/Apercu-Bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: apercu_regular_pro;
+    font-weight: bold;
+    src: url("fonts/apercu_regular_pro.otf") format("opentype");
+}
+
 form {
   position: absolute;
   /* padding-top: 1000px; */
@@ -13,22 +24,29 @@ form {
 
 h3{
   text-align: center;
-  font-family: 'Fredoka One', cursive; 
-  font-size: 40px;
+  font-family: 'Apercu-Bold', sans-serif; 
+  font-size: 36px;
+ 
+}
+
+h4{
+  font-family: 'Apercu-Bold', sans-serif; 
+  font-size: 12px;
  
 }
 
 p {
-  font-family: 'Kreon', serif;
+  font-family: 'apercu_regular_pro', serif;
   font-size: 18px;
 }
 
 span {
-  font-family: 'Kreon', serif;
+  font-family: 'apercu_regular_pro', serif;
   font-size: 14px;
-  font-style: italic;
   background-color: #447AB2;
-  padding: 2px 6px;
+  padding: 3px 6px;
+  border-radius: .2rem;
+  text-shadow: 1rem;
   color:white;
   
 }
