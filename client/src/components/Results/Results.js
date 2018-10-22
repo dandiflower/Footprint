@@ -5,6 +5,8 @@ import HELPERS from "../../utils/helpers.js";
 import "./Results.css";
 import Chart from "../Chart/Chart";
 import PieChart from "../Chart/PieChart";
+// import {XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries} from 'react-vis';
+// import UberBar from "../Chart/uberChart";
 
 
 class Results extends React.Component {
@@ -30,41 +32,45 @@ class Results extends React.Component {
             q15: 0,
             q16: 0,
             userId: "",
-            chartData: {},
-            chartDataB: {},
+            chartData: "",
+            chartDataB: "",
         }
     }
 
     allData = () => {
-        HELPERS.getResults()
-            .then(res =>
-                console.log(res.data)
-            )
+        // HELPERS.getResults()
+        //     .then(res =>
+        //         console.log(res.data)
+        //     )
+        
     }
-    componentWillMount() {
-        // this.allData()
-        this.getChartData()
-        console.log(this.state.userId)
-        const getUser = {
-            userId: this.state.userId
-        }
-        HELPERS.getResults(this.state.userId)
-            .then(dbResults => {
-                console.log("dbResults", dbResults)
-                this.setState({
-                    firstName: dbResults.data.firstName,
-                    q1: dbResults.data.q1,
-                })
-            })
-    }
+    // componentWillMount() {
+    //     // this.allData()
+    //     this.getChartData()
+    //     console.log(this.state.userId)
+    //     const getUser = {
+    //         userId: this.state.userId
+    //     }
+    //     HELPERS.getResults(this.state.userId)
+    //         .then(dbResults => {
+    //             console.log("dbResults", dbResults)
+    //             this.setState({
+    //                 firstName: dbResults.data.firstName,
+    //                 q1: dbResults.data.q1,
+    //             })
+    //         })
+    // }
 
     componentDidMount() {
+        console.log("this.state A", this.state);
+        this.getChartData()
         axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
+        console.log("this.state B", this.state);
         axios.get('/api/person')
             .then(res => {
                 this.setState({ persons: res.data });
                 this.setState({
-                    firstName: res.data.firstName,
+                    firstName: res.data[0].firstName,
                     q1: res.data[0].q1,    
                     q2: res.data[0].q2,
                     q3: res.data[0].q3,
@@ -83,23 +89,42 @@ class Results extends React.Component {
                     q16: res.data[0].q16,
                     userId: res.data[0].userId
                 })
-                console.log("this.state before", this.state);
                 
-                console.log("this.state mid", this.state);
-                // this.getChartData()
-                console.log("this.state after1", this.state);
+
+                console.log("this.state C", this.state);
+                
+                // getting the most recent user data (Aka the current user)
+                let lastPersonLoc = this.state.persons.length -1 
+                let lastPersonObj = this.state.persons[lastPersonLoc]
+                console.log("lastPersonLoc", lastPersonLoc)
+                console.log("this.state lastPersonObj", lastPersonObj);
+                
+                // finding the current user's answers for questions
+                console.log("this.state.chartData", this.state.chartData)
+                console.log("this.state.chartData.datasets", this.state.chartData.datasets)
+                console.log("this.state.chartData.datasets[0]", this.state.chartData.datasets[0])
+                console.log("this.state.chartData.datasets[0].data", this.state.chartData.datasets[0].data)
+
+                // inserting data of current user answers into chartData state
+                // setting the answer to q1 and q2 to data values for chart
+                let insertDataHere = this.state.chartData.datasets[0].data;
+                insertDataHere.push(lastPersonObj.q1)
+                insertDataHere.push(lastPersonObj.q2)
+
+                console.log("this.state after lastPersonObj", this.state)
+                this.getChartData(this.state)
                 this.props.history.push()
                 
                 
             })
-            // console.log("this.state after2", this.state);
-            .catch((error) => {
-                if (error.response.status === 401) {
-                    this.props.history.push("/login");
-                }
-            });
+            // .catch((error) => {
+            //     if (error.response.status === 401) {
+            //         this.props.history.push("/login");
+            //     }
+            // });
             
     }
+
 
     // shouldComponentUpdate(nextProps,nextState) {
     //     this.getChartData()
@@ -149,7 +174,8 @@ class Results extends React.Component {
                     label: 'Number of Days per Week',
                     //data: [res.data.q1, average]
                     // data: [this.state.q1, 5],
-                    data: [2,5],
+                    // data: [this.state.chartData.datasets[0].data],
+                    data: [],
                     backgroundColor: ['rgba(255,99,132,0.2)', 'rgba(255,99,132,0.2)']
                 }]
             },
@@ -244,7 +270,9 @@ class Results extends React.Component {
 
     render() {
         return (
+            
             <div>
+                
                 <Navbar />
                 <div id="results--card--center">
                     <div className="container">
