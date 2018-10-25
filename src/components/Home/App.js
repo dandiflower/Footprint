@@ -12,7 +12,7 @@ class App extends Component {
   
         <Series />
         
-        <button id="bt-popup" class="my-button">Popup</button>
+        
         </header>
 
           {/* START OF TYPEFORM SURVEY */}

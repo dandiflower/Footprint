@@ -8,8 +8,7 @@ class Series extends Component{
 
    
     componentDidMount(){
-        const popup1 = document.querySelector('.target-dom-node')
-        typeformEmbed.makePopup(
+        const popup1 = typeformEmbed.makePopup(
             'https://hannahlim1.typeform.com/to/LwxSXf',
             {
                 mode: 'popup',
@@ -35,6 +34,7 @@ class Series extends Component{
             series container 
             <Loader /> 
             <Intro message="hello there, welcome to Footprint!"/>
+            <button id="bt-popup" class="my-button">Popup</button>
             </div>
 
         )
