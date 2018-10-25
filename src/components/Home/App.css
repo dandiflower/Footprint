@@ -30,3 +30,17 @@
     transform: rotate(360deg);
   }
 }
+
+.my-button {
+  font-size: 18px;
+  color: white;
+  background-color: steelblue;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.my-button:focus {
+  outline: 0;
+}
