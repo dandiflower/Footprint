@@ -4,11 +4,15 @@ import './index.css';
 import App from './components/Home/App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
+import Background from '../src/components/Background/background';
 
 // .render takes 3 arguments (react element that we want to render, dom container, optional- callback, logic)
 ReactDOM.render(
     <BrowserRouter> 
-        <App />
+        <div>
+            <App />
+            <Background />
+        </div>
     </ BrowserRouter>, 
     document.getElementById('root')
 
