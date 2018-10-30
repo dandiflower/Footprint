@@ -1,11 +1,28 @@
 .App {
   text-align: center;
+  overflow: scroll;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
 }
+
+/* .background{
+  background: url("../../assets/images/leaf-background.gif");
+  
+  width: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+/* .background {
+  background: url("../../assets/images/leaf-background.gif") no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+} */
 
 .App-header {
   background-color: #282c34;
@@ -43,4 +60,8 @@
 
 .my-button:focus {
   outline: 0;
+}
+
+.intro-message{
+  width: 40px;
 }

@@ -26,13 +26,13 @@ class Series extends Component{
     render() {
         return (
                  
-            <div> 
-            Click popup to participate in the Footprint survey!
+            <div className="background"> 
+            Welcome to Footprint, a survey to collect data about your lifestyle!
             <Loader /> 
-            
-            <Intro message="Footprint is a survey that collects data about your lifestyle. Once we have enough participants, we will share the results and information we've collect with you."/>
 
-            <button id="bt-popup" class="my-button">Popup</button>
+            <Intro className="intro-message" message="Once we have enough participants, we will share the results and information we've collect with you."/>
+
+            <button id="bt-popup" class="my-button">Take the Survey!</button>
             </div>
 
         )
