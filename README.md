@@ -1,8 +1,14 @@
+<h1 align="center">
+  <img src="./src/assets/images/footprint.png" alt="footprint icon" width="500"></a>
+</h1>
+
+<h3 align="center">:herb: Take a survey and see live results </h3>
+
 # Footprint
 
 Footprint is a React application which easily calculates a user's eco-footprint based on the user's lifestyle. People can learn how to reduce their footprint by taking the quiz and seeing how they compare to the average.
 
-## Use the app:
+## Use the app on our live website:
 * [Launch app](https://infinite-badlands-27209.herokuapp.com)
 
 <h1 align="center">
@@ -19,9 +25,22 @@ Footprint is a React application which easily calculates a user's eco-footprint 
 
 ## To run this source code:
 
-* Clone this repo
-* Make sure MongoDB server is running
-* Run 'yarn run build' & then 'yarn start'
+* Clone this repo and install dependencies by running
+```
+npm i
+```
+or
+```
+yarn install
+```
+* After the dependencies are installed, run
+```
+npm start
+```
+or 
+```
+yarn start
+```
 
 ## Built With:
 
@@ -33,48 +52,19 @@ Footprint is a React application which easily calculates a user's eco-footprint 
 
 * [Javascript](https://www.javascript.com/)
 
-* [BootstrapCDN v3.3.7](http://getbootstrap.com)
+* [Typeform](https://www.typeform.com/) - Typeform to create beautiful interactive surveys
 
-* [MongoDB](http://mongodb.github.io/node-mongodb-native/3.1/) - Database to store and retreive user answers
-
-* [Express js](https://expressjs.com/) - Node application library
-
-* [Node](https://nodejs.org/en/) - Run JavaScript's backend loacally 
-
-* [Mongoose](http://mongoosejs.com/) - Modeling for MongoDB 
+* [Bootstrap](http://getbootstrap.com)
 
 * [Heroku](https://www.heroku.com/) - Deployed on Heroku
 
-* [Passport](http://www.passportjs.org/docs/authenticate/) - login and register authentication
-
-* [React Chartjs 2](https://www.npmjs.com/package/react-chartjs-2) - Creating graphs on the results page
-
-* [Concurrently](https://www.npmjs.com/package/concurrently) - Run server and front-end with yarn start
-
 * see package.json for additional packages
-
-## Code examples
-
-* **Passport** - User authentification:
-
-```
-![Code](client/src/components/Video/assets/passport_auth.jpg)
-```
-
-* **Session Storage** - Creating User Session (using jQuery click event):
-```
-router.get('/logout', (req, res)=>{
-  res.localStorage.removeItem('jwtToken');
-  res.clearCookie("user", {path:"http://localhost:3000/"});
-  res.set('user', {expires: Date.now()});
-  res.json(true);
-});
-```
-
 
 ## Future Features
 
 In the future, we hope to incorporate the following features:
+
+* Authorization for users to save results
 
 * Carbon Footprint APIs to give users a number they can improve on
 
@@ -98,10 +88,9 @@ In the future, we hope to incorporate the following features:
 
 ## Acknowledgments 🗣
 
-* **A big thank you to our instructors and TA's at Berkeley's Coding bootcamp!! Thank you Jerome, Amber, Sasha, Ricky and Dani!
+* A big thank you to our instructors and TA's at Berkeley's Coding bootcamp!! Thank you Jerome, Amber, Sasha, Ricky and Dani!
 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-![Homepage](client/src/components/Video/assets/homepage.jpg)
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details. 
