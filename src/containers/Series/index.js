@@ -3,6 +3,7 @@ import * as typeformEmbed from '@typeform/embed'
 import Loader from '../../components/Loader';
 import Intro from '../../components/Intro';
 
+
 class Series extends Component{
 
     componentDidMount(){
@@ -33,7 +34,10 @@ class Series extends Component{
             <Intro className="intro-message" message="Once we have enough participants, we will share the results and information we've collect with you."/>
 
             <button id="bt-popup" class="my-button">Take the Survey!</button>
-            <button id="bt-results" class="my-button">See the Resutls!</button>
+            <button id="bt-results" class="my-button"> 
+                <a href="https://hannahlim1.typeform.com/report/LwxSXf/urHznGxfNkuUxPI9"> See the Resutls! </a> 
+            </button>
+
             </div>
 
         )
