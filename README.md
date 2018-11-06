@@ -5,6 +5,10 @@ Footprint is a React application which easily calculates a user's eco-footprint 
 ## Use the app:
 * [Launch app](https://infinite-badlands-27209.herokuapp.com)
 
+<h1 align="center">
+  <img src="./src/assets/images/surveygif.gif" alt="footprint survey gif" width="450"></a>
+</h1>
+
 
 ## Inspiration
 
