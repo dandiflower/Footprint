@@ -1,12 +1,10 @@
+# Footprint
 <h1 align="center">
-  <img src="./src/assets/images/footprint.png" alt="footprint icon" width="300"></a>
+  <img src="./src/assets/images/footprint.png" alt="footprint icon" width="200"></a>
 </h1>
 
 <h3 align="center">:herb: Take a survey and see live results </h3>
 
-# Footprint
-
-Footprint is a React application which easily calculates a user's eco-footprint based on the user's lifestyle. People can learn how to reduce their footprint by taking the quiz and seeing how they compare to the average.
 
 ## Use the app on our live website:
 * [Launch app](https://infinite-badlands-27209.herokuapp.com)
