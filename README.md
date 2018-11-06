@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="./src/assets/images/footprint.png" alt="footprint icon" width="500"></a>
+  <img src="./src/assets/images/footprint.png" alt="footprint icon" width="300"></a>
 </h1>
 
 <h3 align="center">:herb: Take a survey and see live results </h3>
