@@ -56,6 +56,11 @@
   border-radius: 20px;
   padding: 10px 20px;
   cursor: pointer;
+  margin:10px;
+}
+
+#bt-results {
+  background-color: #A1C472;
 }
 
 .my-button:focus {
