@@ -35,7 +35,7 @@ class Series extends Component{
 
             <button id="bt-popup" class="my-button">Take the Survey!</button>
             <button id="bt-results" class="my-button"> 
-                <a href="https://hannahlim1.typeform.com/report/LwxSXf/urHznGxfNkuUxPI9"> See the Resutls! </a> 
+                <a href="https://hannahlim1.typeform.com/report/LwxSXf/urHznGxfNkuUxPI9"> See Live Resutls! </a> 
             </button>
 
             </div>
