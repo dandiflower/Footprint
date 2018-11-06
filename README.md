@@ -6,8 +6,7 @@
 <h3 align="center">:herb: Take a survey and see live results </h3>
 
 
-## Use the app on our live website:
-* [Launch app](https://infinite-badlands-27209.herokuapp.com)
+* [Launch app and take the survey!](https://infinite-badlands-27209.herokuapp.com)
 
 <h1 align="center">
   <img src="./src/assets/images/surveygif.gif" alt="footprint survey gif" width="450"></a>
@@ -91,4 +90,4 @@ In the future, we hope to incorporate the following features:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details. 
+This project is licensed under the MIT License.
